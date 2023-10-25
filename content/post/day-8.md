@@ -64,23 +64,23 @@ res = requests.get("https://www.example.com")
     # HTML의 구조를 잘 보여주도록 들여쓰기하여 출력
     print(soup.prettify())
     ```
-    
+
 - HTML의 특정 요소 찾기
-```python
-# 해당하는 각 태그의 내용을 보여줌
-soup.title
-soup.head
-soup.body
-    
-# h1태그들 중 가장 먼저 나오는것을 찾아 반환
-h1 = soup.find("h1")
-# p태그 모두를 찾아 반환
-soup.find_all("p")
-    
-# 태그 이름과 (h1) 태그 안의 내용을 가져옴
-h1.name
-h1.text
-```
+    ```python
+    # 해당하는 각 태그의 내용을 보여줌
+    soup.title
+    soup.head
+    soup.body
+        
+    # h1태그들 중 가장 먼저 나오는것을 찾아 반환
+    h1 = soup.find("h1")
+    # p태그 모두를 찾아 반환
+    soup.find_all("p")
+        
+    # 태그 이름과 (h1) 태그 안의 내용을 가져옴
+    h1.name
+    h1.text
+    ```
 - 특정 요소를 찾아 그 안의 원하는 정보만 추려내기
 ```python
 # 책 리스트를 찾아 그 제목만 추출하는 코드
