@@ -56,14 +56,15 @@ res = requests.get("https://www.example.com")
 ```
 
 - 응답받은 HTML으로 BeautifulSoup 객체를 만들고 내용을 출력해보기
-```python
-# bs 객체를 만들고, res.text와 "html.paser"를 인자로 넘겨
-# HTML parser 역할을 하게 만듬
-soup = BeautifulSoup(res.text, "html.parser")
+    ```python
+    # bs 객체를 만들고, res.text와 "html.paser"를 인자로 넘겨
+    # HTML parser 역할을 하게 만듬
+    soup = BeautifulSoup(res.text, "html.parser")
 
-# HTML의 구조를 잘 보여주도록 들여쓰기하여 출력
-print(soup.prettify())
-```
+    # HTML의 구조를 잘 보여주도록 들여쓰기하여 출력
+    print(soup.prettify())
+    ```
+    
 - HTML의 특정 요소 찾기
 ```python
 # 해당하는 각 태그의 내용을 보여줌
