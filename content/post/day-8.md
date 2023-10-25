@@ -7,7 +7,7 @@ categories = [
     "DevCourse",
 ]
 tags = [
-    "TIL",
+    "TIL","HTML Parser", "BeautifulSoup"
 ]
 +++
 

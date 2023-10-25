@@ -1,9 +1,13 @@
 +++
-title = '231024'
+author = "Seorim"
+title = 'Day 7'
 date = "2023-10-24"
 
+categories = [
+    "DevCourse"
+]
 tags = [
-    "TIL",
+    "TIL", "HTTP","requests", "DOM"
 ]
 +++
 

@@ -1,10 +1,15 @@
 +++
-title = '231023'
+author = "Seorim"
+title = 'Day 6'
 date = "2023-10-23"
 
-tags = [
-    "TIL", "HTML"
+categories = [
+    "DevCourse"
 ]
+tags = [
+    "TIL", "HTML",
+]
+
 +++
 
 <style>
