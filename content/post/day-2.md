@@ -1,7 +1,7 @@
 +++
 author = "Seorim"
 title =  "Day 2"
-date = 2023-10-25T17:42:55+09:00
+date = 2023-10-17
 
 categories = [
     "DevCourse",
