@@ -7,7 +7,7 @@ categories = [
     "Blog", 
 ]
 tags = [
-    "Blog", "hugo", "Github Pages"
+    "Blog", "hugo", "Github Pages",
 ]
 +++
 
