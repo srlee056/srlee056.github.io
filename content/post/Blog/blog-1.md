@@ -1,7 +1,7 @@
 +++
 author = "Seorim"
 title = 'Blog 제작기 #1'
-url = '/blog-1'
+url = '/Blog/blog-1'
 date = 2023-10-16
 draft = false
 categories = [
