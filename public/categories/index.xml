@@ -1,43 +1,35 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
-        <title>Categories on Seorim Log</title>
+        <title>Categories on 서림록</title>
         <link>https://srlee056.github.io/categories/</link>
-        <description>Recent content in Categories on Seorim Log</description>
+        <description>Recent content in Categories on 서림록</description>
         <generator>Hugo -- gohugo.io</generator>
-        <language>en</language>
+        <language>ko</language>
         <copyright>Seorim Lee</copyright>
-        <lastBuildDate>Mon, 11 Mar 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://srlee056.github.io/categories/index.xml" rel="self" type="application/rss+xml" /><item>
-        <title>syntax</title>
-        <link>https://srlee056.github.io/categories/syntax/</link>
-        <pubDate>Mon, 11 Mar 2019 00:00:00 +0000</pubDate>
+        <lastBuildDate>Wed, 25 Oct 2023 16:23:38 +0900</lastBuildDate><atom:link href="https://srlee056.github.io/categories/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>DevCourse</title>
+        <link>https://srlee056.github.io/categories/devcourse/</link>
+        <pubDate>Wed, 25 Oct 2023 16:23:38 +0900</pubDate>
         
-        <guid>https://srlee056.github.io/categories/syntax/</guid>
+        <guid>https://srlee056.github.io/categories/devcourse/</guid>
         <description></description>
         </item>
         <item>
-        <title>themes</title>
-        <link>https://srlee056.github.io/categories/themes/</link>
-        <pubDate>Mon, 11 Mar 2019 00:00:00 +0000</pubDate>
+        <title>Blog</title>
+        <link>https://srlee056.github.io/categories/blog/</link>
+        <pubDate>Mon, 16 Oct 2023 00:00:00 +0000</pubDate>
         
-        <guid>https://srlee056.github.io/categories/themes/</guid>
+        <guid>https://srlee056.github.io/categories/blog/</guid>
         <description></description>
         </item>
         <item>
         <title>Test</title>
         <link>https://srlee056.github.io/categories/test/</link>
-        <pubDate>Sat, 09 Mar 2019 00:00:00 +0000</pubDate>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
         
         <guid>https://srlee056.github.io/categories/test/</guid>
         <description>&lt;img src="https://srlee056.github.io/categories/test/hutomo-abrianto-l2jk-uxb1BY-unsplash.jpg" alt="Featured image of post Test" /&gt;</description>
-        </item>
-        <item>
-        <title>Test with whitespaces</title>
-        <link>https://srlee056.github.io/categories/test-with-whitespaces/</link>
-        <pubDate>Sat, 09 Mar 2019 00:00:00 +0000</pubDate>
-        
-        <guid>https://srlee056.github.io/categories/test-with-whitespaces/</guid>
-        <description></description>
         </item>
         
     </channel>

@@ -2,28 +2,14 @@
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <sitemap>
-    <loc>https://srlee056.github.io/en/sitemap.xml</loc>
-    
-      <lastmod>2020-10-09T00:00:00+00:00</lastmod>
-    
-  </sitemap>
-  
-  <sitemap>
-    <loc>https://srlee056.github.io/zh-cn/sitemap.xml</loc>
-    
-      <lastmod>2020-09-09T00:00:00+00:00</lastmod>
-    
-  </sitemap>
-  
-  <sitemap>
-    <loc>https://srlee056.github.io/ar/sitemap.xml</loc>
-    
-      <lastmod>2019-03-09T00:00:00+00:00</lastmod>
-    
-  </sitemap>
-  
-  <sitemap>
     <loc>https://srlee056.github.io/ko/sitemap.xml</loc>
+    
+      <lastmod>2023-10-25T16:23:38+09:00</lastmod>
+    
+  </sitemap>
+  
+  <sitemap>
+    <loc>https://srlee056.github.io/en/sitemap.xml</loc>
     
   </sitemap>
   

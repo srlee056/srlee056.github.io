@@ -1,0 +1,1709 @@
+<!DOCTYPE html>
+<html lang="ko" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='TIL - HTML 📋 공부 내용 HTML Hypertext Markup Language 웹 브라우저가 이해할 수 있는 &amp;ldquo;언어&amp;rdquo; CSS Cascading Style Sheets 문서를 예쁘게 &amp;ldquo;꾸미는&amp;rdquo; 언어 JavaScript'>
+<title>Day 6</title>
+
+<link rel='canonical' href='https://srlee056.github.io/p/day-6/'>
+
+<link rel="stylesheet" href="/scss/style.min.abbd69b2908fdfcd5179898beaafd374514a86538d81639ddd2c58c06ae54e40.css"><meta property='og:title' content='Day 6'>
+<meta property='og:description' content='TIL - HTML 📋 공부 내용 HTML Hypertext Markup Language 웹 브라우저가 이해할 수 있는 &amp;ldquo;언어&amp;rdquo; CSS Cascading Style Sheets 문서를 예쁘게 &amp;ldquo;꾸미는&amp;rdquo; 언어 JavaScript'>
+<meta property='og:url' content='https://srlee056.github.io/p/day-6/'>
+<meta property='og:site_name' content='서림록'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='TIL' /><meta property='article:tag' content='HTML' /><meta property='article:published_time' content='2023-10-23T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2023-10-23T00:00:00&#43;00:00'/>
+<meta name="twitter:title" content="Day 6">
+<meta name="twitter:description" content="TIL - HTML 📋 공부 내용 HTML Hypertext Markup Language 웹 브라우저가 이해할 수 있는 &amp;ldquo;언어&amp;rdquo; CSS Cascading Style Sheets 문서를 예쁘게 &amp;ldquo;꾸미는&amp;rdquo; 언어 JavaScript">
+    <link rel="shortcut icon" href="static/favicon.ico" />
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="메뉴 여닫기">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu8ddc8f6dcd4c226f91e5ab7aaf623fd6_118700_300x0_resize_box_3.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🤩</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">서림록</a></h1>
+            <h2 class="site-description">좋은 개발자로 한걸음 더</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='https://github.com/srlee056'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://twitter.com'
+                        target="_blank"
+                        title="Twitter"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/about/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/links/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>Links</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+                <li id="i18n-switch">  
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                    <select name="language" onchange="window.location.href = this.selectedOptions[0].value">
+                        
+                            <option value="https://srlee056.github.io/" selected>Korean</option>
+                        
+                            <option value="https://srlee056.github.io/en/" >English</option>
+                        
+                    </select>
+                </li>
+            
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>다크 모드</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">목차</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#span-stylecolorb0d9b1공부-내용span">📋 <span style="color:#B0D9B1">공부 내용</span></a>
+      <ol>
+        <li><a href="#span-stylecolord0e7d2html---기본-문법span"><span style="color:#D0E7D2">HTML - 기본 문법</span></a>
+          <ol>
+            <li><a href="#span-stylecolorf9b572태그span"><span style="color:#F9B572">태그</span></a></li>
+            <li><a href="#span-stylecolorf9b572속성과-값span"><span style="color:#F9B572">속성과 값</span></a></li>
+            <li><a href="#span-stylecolorf9b572부모요소--자식요소span"><span style="color:#F9B572">부모요소 &amp; 자식요소</span></a></li>
+            <li><a href="#span-stylecolorf9b572html-주석span"><span style="color:#F9B572">HTML 주석</span></a></li>
+          </ol>
+        </li>
+        <li><a href="#span-stylecolord0e7d2headspan"><span style="color:#D0E7D2">HEAD</span></a>
+          <ol>
+            <li><a href="#span-stylecolorf9b572타이틀span"><span style="color:#F9B572">타이틀</span></a></li>
+            <li><a href="#span-stylecolorf9b572메타-데이터span"><span style="color:#F9B572">메타 데이터</span></a></li>
+            <li><a href="#span-stylecolorf9b572css-javascriptspan"><span style="color:#F9B572">CSS, Javascript</span></a></li>
+          </ol>
+        </li>
+        <li><a href="#span-stylecolord0e7d2bodyspan"><span style="color:#D0E7D2">BODY</span></a>
+          <ol>
+            <li><a href="#span-stylecolorf9b572block---블록-레벨-요소span"><span style="color:#F9B572">block - 블록 레벨 요소</span></a></li>
+            <li><a href="#span-stylecolorf9b572inline---인라인-레벨-요소span"><span style="color:#F9B572">inline - 인라인 레벨 요소</span></a></li>
+            <li><a href="#span-stylecolorf9b572inline-blockspan"><span style="color:#F9B572">inline-block</span></a></li>
+          </ol>
+        </li>
+        <li><a href="#span-stylecolord0e7d2layoutspan"><span style="color:#D0E7D2">Layout</span></a>
+          <ol>
+            <li><a href="#span-stylecolorf9b572layout-tagspan"><span style="color:#F9B572">Layout Tag?</span></a></li>
+            <li><a href="#span-stylecolorf9b572tagsspan"><span style="color:#F9B572">Tags</span></a></li>
+          </ol>
+        </li>
+        <li><a href="#span-stylecolord0e7d2contentsspan"><span style="color:#D0E7D2">Contents</span></a>
+          <ol>
+            <li><a href="#span-stylecolorf9b572멀티미디어span"><span style="color:#F9B572">멀티미디어</span></a></li>
+            <li><a href="#span-stylecolorf9b572리스트span"><span style="color:#F9B572">리스트</span></a></li>
+            <li><a href="#span-stylecolorf9b572표span"><span style="color:#F9B572">표</span></a></li>
+            <li><a href="#span-stylecolorf9b572iframespan"><span style="color:#F9B572">iframe</span></a></li>
+          </ol>
+        </li>
+        <li><a href="#span-stylecolord0e7d2양식-태그span"><span style="color:#D0E7D2">양식 태그</span></a>
+          <ol>
+            <li><a href="#span-stylecolorf9b572formspan"><span style="color:#F9B572">form</span></a></li>
+            <li><a href="#span-stylecolorf9b572labelspan"><span style="color:#F9B572">label</span></a></li>
+            <li><a href="#span-stylecolorf9b572inputspan"><span style="color:#F9B572">input</span></a></li>
+            <li><a href="#span-stylecolorf9b572selectspan"><span style="color:#F9B572">select</span></a></li>
+            <li><a href="#span-stylecolorf9b572textareaspan"><span style="color:#F9B572">textarea</span></a></li>
+            <li><a href="#span-stylecolorf9b572buttonspan"><span style="color:#F9B572">button</span></a></li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+    <li><a href="#span-stylecolorb0d9b1checkspan">👀 <span style="color:#B0D9B1">CHECK</span></a>
+      <ol>
+        <li>
+          <ol>
+            <li></li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+    <li><a href="#span-stylecolorb0d9b1느낀-점span">❗ <span style="color:#B0D9B1">느낀 점</span></a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/devcourse/" >
+                DevCourse
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/day-6/">Day 6</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">2023 Oct 23</time>
+            </div>
+        
+
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <style>
+g1 { color: #79AC78 }
+g2 { color: #B0D9B1 }
+g3 { color: #D0E7D2 }
+g4 { color: #618264 }
+o1 { color: #F9B572 }
+w1 { color: #FAF8ED }
+</style>
+<h1 id="span-stylecolor79ac78til---htmlspan"><span style="color:#79AC78">TIL - HTML</span></h1>
+<h2 id="span-stylecolorb0d9b1공부-내용span">📋 <span style="color:#B0D9B1">공부 내용</span></h2>
+<p><strong><span style="color:#FAF8ED">HTML</span></strong></p>
+<blockquote>
+<p>Hypertext Markup Language<br>
+웹 브라우저가 이해할 수 있는 &ldquo;언어&rdquo;</p>
+</blockquote>
+<p><strong><span style="color:#FAF8ED">CSS</span></strong></p>
+<blockquote>
+<p>Cascading Style Sheets<br>
+문서를 예쁘게 &ldquo;꾸미는&rdquo; 언어</p>
+</blockquote>
+<p><strong><span style="color:#FAF8ED">JavaScript</span></strong></p>
+<blockquote>
+<p>JS = JavaScript<br>
+문서에 &ldquo;기능&quot;을 만들어주는 언어</p>
+</blockquote>
+<hr>
+<h3 id="span-stylecolord0e7d2html---기본-문법span"><span style="color:#D0E7D2">HTML - 기본 문법</span></h3>
+<h4 id="span-stylecolorf9b572태그span"><span style="color:#F9B572">태그</span></h4>
+<ul>
+<li>컨텐츠를 갖는 태그 / 가지지 않는 태그</li>
+<li>열리는 태그 &amp; 닫히는 태그 / 단일 태그 (셀프 클로징)</li>
+<li><code>&lt;div&gt; contents &lt;/div&gt; / &lt;br /&gt;</code></li>
+</ul>
+<h4 id="span-stylecolorf9b572속성과-값span"><span style="color:#F9B572">속성과 값</span></h4>
+<ul>
+<li><code>&lt;div attributes = value&gt;content&lt;/div&gt;</code></li>
+<li><code>&lt;div title = &quot;제목&quot;&gt; ...</code></li>
+<li>title : 전역 속성이라 모든 태그에서 사용 가능</li>
+<li>속성(Attributes)의 종류는 아주 많고 다양함</li>
+</ul>
+<h4 id="span-stylecolorf9b572부모요소--자식요소span"><span style="color:#F9B572">부모요소 &amp; 자식요소</span></h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">html
+</span></span><span class="line"><span class="cl">├─ head
+</span></span><span class="line"><span class="cl">│   └─ title
+</span></span><span class="line"><span class="cl">└─ body
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>html (부모) - head, body (자식)</p>
+<p>부모/자식 구조를 파악하기 좋게, 들여쓰기/내어쓰기 <strong>깊이(depth)를 잘 지켜</strong>서 작성해야 함<br>
+탭 잘 쓰라는얘기</p>
+<h4 id="span-stylecolorf9b572html-주석span"><span style="color:#F9B572">HTML 주석</span></h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">&lt;!-- 주석 내용 --&gt;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">&lt;!-- 
+</span></span><span class="line"><span class="cl">    줄바꿈 가능
+</span></span><span class="line"><span class="cl">--&gt;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="c">&lt;!--
+</span></span></span><span class="line"><span class="cl"><span class="c">    &lt;!-- --&gt;</span>
+</span></span><span class="line"><span class="cl">--&gt;
+</span></span><span class="line"><span class="cl">이처럼 주석 안에 주석을 넣으면 바깥의 여는 태그가 안쪽 닫는 태그를 인식해 주석이 풀리게 된다. 고로 주석 안에 주석은 X 
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>웹 브라우저의 소스보기 등에서 확인 가능하므로 보안이 필요한 정보는 적지 않아야 한다.</p>
+<h3 id="span-stylecolord0e7d2headspan"><span style="color:#D0E7D2">HEAD</span></h3>
+<blockquote>
+<p>사용자에게는 보이지 않지만, 문서의 정보가 담기는 영역</p>
+</blockquote>
+<h4 id="span-stylecolorf9b572타이틀span"><span style="color:#F9B572">타이틀</span></h4>
+<ul>
+<li>웹 브라우저 탭이나 창에서 표시되는 <code>문서의 제목</code></li>
+</ul>
+<h4 id="span-stylecolorf9b572메타-데이터span"><span style="color:#F9B572">메타 데이터</span></h4>
+<ul>
+<li>인코딩 정보
+<ul>
+<li>charset(character set) : 문서에서 허용하는 문자의 집합</li>
+<li>영어만 허용하는 규칙(ISO-8859-1)을 사용할 경우, 한글은 제대로 출력이 되지 않음</li>
+<li><code>&lt;meta charset = &quot;ISO-8859-1&quot;&gt;</code></li>
+<li><code>utf-8</code>(전 세계 언어 지원) 을 기본으로 사용</li>
+</ul>
+</li>
+<li>문서 설명
+<ul>
+<li><code>&lt;meta name = &quot;description&quot; content = &quot;이 문서는 실습 문서입니다.&quot;&gt;</code></li>
+</ul>
+</li>
+<li>문서 작성자
+<ul>
+<li><code>&lt;meta name = &quot;author content = &quot;srlee&quot;</code></li>
+</ul>
+</li>
+</ul>
+<h4 id="span-stylecolorf9b572css-javascriptspan"><span style="color:#F9B572">CSS, Javascript</span></h4>
+<blockquote>
+<p>문서 외형에 영향을 주는 태그들로 구성</p>
+</blockquote>
+<ul>
+<li>
+<p>style</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="c">&lt;!-- 문서 글자색을 blue로 만드는 코드 --&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">style</span><span class="p">&gt;</span> 
+</span></span><span class="line"><span class="cl">    <span class="nt">body</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">color</span><span class="p">:</span> <span class="kc">blue</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">style</span><span class="p">&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>길이가 너무 길어지면 작성 및 수정이 불편 -&gt; <code>&lt;link&gt;</code></p>
+</li>
+<li>
+<p>link</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="c">&lt;!--단일 속성
+</span></span></span><span class="line"><span class="cl"><span class="c">    rel: 링크된 파일의 속성
+</span></span></span><span class="line"><span class="cl"><span class="c">    href: 파일 경로 --&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel </span><span class="o">=</span> <span class="s">&#34;stylesheet&#34;</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;style.css&#34;</span> <span class="p">/&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>별도로 분리된 CSS파일을 링크</p>
+</li>
+<li>
+<p>script</p>
+<p><em>콘텐츠 방식</em></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="kr">const</span> <span class="nx">hello</span> <span class="o">=</span> <span class="s1">&#39;world&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">hello</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><em>링크 방식</em></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="c">&lt;!-- 콘텐츠를 가지지 않지만 단일태그는 아니기 때문에 셀프 클로징 X --&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">script</span> <span class="na">src </span><span class="o">=</span> <span class="s">&#34;script.js&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+<h3 id="span-stylecolord0e7d2bodyspan"><span style="color:#D0E7D2">BODY</span></h3>
+<blockquote>
+<p>사람 눈에 보이는 콘텐츠의 영역</p>
+</blockquote>
+<h4 id="span-stylecolorf9b572block---블록-레벨-요소span"><span style="color:#F9B572">block - 블록 레벨 요소</span></h4>
+<ul>
+<li>
+<p>블록처럼 차곡차곡 쌓이며 화면 너비가 꽉 참</p>
+</li>
+<li>
+<p>블록의 크기와 내/외부에 여백 지정 가능</p>
+</li>
+<li>
+<p>페이지의 구조적 요소</p>
+</li>
+<li>
+<p>인라인 요소 포함 가능 / 포함 될 수는 없음</p>
+</li>
+<li>
+<p><code>&lt;div&gt;, &lt;article&gt;, &lt;section&gt;, ...</code></p>
+</li>
+</ul>
+<h4 id="span-stylecolorf9b572inline---인라인-레벨-요소span"><span style="color:#F9B572">inline - 인라인 레벨 요소</span></h4>
+<ul>
+<li>
+<p>블록 요소 내에 포함되는 요소 (블록 요소를 포함할 수 없음!)</p>
+</li>
+<li>
+<p>문장, 단어같은 작은 부분에 사용되며, 한 줄에 나열됨</p>
+</li>
+<li>
+<p>좌우 여백만 허용</p>
+</li>
+<li>
+<p><code>&lt;span&gt;, &lt;a&gt;, &lt;strong&gt;, ... </code></p>
+</li>
+</ul>
+<h4 id="span-stylecolorf9b572inline-blockspan"><span style="color:#F9B572">inline-block</span></h4>
+<ul>
+<li>인라인 요소의 불편함을 해결하기 위한 요소</li>
+<li>글자처럼 취급되지만 block태그의 성질을 가짐</li>
+<li>크기와 내/외부 여백 지정 가능</li>
+<li>CSS로 성질을 바꾼 것이기 때문에 의미상 인라인 레벨 요소</li>
+</ul>
+<p>활용 예시</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span> 
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">span</span><span class="p">&gt;</span>인라인<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span> 옆에 글자
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>블록<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-css" data-lang="css"><span class="line"><span class="cl"><span class="nt">span</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">padding-left</span><span class="p">:</span> <span class="mi">100</span><span class="kt">px</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">padding-top</span><span class="p">:</span> <span class="mi">100</span><span class="kt">px</span><span class="p">;</span> <span class="c">/* 적용 X */</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="nt">div</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">padding-top</span><span class="p">:</span> <span class="mi">50</span><span class="kt">px</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">padding-bottom</span><span class="p">:</span> <span class="mi">30</span><span class="kt">px</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">padding-left</span><span class="p">:</span> <span class="mi">100</span><span class="kt">px</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="https://velog.velcdn.com/images/srlee056/post/a6ec119a-686c-4695-bf9e-d749c5f41161/image.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="span"
+	
+	
+></p>
+<p><img src="https://velog.velcdn.com/images/srlee056/post/c8d47ee6-6120-413a-be14-3bee40235710/image.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="div"
+	
+	
+></p>
+<h3 id="span-stylecolord0e7d2layoutspan"><span style="color:#D0E7D2">Layout</span></h3>
+<h4 id="span-stylecolorf9b572layout-tagspan"><span style="color:#F9B572">Layout Tag?</span></h4>
+<ul>
+<li>html5부터 태그를 의미있게 사용하기 위해 <code>Semantic</code>태그를 사용하기 시작</li>
+<li>div만 사용하지 않고 적절한 태그를 사용해 웹 문서가 담은 정보와 구조를 의미 있게 전달</li>
+<li>semantic한 markup -&gt; 검색 엔진의 순위에 가산점, 로딩속도 빨라짐 등</li>
+</ul>
+<h4 id="span-stylecolorf9b572tagsspan"><span style="color:#F9B572">Tags</span></h4>
+<ul>
+<li>div
+<ul>
+<li>가장 흔하게 사용</li>
+<li>구역을 나누기 위한 태그</li>
+</ul>
+</li>
+<li>header
+<ul>
+<li>제목, 작성일 등 주요 정보를 담는 태그</li>
+</ul>
+</li>
+<li>footer
+<ul>
+<li>페이지 바닥줄에 사용, 저작권 정보, 연락처 등 부차적 정보를 담는 태그</li>
+</ul>
+</li>
+<li>main
+<ul>
+<li>페이지의 가장 큰 부분으로 내용, 즉 주요 콘텐츠를 담는 태그</li>
+<li>한 페이지에 한번만 등장해야 함 (header, footer는 여러번 등장 가능)
+-section</li>
+<li>콘텐츠의 구역을 나누는 태그</li>
+</ul>
+</li>
+<li>article
+<ul>
+<li>구역 안에서 작성된 정보를 전달하는 독립적인 문서의 역할을 하는 태그</li>
+</ul>
+</li>
+<li>aside
+<ul>
+<li>문서 내용에 부가적인 갖접정보를 전달하는 태그</li>
+<li>예) 쇼핑몰의 &lsquo;오늘 본 상품&rsquo;, 블로그의 &lsquo;위젯&rsquo; 등</li>
+</ul>
+</li>
+</ul>
+<p><strong>레이아웃 분석</strong>
+<em>(배운 내용을 토대로 해본거라 정확하지 않을 수 있습니다)</em>
+<img src="https://velog.velcdn.com/images/srlee056/post/6266f98d-a17e-4902-9633-2592af3db1ff/image.png"
+	
+	
+	
+	loading="lazy"
+	
+	
+></p>
+<h3 id="span-stylecolord0e7d2contentsspan"><span style="color:#D0E7D2">Contents</span></h3>
+<ol>
+<li>제목 태그 h1 ~ h6
+<ul>
+<li>문서 구획 제목을 나타내는 태그</li>
+<li>h1 태그는 페이지 내에 한번만 사용</li>
+<li>구획 순서(h1 ~ h6)는 지켜져야 함</li>
+</ul>
+</li>
+<li>문단 태그 p
+<ul>
+<li>문단을 담당하는 태그</li>
+<li>제목태그와 함께 사용되기도 하고 단독으로도 사용</li>
+<li>레이아웃태그처럼 사용 X</li>
+</ul>
+</li>
+<li>서식 태그 b/strong, i/em, u, s/del
+<ul>
+<li>b/strong : 굵은 글씨로 변경. strong - 강조 의미 부여</li>
+<li>i/em : 기울기 조절, em - 기울임과 내용에 강조 의미 부여</li>
+<li>u : 밑줄을 넣고 주석을 가짐. 단순히 밑줄만 긋는 용도로는 사용 X</li>
+<li>s/del : 취소선, del - 문서에서 제거된 텍스트를 나타냄
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    안녕하세요.<span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">del</span><span class="p">&gt;</span>섦<span class="p">&lt;/</span><span class="nt">del</span><span class="p">&gt;</span> <span class="p">&lt;</span><span class="nt">ins</span><span class="p">&gt;</span>서림<span class="p">&lt;/</span><span class="nt">ins</span><span class="p">&gt;</span>입니다.
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div>  <p>
+      안녕하세요.<br>
+      <del>섦</del> <ins>서림</ins>입니다.
+  </p>
+</li>
+</ul>
+</li>
+<li>링크 이동 a
+<ul>
+<li>
+<p>클릭하면 페이지를 이동할 수 있는 링크 요소</p>
+</li>
+<li>
+<p>href 속성으로 이동하려는 파일 / URL 작성</p>
+</li>
+<li>
+<p>target 속성으로 새 창(_blank), 현재창(_self)등 타겟 지정 가능</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">a</span> <span class="na">href </span><span class="o">=</span> <span class="s">&#34;https://velog.io/@srlee056&#34;</span> <span class="na">target </span><span class="o">=</span> <span class="s">&#34;_blank&#34;</span><span class="p">&gt;</span> 새 창에서 블로그 열기<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><a href = "https://velog.io/@srlee056" target = "_blank"> 새 창에서 블로그 열기</a></p>
+</li>
+</ul>
+</li>
+</ol>
+<h4 id="span-stylecolorf9b572멀티미디어span"><span style="color:#F9B572">멀티미디어</span></h4>
+<ol>
+<li>img</li>
+</ol>
+<ul>
+<li>이미지를 추가하는 태그</li>
+<li>src : 이미지의 경로</li>
+<li>alt : 로딩에 문제가 발생했을 때 대체 텍스트</li>
+<li>alt 태그에 적힌 메세지가 검색엔진에 키워드로 들어감
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">img</span> <span class="na">src </span><span class="o">=</span> <span class="s">&#34;&#34;</span> <span class="na">alt </span><span class="o">=</span> <span class="s">&#34;잘못된 로고&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">img</span> <span class="na">src </span><span class="o">=</span> <span class="s">&#34;https://cdn.icon-icons.com/icons2/2699/PNG/512/python_logo_icon_168886.png&#34;</span> <span class="na">alt </span><span class="o">=</span> <span class="s">&#34;파이썬 로고&#34;</span><span class="p">&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div>  <img src = "" alt = "잘못된 로고">
+  <img src = "https://cdn.icon-icons.com/icons2/2699/PNG/512/python_logo_icon_168886.png" alt = "파이썬 로고">
+</li>
+</ul>
+<ol start="2">
+<li>figure, figcaption</li>
+</ol>
+<ul>
+<li>
+<p>태그 안의 내용을 하나의 독립적인 콘텐츠로 분리하고 설명을 넣을 수 있는 태그</p>
+</li>
+<li>
+<p>보통 이미지를 넣으며 인용문, 비디오/오디오 등 문서 흐름에 참조는 되지만 독립적으로 분리되어도 되는 내용을 담는다.</p>
+</li>
+<li>
+<p>이미지 - 인라인 레벨 요소 / 피규어 - 블록 레벨 요소</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">figure</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">img</span> <span class="na">src </span><span class="o">=</span> <span class="s">&#34;https://www.lgtwins.com/images/emblem/01.emblem.jpg&#34;</span> <span class="na">alt </span><span class="o">=</span> <span class="s">&#34;엘지 트윈스 로고&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">figcaption</span><span class="p">&gt;</span> 엘지 트윈스 우승하자! <span class="p">&lt;/</span><span class="nt">figcaption</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">figure</span><span class="p">&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+<figure>
+    <figcaption> 엘지 트윈스 </figcaption>
+    <img src = "https://www.lgtwins.com/images/emblem/01.emblem.jpg" alt = "엘지 트윈스 로고">
+    <figcaption> 우승하자! </figcaption>
+</figure>
+<ol start="3">
+<li>video</li>
+</ol>
+<ul>
+<li>문서 내에 영상을 첨부할 수 있는 태그</li>
+<li>src : 비디오 파일이나 온라인 링크 연결</li>
+<li>poster : 비디오 로드되기 전 포스터를 보여줄 수 있음</li>
+<li>&lt;<code>source&gt;</code> 태그로 여러 타입의 비디오 제공
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">video</span> <span class="na">src </span><span class="o">=</span> <span class="s">&#34;/video.mp4&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">video</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">video</span> <span class="na">poster </span><span class="o">=</span> <span class="s">&#34;/poster.png&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">source</span> <span class="na">src </span><span class="o">=</span> <span class="s">&#34;/video.mp4&#34;</span> <span class="na">type </span><span class="o">=</span> <span class="s">&#34;video/mp4&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">source</span> <span class="na">src </span><span class="o">=</span> <span class="s">&#34;/video.webm&#34;</span> <span class="na">type </span><span class="o">=</span> <span class="s">&#34;video/webm&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    비디오 태그가 실행되지 않을 때 보이는 글자
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">video</span><span class="p">&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+<ol start="4">
+<li>audio</li>
+</ol>
+<ul>
+<li>
+<p>문서 내에 소리를 첨부할 수 있는 태그</p>
+</li>
+<li>
+<p>src : 음성 파일이나 온라인 링크 연결</p>
+</li>
+<li>
+<p>&lt;<code>source&gt;</code> 태그로 여러 타입의 오디오 제공</p>
+</li>
+<li>
+<p>controls : 재생/정지 버튼 등이 있는 컨트롤러</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">audio</span> <span class="na">src </span><span class="o">=</span> <span class="s">&#34;/audio.mp3&#34;</span> <span class="na">controls</span><span class="p">&gt;&lt;/</span><span class="nt">audio</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">audio</span> <span class="na">controls</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">source</span> <span class="na">src </span><span class="o">=</span> <span class="s">&#34;/audio.mp3&#34;</span> <span class="na">type </span><span class="o">=</span> <span class="s">&#34;audio/mp3&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">source</span> <span class="na">src </span><span class="o">=</span> <span class="s">&#34;/audio.ogg&#34;</span> <span class="na">type </span><span class="o">=</span> <span class="s">&#34;audio/ogg&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    오디오 태그가 실행되지 않을 때 보이는 글자
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">audio</span><span class="p">&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+<ol start="5">
+<li>svg</li>
+</ol>
+<blockquote>
+<p>Scalable Vector Graphics<br>
+그래픽으로 만들어진 이미지</p>
+</blockquote>
+<ul>
+<li>
+<p>해상도의 영향을 받지 않아 확대/축소 자유로움</p>
+</li>
+<li>
+<p>크기를 자주 바꾸어야 하는 작은 아이콘 등에 많이 사용</p>
+</li>
+<li>
+<p>최근 기기들은 해상도가 다양하게 변화하고 있어, 아이콘 외에 로고 등 주요 이미지에도 사용</p>
+</li>
+<li>
+<p><code>&lt;img&gt;</code>태그처럼 svg 파일을 불러올수도 있고, 태그를 그대로 사용할수도 있음</p>
+</li>
+<li>
+<p>코드로 이루어져 있어서 스타일을 변경하거나, JS를 사용해 기능 추가도 가능</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;baseball.svg&#34;</span> <span class="na">alt</span><span class="o">=</span><span class="s">&#34;야구공 아이콘&#34;</span> <span class="p">/&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="c">&lt;!--또는 .svg 파일의 내용을 가져다가 쓸 수 있음--&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">svg</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    파일 내용
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">svg</span><span class="p">&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>svg 파일 출력 결과</p>
+  <svg width="100px" height="100px" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
+      <path fill="#000000"
+          d="M195.2 828.8a448 448 0 1 1 633.6-633.6 448 448 0 0 1-633.6 633.6zm45.248-45.248a384 384 0 1 0 543.104-543.104 384 384 0 0 0-543.104 543.104z" />
+      <path fill="#000000"
+          d="M497.472 96.896c22.784 4.672 44.416 9.472 64.896 14.528a256.128 256.128 0 0 0 350.208 350.208c5.056 20.48 9.856 42.112 14.528 64.896A320.128 320.128 0 0 1 497.472 96.896zM108.48 491.904a320.128 320.128 0 0 1 423.616 423.68c-23.04-3.648-44.992-7.424-65.728-11.52a256.128 256.128 0 0 0-346.496-346.432 1736.64 1736.64 0 0 1-11.392-65.728z" />
+  </svg>
+</li>
+</ul>
+<h4 id="span-stylecolorf9b572리스트span"><span style="color:#F9B572">리스트</span></h4>
+<ol>
+<li>
+<p><code>&lt;ul&gt;, &lt;li&gt;</code></p>
+<blockquote>
+<p>순서가 없고 정렬되지 않은 목록</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>list 1<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span> <span class="c">&lt;!--자식 요소로 li만 와야 함--&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>list 2
+</span></span><span class="line"><span class="cl">        <span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span> <span class="c">&lt;!-- ul or ol tag--&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>sub list 1<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>sub list 2<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">&lt;</span><span class="nt">ol</span><span class="p">&gt;</span> 
+</span></span><span class="line"><span class="cl">            <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>sub list 3<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">&lt;/</span><span class="nt">ol</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>HTML 출력 결과</p>
+ <ul>
+     <li>list 1</li> <!--자식 요소로 li만 와야 함-->
+     <li>list 2
+         <ul> <!-- ul or ol tag-->
+             <li>sub list 1</li>
+             <li>sub list 2</li>
+         </ul>
+         <ol> 
+             <li>sub list 3</li>
+         </ol>
+     </li>
+ </ul>
+</li>
+<li>
+<p><code>&lt;ol&gt;</code></p>
+<blockquote>
+<p>순서가 존재하며 정렬된 목록</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">ol</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>list 1<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span> <span class="c">&lt;!--자식 요소로 li만 와야 함--&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>list 2
+</span></span><span class="line"><span class="cl">        <span class="p">&lt;</span><span class="nt">ol</span><span class="p">&gt;</span> <span class="c">&lt;!-- ul or ol tag--&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>sub list 1<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>sub list 2<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">&lt;/</span><span class="nt">ol</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span> 
+</span></span><span class="line"><span class="cl">            <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>sub list 3<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">ol</span><span class="p">&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>HTML 출력 결과</p>
+ <ol>
+     <li>list 1</li> <!--자식 요소로 li만 와야 함-->
+     <li>list 2
+         <ol> <!-- ul or ol tag-->
+             <li>sub list 1</li>
+             <li>sub list 2</li>
+         </ol>
+         <ul> 
+             <li>sub list 3</li>
+         </ul>
+     </li>
+ </ol>
+</li>
+<li>
+<p><code>&lt;dl&gt;, &lt;dt&gt;, &lt;dd&gt;</code></p>
+</li>
+</ol>
+<ul>
+<li>설명 목록 태그</li>
+<li><code>&lt;dt&gt;</code>에 작성된 단어 혹은 내용의 설명을 <code>&lt;dd&gt;</code>에 작성</li>
+<li>용어사전이나 <code>key-value</code>쌍의 목록을 나타낼 때 사용</li>
+<li><code>&lt;dt&gt;</code> 여러개에 하나의 <code>&lt;dd&gt;</code> 가능 / <code>&lt;dt&gt;</code> 하나에 여러개 <code>&lt;dd&gt;</code> 가능
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">dl</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">dt</span><span class="p">&gt;</span>Chrome<span class="p">&lt;/</span><span class="nt">dt</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">dd</span><span class="p">&gt;</span>웹 브라우저<span class="p">&lt;</span><span class="nt">dd</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">dd</span><span class="p">&gt;</span>구글에서 제작<span class="p">&lt;/</span><span class="nt">dd</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">dt</span><span class="p">&gt;</span>Whale<span class="p">&lt;/</span><span class="nt">dt</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">dt</span><span class="p">&gt;</span>Microsoft Edge<span class="p">&lt;/</span><span class="nt">dt</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">dd</span><span class="p">&gt;</span>Web Browser<span class="p">&lt;/</span><span class="nt">dd</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">dl</span><span class="p">&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+<h4 id="span-stylecolorf9b572표span"><span style="color:#F9B572">표</span></h4>
+<ul>
+<li><code>&lt;table&gt;</code> : 표를 만드는 태그</li>
+<li><code>&lt;tr&gt;</code> 로 행을, <code>&lt;td&gt;</code>로 열을 나타냄</li>
+<li><code>&lt;th&gt;</code> : 열 제목</li>
+<li><code>&lt;thead&gt;</code> : 제목 그룹 태그, 한번만 사용</li>
+<li><code>&lt;tbody&gt;</code> : 표의 본문 요소 그룹 태그, 역시 한번만 사용</li>
+<li><code>&lt;tfoot&gt;</code> : 표 바닥글 요소 태그</li>
+<li><code>&lt;caption&gt;</code> : 표 설명 태그
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">table</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">caption</span><span class="p">&gt;</span>sample table<span class="p">&lt;/</span><span class="nt">caption</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">thead</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="p">&lt;</span><span class="nt">th</span><span class="p">&gt;</span>col 1<span class="p">&lt;/</span><span class="nt">th</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="p">&lt;</span><span class="nt">th</span><span class="p">&gt;</span>col 2<span class="p">&lt;/</span><span class="nt">th</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;/</span><span class="nt">thead</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">tfoot</span><span class="p">&gt;</span> <span class="c">&lt;!-- HTML4 에선 tbody 앞--&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>footer<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>footer<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;/</span><span class="nt">tfoot</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">tbody</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span> row1 col1 <span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span> row1 col2 <span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;/</span><span class="nt">tbody</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span> row2 col1 <span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span> row2 col2 <span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">table</span><span class="p">&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div>  <div class="table-wrapper"><table>
+      <caption>sample table</caption>
+      <thead>
+          <tr>
+              <th>col 1</th>
+              <th>col 2</th>
+          </tr>
+      </thead>
+      <tfoot> <!-- HTML4 에선 tbody 앞-->
+          <tr>
+              <td>footer</td>
+              <td>footer</td>
+          </tr>
+      </tfoot>
+      <tbody>
+          <tr>
+              <td> row1 col1 </td>
+              <td> row1 col2 </td>
+          </tr>
+      </tbody>
+      <tr>
+          <td> row2 col1 </td>
+          <td> row2 col2 </td>
+      </tr>
+  </table></div>
+</li>
+</ul>
+<h4 id="span-stylecolorf9b572iframespan"><span style="color:#F9B572">iframe</span></h4>
+<blockquote>
+<p>현재 문서 안에 다른 HTML 페이지를 삽입하는 역할</p>
+</blockquote>
+<ul>
+<li>src 속성에 원하는 HTML 문서나 URL 전달</li>
+<li>name 속성을 지정해 <code>&lt;a&gt;</code> target 속성을 사용해 iframe에서 문서나 URL 열리게 가능</li>
+<li>불러온 외부 페이지의 영향을 받을 수 있다.
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">iframe</span> <span class="na">src </span><span class="o">=</span> <span class="s">&#34;/sample.html&#34;</span> <span class="na">frameborder </span><span class="o">=</span> <span class="s">&#34;0&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">iframe</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">iframe</span> <span class="na">name</span><span class="o">=</span><span class="s">&#34;sample&#34;</span> <span class="na">frameborder</span><span class="o">=</span><span class="s">&#34;0&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">iframe</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;https://example.com/&#34;</span> <span class="na">target</span><span class="o">=</span><span class="s">&#34;sample&#34;</span><span class="p">&gt;</span>example.com<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span> 
+</span></span><span class="line"><span class="cl"><span class="c">&lt;!--target으로 설정된 iframe에서 외부 페이지가 열림--&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+<h3 id="span-stylecolord0e7d2양식-태그span"><span style="color:#D0E7D2">양식 태그</span></h3>
+<h4 id="span-stylecolorf9b572formspan"><span style="color:#F9B572">form</span></h4>
+<ul>
+<li>
+<p>정보를 제출하기 위한 태그</p>
+</li>
+<li>
+<p>정보 입력을 위한 <code>&lt;input&gt;</code>, <code>&lt;selectbox&gt;</code>, <code>&lt;textarea&gt;</code></p>
+</li>
+<li>
+<p>정보 제출을 위한 <code>&lt;button&gt;</code></p>
+</li>
+<li>
+<p>action 속성 : 정보 제출 시 페이지 이동</p>
+</li>
+<li>
+<p>method 속성 : 정보 제출 시 처리 방식 결정</p>
+<ul>
+<li>get : 검색 엔진 등에 사용</li>
+<li>post : 로그인 등 보안이 중요한 방식에 사용</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">form</span> <span class="na">action</span><span class="o">=</span><span class="s">&#34;form-result.html&#34;</span> <span class="na">method</span><span class="o">=</span><span class="s">&#34;post&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">input</span> <span class="na">name</span><span class="o">=</span><span class="s">&#34;id&#34;</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;text&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">input</span> <span class="na">name</span><span class="o">=</span><span class="s">&#34;password&#34;</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;password&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">select</span> <span class="na">name</span><span class="o">=</span><span class="s">&#34;opt&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">&lt;</span><span class="nt">option</span><span class="p">&gt;</span>옵션1<span class="p">&lt;/</span><span class="nt">option</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">&lt;</span><span class="nt">option</span><span class="p">&gt;</span>옵션2<span class="p">&lt;/</span><span class="nt">option</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">&lt;</span><span class="nt">option</span><span class="p">&gt;</span>옵션3<span class="p">&lt;/</span><span class="nt">option</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;/</span><span class="nt">select</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">button</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;submit&#34;</span><span class="p">&gt;</span>전송<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+<h4 id="span-stylecolorf9b572labelspan"><span style="color:#F9B572">label</span></h4>
+<ul>
+<li><code>&lt;input&gt;</code>, <code>&lt;selectbox&gt;</code>, <code>&lt;textarea&gt;</code> 의 설명을 작성하는 태그</li>
+<li>for 속성 : 연결하려는 태그의 id속성으로 지정하면 label클릭 시 연결된 태그가 선택됨</li>
+<li>label 태그 내부에 input 태그를 넣으면, for-&gt;id 연결을 직접 작성하지 않아도 같은 처리를 해 준다.</li>
+<li><strong>id 속성값은 절대 중복되면 안됨</strong></li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">label</span> <span class="na">for </span><span class="o">=</span><span class="s">&#34;userid&#34;</span><span class="p">&gt;</span>아이디<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">input</span> <span class="na">id </span><span class="o">=</span> <span class="s">&#34;userid&#34;</span> <span class="na">type </span><span class="o">=</span> <span class="s">&#34;text&#34;</span> <span class="na">name </span><span class="o">=</span> <span class="s">&#34;userid&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">label</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    비밀번호
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">input</span> <span class="na">name </span><span class="o">=</span> <span class="s">&#34;password&#34;</span> <span class="na">type </span><span class="o">=</span> <span class="s">&#34;password&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="span-stylecolorf9b572inputspan"><span style="color:#F9B572">input</span></h4>
+<ul>
+<li>
+<p>사용자에게 데이터를 입력 받을 수 있는 대화형 태그</p>
+</li>
+<li>
+<p>type 속성 : 받을 수 있는 input 유형을 정함 (기본:text)</p>
+</li>
+<li>
+<p>value 속성 : 기본 내용을 입력해둘 수 있음</p>
+</li>
+<li>
+<p>name : input 이름 지정</p>
+</li>
+<li>
+<p>자주 사용되는 input type</p>
+<ul>
+<li>checkbox</li>
+<li>radio</li>
+<li>file</li>
+<li>button : input 태그를 버튼역할로 사용해야할 때 활용</li>
+<li>hidden : 시각적으로 숨겨지지만 정보 제출 시 value속성에 입력된 값은 전송됨</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;text&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;text&#34;</span> <span class="na">name</span><span class="o">=</span><span class="s">&#34;input-name&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;text&#34;</span> <span class="na">value</span><span class="o">=</span><span class="s">&#34;입력 내용&#34;</span><span class="p">&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+<h4 id="span-stylecolorf9b572selectspan"><span style="color:#F9B572">select</span></h4>
+<ul>
+<li>select, selectbox</li>
+<li>옵션 메뉴를 제공하는 태그</li>
+<li>option 태그 : 선택할 옵션들을 정의</li>
+<li>value 속성 : 제출 시 선택한 옵션의 value값이 전송됨</li>
+<li>value 속성을 선언하지 않은 경우엔 option 태그 콘텐츠가 기본값</li>
+<li>placehoder 속성 사용 불가</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">select</span> <span class="na">name </span><span class="o">=</span> <span class="s">&#34;selectbox&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">option</span> <span class="na">value</span><span class="o">=</span><span class="s">&#34;&#34;</span><span class="p">&gt;</span>choose<span class="p">&lt;/</span><span class="nt">option</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">option</span> <span class="na">value </span><span class="o">=</span> <span class="s">&#34;opt1&#34;</span><span class="p">&gt;</span>opt1<span class="p">&lt;/</span><span class="nt">option</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">option</span> <span class="na">value </span><span class="o">=</span> <span class="s">&#34;opt2&#34;</span><span class="p">&gt;</span>opt2<span class="p">&lt;/</span><span class="nt">option</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">option</span><span class="p">&gt;</span>opt3<span class="p">&lt;/</span><span class="nt">option</span><span class="p">&gt;</span> 
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">select</span><span class="p">&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="span-stylecolorf9b572textareaspan"><span style="color:#F9B572">textarea</span></h4>
+<ul>
+<li>여러 줄을 입력할 수 있는 대화형 태그</li>
+<li>콘텐츠에 내용을 입력할 경우 그 내용이 기본적으로 표시됨</li>
+<li>cols/rows 속성 : 기본 너비와 높이를 지정할 수 있으며, 이는 글자 크기 기준으로 정의됨</li>
+<li>알아두면 좋은 속성
+<ul>
+<li>readonly : 수정 불가능한 읽기 전용</li>
+<li>required : form 제출 시 &ldquo;필수 입력 사항&quot;으로 설정 (안내 문구나 행동 등은 브라우저가 자동으로 처리함)</li>
+<li>placeholder : input, textarea에 부가설명을 입력해둘 수 있으며, select 에는 사용 불가</li>
+<li>disabled : 비활성화되어 제출 시 값이 전송되지 않음</li>
+</ul>
+</li>
+</ul>
+<h4 id="span-stylecolorf9b572buttonspan"><span style="color:#F9B572">button</span></h4>
+<ul>
+<li>클릭가능한 버튼</li>
+<li>form tag 내 어디서든 사용 가능</li>
+<li>type 속성
+<ul>
+<li>submit(기본): 양식 제출</li>
+<li>reset: 입력 양식 모두 초기화</li>
+</ul>
+</li>
+<li>콘텐츠에 블록레벨을 제외한 태그 입력 가능</li>
+<li>disabled 속성 가능</li>
+</ul>
+<h2 id="span-stylecolorb0d9b1checkspan">👀 <span style="color:#B0D9B1">CHECK</span></h2>
+<h6 id="어렵거나-새롭게-알게-된-것-등-다시-확인할-것들"><em>(어렵거나 새롭게 알게 된 것 등 다시 확인할 것들)</em></h6>
+<ul>
+<li>vscode -&gt; cmd + , -&gt; folder 검색 -&gt; 계층 구조 관련 옵션 바꿀 수 있음</li>
+<li>markup : <a class="link" href="https://zdnet.co.kr/view/?no=00000010047880"  target="_blank" rel="noopener"
+    >설명 블로그</a></li>
+<li>맥에서 크롬 개발자 도구 한번에 키는 단축키 : cmd + shift + c</li>
+</ul>
+<h2 id="span-stylecolorb0d9b1느낀-점span">❗ <span style="color:#B0D9B1">느낀 점</span></h2>
+<p>HTML문법이나 태그 등에 대한건 이미 알고 있었지만 이론적으로 정리해본 적은 없었기에 이번 강의를 듣고 정리할 수 있어서 좋았다. 특히 contents 태그와 단일 태그의 존재는 알았지만 그 명칭은 몰랐기 때문에 머리속에서 모호하게 정의된 개념들이 이름을 가지고 명확해져서 좋았다.</p>
+<p>강의 내용을 정리하고 직접 실행해보고 궁금한 부분은 따로 찾아보는 등 하다보니 주어진 코어타임보다 훨씬 더 오랜 시간을 붙잡고 있게 되었다. 중간중간 집중력도 떨어지고 체력적으로도 힘든 걸 느끼면서, 이론적인 공부보다는 실제 코드를 작성하는 게 더 재밌다는걸 새삼 체감했다. 그렇지만 이론적인 공부가 전부가 아니더라도 기본적인건 알아야 하니까 재미없다고 등한시 하지는 않아야겠다. :&lt;</p>
+<p>이번주는 드디어 웹 크롤링과 분석을 시작하는데, 내가 해봤던 것과 다른점은 무엇이고 어떤걸 배워나가게 될지 벌써부터 기대가 된다. 내일도 열심히 하는 하루를 보내야겠다. :&gt;</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/til/">TIL</a>
+        
+            <a href="/tags/html/">HTML</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">관련 글</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="">
+    <a href="/p/day-8/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Day 8</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/day-7/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Day 7</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/day-5/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Day 5</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/day-4/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Day 4</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/day-3/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Day 3</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "hugo-theme-stack" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2023 Seorim Lee
+    </section>
+    
+    <section class="powerby">
+        <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a>로 만듦 <br />
+        <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>의 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.21.0">Stack</a></b> 테마 사용 중
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

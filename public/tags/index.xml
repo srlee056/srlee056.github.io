@@ -1,82 +1,186 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
-        <title>Tags on Seorim Log</title>
+        <title>Tags on 서림록</title>
         <link>https://srlee056.github.io/tags/</link>
-        <description>Recent content in Tags on Seorim Log</description>
+        <description>Recent content in Tags on 서림록</description>
         <generator>Hugo -- gohugo.io</generator>
-        <language>en</language>
+        <language>ko</language>
         <copyright>Seorim Lee</copyright>
-        <lastBuildDate>Mon, 11 Mar 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://srlee056.github.io/tags/index.xml" rel="self" type="application/rss+xml" /><item>
-        <title>css</title>
-        <link>https://srlee056.github.io/tags/css/</link>
-        <pubDate>Mon, 11 Mar 2019 00:00:00 +0000</pubDate>
+        <lastBuildDate>Wed, 25 Oct 2023 16:23:38 +0900</lastBuildDate><atom:link href="https://srlee056.github.io/tags/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>BeautifulSoup</title>
+        <link>https://srlee056.github.io/tags/beautifulsoup/</link>
+        <pubDate>Wed, 25 Oct 2023 16:23:38 +0900</pubDate>
         
-        <guid>https://srlee056.github.io/tags/css/</guid>
+        <guid>https://srlee056.github.io/tags/beautifulsoup/</guid>
         <description></description>
         </item>
         <item>
-        <title>html</title>
+        <title>HTML Parser</title>
+        <link>https://srlee056.github.io/tags/html-parser/</link>
+        <pubDate>Wed, 25 Oct 2023 16:23:38 +0900</pubDate>
+        
+        <guid>https://srlee056.github.io/tags/html-parser/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>TIL</title>
+        <link>https://srlee056.github.io/tags/til/</link>
+        <pubDate>Wed, 25 Oct 2023 16:23:38 +0900</pubDate>
+        
+        <guid>https://srlee056.github.io/tags/til/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>DOM</title>
+        <link>https://srlee056.github.io/tags/dom/</link>
+        <pubDate>Tue, 24 Oct 2023 00:00:00 +0000</pubDate>
+        
+        <guid>https://srlee056.github.io/tags/dom/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>HTTP</title>
+        <link>https://srlee056.github.io/tags/http/</link>
+        <pubDate>Tue, 24 Oct 2023 00:00:00 +0000</pubDate>
+        
+        <guid>https://srlee056.github.io/tags/http/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>requests</title>
+        <link>https://srlee056.github.io/tags/requests/</link>
+        <pubDate>Tue, 24 Oct 2023 00:00:00 +0000</pubDate>
+        
+        <guid>https://srlee056.github.io/tags/requests/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>HTML</title>
         <link>https://srlee056.github.io/tags/html/</link>
-        <pubDate>Mon, 11 Mar 2019 00:00:00 +0000</pubDate>
+        <pubDate>Mon, 23 Oct 2023 00:00:00 +0000</pubDate>
         
         <guid>https://srlee056.github.io/tags/html/</guid>
         <description></description>
         </item>
         <item>
-        <title>markdown</title>
-        <link>https://srlee056.github.io/tags/markdown/</link>
-        <pubDate>Mon, 11 Mar 2019 00:00:00 +0000</pubDate>
+        <title>Algorithms</title>
+        <link>https://srlee056.github.io/tags/algorithms/</link>
+        <pubDate>Fri, 20 Oct 2023 00:00:00 +0000</pubDate>
         
-        <guid>https://srlee056.github.io/tags/markdown/</guid>
+        <guid>https://srlee056.github.io/tags/algorithms/</guid>
         <description></description>
         </item>
         <item>
-        <title>themes</title>
-        <link>https://srlee056.github.io/tags/themes/</link>
-        <pubDate>Mon, 11 Mar 2019 00:00:00 +0000</pubDate>
+        <title>Data Structure</title>
+        <link>https://srlee056.github.io/tags/data-structure/</link>
+        <pubDate>Fri, 20 Oct 2023 00:00:00 +0000</pubDate>
         
-        <guid>https://srlee056.github.io/tags/themes/</guid>
+        <guid>https://srlee056.github.io/tags/data-structure/</guid>
         <description></description>
         </item>
         <item>
-        <title>privacy</title>
-        <link>https://srlee056.github.io/tags/privacy/</link>
-        <pubDate>Sun, 10 Mar 2019 00:00:00 +0000</pubDate>
+        <title>DFS&amp;BFS</title>
+        <link>https://srlee056.github.io/tags/dfsbfs/</link>
+        <pubDate>Fri, 20 Oct 2023 00:00:00 +0000</pubDate>
         
-        <guid>https://srlee056.github.io/tags/privacy/</guid>
+        <guid>https://srlee056.github.io/tags/dfsbfs/</guid>
         <description></description>
         </item>
         <item>
-        <title>shortcodes</title>
-        <link>https://srlee056.github.io/tags/shortcodes/</link>
-        <pubDate>Sun, 10 Mar 2019 00:00:00 +0000</pubDate>
+        <title>DP</title>
+        <link>https://srlee056.github.io/tags/dp/</link>
+        <pubDate>Fri, 20 Oct 2023 00:00:00 +0000</pubDate>
         
-        <guid>https://srlee056.github.io/tags/shortcodes/</guid>
+        <guid>https://srlee056.github.io/tags/dp/</guid>
         <description></description>
         </item>
         <item>
-        <title>tag with whitespaces</title>
-        <link>https://srlee056.github.io/tags/tag-with-whitespaces/</link>
-        <pubDate>Sat, 09 Mar 2019 00:00:00 +0000</pubDate>
+        <title>Heap</title>
+        <link>https://srlee056.github.io/tags/heap/</link>
+        <pubDate>Fri, 20 Oct 2023 00:00:00 +0000</pubDate>
         
-        <guid>https://srlee056.github.io/tags/tag-with-whitespaces/</guid>
+        <guid>https://srlee056.github.io/tags/heap/</guid>
         <description></description>
         </item>
         <item>
-        <title>text</title>
-        <link>https://srlee056.github.io/tags/text/</link>
-        <pubDate>Sat, 09 Mar 2019 00:00:00 +0000</pubDate>
+        <title>Greedy</title>
+        <link>https://srlee056.github.io/tags/greedy/</link>
+        <pubDate>Thu, 19 Oct 2023 00:00:00 +0000</pubDate>
         
-        <guid>https://srlee056.github.io/tags/text/</guid>
+        <guid>https://srlee056.github.io/tags/greedy/</guid>
         <description></description>
         </item>
         <item>
-        <title>emoji</title>
-        <link>https://srlee056.github.io/tags/emoji/</link>
-        <pubDate>Tue, 05 Mar 2019 00:00:00 +0000</pubDate>
+        <title>Hash</title>
+        <link>https://srlee056.github.io/tags/hash/</link>
+        <pubDate>Thu, 19 Oct 2023 00:00:00 +0000</pubDate>
         
-        <guid>https://srlee056.github.io/tags/emoji/</guid>
+        <guid>https://srlee056.github.io/tags/hash/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Sort</title>
+        <link>https://srlee056.github.io/tags/sort/</link>
+        <pubDate>Thu, 19 Oct 2023 00:00:00 +0000</pubDate>
+        
+        <guid>https://srlee056.github.io/tags/sort/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Queue</title>
+        <link>https://srlee056.github.io/tags/queue/</link>
+        <pubDate>Wed, 18 Oct 2023 00:00:00 +0000</pubDate>
+        
+        <guid>https://srlee056.github.io/tags/queue/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Tree</title>
+        <link>https://srlee056.github.io/tags/tree/</link>
+        <pubDate>Wed, 18 Oct 2023 00:00:00 +0000</pubDate>
+        
+        <guid>https://srlee056.github.io/tags/tree/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>LinkedList</title>
+        <link>https://srlee056.github.io/tags/linkedlist/</link>
+        <pubDate>Tue, 17 Oct 2023 00:00:00 +0000</pubDate>
+        
+        <guid>https://srlee056.github.io/tags/linkedlist/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Stack</title>
+        <link>https://srlee056.github.io/tags/stack/</link>
+        <pubDate>Tue, 17 Oct 2023 00:00:00 +0000</pubDate>
+        
+        <guid>https://srlee056.github.io/tags/stack/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Blog</title>
+        <link>https://srlee056.github.io/tags/blog/</link>
+        <pubDate>Mon, 16 Oct 2023 00:00:00 +0000</pubDate>
+        
+        <guid>https://srlee056.github.io/tags/blog/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Github Pages</title>
+        <link>https://srlee056.github.io/tags/github-pages/</link>
+        <pubDate>Mon, 16 Oct 2023 00:00:00 +0000</pubDate>
+        
+        <guid>https://srlee056.github.io/tags/github-pages/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>hugo</title>
+        <link>https://srlee056.github.io/tags/hugo/</link>
+        <pubDate>Mon, 16 Oct 2023 00:00:00 +0000</pubDate>
+        
+        <guid>https://srlee056.github.io/tags/hugo/</guid>
         <description></description>
         </item>
         

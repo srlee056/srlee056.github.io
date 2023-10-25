@@ -2,70 +2,160 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://srlee056.github.io/ko/categories/</loc>
+    <loc>https://srlee056.github.io/</loc>
+    <lastmod>2023-10-25T16:23:38+09:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://srlee056.github.io/categories/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-cn"
-                href="https://srlee056.github.io/zh-cn/categories/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="ar"
-                href="https://srlee056.github.io/ar/categories/"
+                href="https://srlee056.github.io/en/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="https://srlee056.github.io/ko/categories/"
-                />
-  </url><url>
-    <loc>https://srlee056.github.io/ko/tags/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://srlee056.github.io/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-cn"
-                href="https://srlee056.github.io/zh-cn/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="ar"
-                href="https://srlee056.github.io/ar/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="ko"
-                href="https://srlee056.github.io/ko/tags/"
-                />
-  </url><url>
-    <loc>https://srlee056.github.io/ko/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
                 href="https://srlee056.github.io/"
                 />
+  </url><url>
+    <loc>https://srlee056.github.io/tags/beautifulsoup/</loc>
+    <lastmod>2023-10-25T16:23:38+09:00</lastmod>
+  </url><url>
+    <loc>https://srlee056.github.io/categories/</loc>
+    <lastmod>2023-10-25T16:23:38+09:00</lastmod>
     <xhtml:link
                 rel="alternate"
-                hreflang="zh-cn"
-                href="https://srlee056.github.io/zh-cn/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="ar"
-                href="https://srlee056.github.io/ar/"
+                hreflang="en"
+                href="https://srlee056.github.io/en/categories/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="https://srlee056.github.io/ko/"
+                href="https://srlee056.github.io/categories/"
                 />
+  </url><url>
+    <loc>https://srlee056.github.io/p/day-8/</loc>
+    <lastmod>2023-10-25T16:23:38+09:00</lastmod>
+  </url><url>
+    <loc>https://srlee056.github.io/categories/devcourse/</loc>
+    <lastmod>2023-10-25T16:23:38+09:00</lastmod>
+  </url><url>
+    <loc>https://srlee056.github.io/tags/html-parser/</loc>
+    <lastmod>2023-10-25T16:23:38+09:00</lastmod>
+  </url><url>
+    <loc>https://srlee056.github.io/post/</loc>
+    <lastmod>2023-10-25T16:23:38+09:00</lastmod>
+  </url><url>
+    <loc>https://srlee056.github.io/tags/</loc>
+    <lastmod>2023-10-25T16:23:38+09:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://srlee056.github.io/en/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ko"
+                href="https://srlee056.github.io/tags/"
+                />
+  </url><url>
+    <loc>https://srlee056.github.io/tags/til/</loc>
+    <lastmod>2023-10-25T16:23:38+09:00</lastmod>
+  </url><url>
+    <loc>https://srlee056.github.io/p/day-7/</loc>
+    <lastmod>2023-10-24T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://srlee056.github.io/tags/dom/</loc>
+    <lastmod>2023-10-24T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://srlee056.github.io/tags/http/</loc>
+    <lastmod>2023-10-24T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://srlee056.github.io/tags/requests/</loc>
+    <lastmod>2023-10-24T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://srlee056.github.io/p/day-6/</loc>
+    <lastmod>2023-10-23T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://srlee056.github.io/tags/html/</loc>
+    <lastmod>2023-10-23T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://srlee056.github.io/tags/algorithms/</loc>
+    <lastmod>2023-10-20T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://srlee056.github.io/tags/data-structure/</loc>
+    <lastmod>2023-10-20T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://srlee056.github.io/p/day-5/</loc>
+    <lastmod>2023-10-20T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://srlee056.github.io/tags/dfsbfs/</loc>
+    <lastmod>2023-10-20T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://srlee056.github.io/tags/dp/</loc>
+    <lastmod>2023-10-20T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://srlee056.github.io/tags/heap/</loc>
+    <lastmod>2023-10-20T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://srlee056.github.io/p/day-4/</loc>
+    <lastmod>2023-10-19T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://srlee056.github.io/tags/greedy/</loc>
+    <lastmod>2023-10-19T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://srlee056.github.io/tags/hash/</loc>
+    <lastmod>2023-10-19T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://srlee056.github.io/tags/sort/</loc>
+    <lastmod>2023-10-19T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://srlee056.github.io/p/day-3/</loc>
+    <lastmod>2023-10-18T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://srlee056.github.io/tags/queue/</loc>
+    <lastmod>2023-10-18T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://srlee056.github.io/tags/tree/</loc>
+    <lastmod>2023-10-18T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://srlee056.github.io/p/day-2/</loc>
+    <lastmod>2023-10-17T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://srlee056.github.io/tags/linkedlist/</loc>
+    <lastmod>2023-10-17T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://srlee056.github.io/tags/stack/</loc>
+    <lastmod>2023-10-17T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://srlee056.github.io/tags/blog/</loc>
+    <lastmod>2023-10-16T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://srlee056.github.io/categories/blog/</loc>
+    <lastmod>2023-10-16T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://srlee056.github.io/blog-1/</loc>
+    <lastmod>2023-10-16T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://srlee056.github.io/p/day-1/</loc>
+    <lastmod>2023-10-16T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://srlee056.github.io/tags/github-pages/</loc>
+    <lastmod>2023-10-16T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://srlee056.github.io/tags/hugo/</loc>
+    <lastmod>2023-10-16T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://srlee056.github.io/archives/</loc>
+    <lastmod>2019-05-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://srlee056.github.io/page/</loc>
+    <lastmod>2020-10-09T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://srlee056.github.io/about/</loc>
+    <lastmod>2020-10-09T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://srlee056.github.io/links/</loc>
+  </url><url>
+    <loc>https://srlee056.github.io/search/</loc>
+  </url><url>
+    <loc>https://srlee056.github.io/categories/test/</loc>
   </url>
 </urlset>

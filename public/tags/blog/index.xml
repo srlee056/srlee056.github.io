@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Blog on 서림록</title>
+        <link>https://srlee056.github.io/tags/blog/</link>
+        <description>Recent content in Blog on 서림록</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>ko</language>
+        <copyright>Seorim Lee</copyright>
+        <lastBuildDate>Mon, 16 Oct 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://srlee056.github.io/tags/blog/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Blog 제작기 #1</title>
+        <link>https://srlee056.github.io/blog-1/</link>
+        <pubDate>Mon, 16 Oct 2023 00:00:00 +0000</pubDate>
+        
+        <guid>https://srlee056.github.io/blog-1/</guid>
+        <description>&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://srlee056.github.io/p/day-1/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;1일차 TIL&lt;/a&gt;에서 이어지는 블로그 제작기 입니다. :&amp;gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://srlee056.github.io/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;(아직 제작중인)블로그&lt;/a&gt;를 구경하시려면 클릭하세요!&lt;/p&gt;
+&lt;h2 id=&#34;1-로컬에서-휴고-사이트-만들기httpsgohugoiogetting-startedquick-start&#34;&gt;1. 로컬에서 &lt;a class=&#34;link&#34; href=&#34;https://gohugo.io/getting-started/quick-start/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;휴고 사이트 만들기&lt;/a&gt;&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;hugo new site blog
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;cd blog
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;git init
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;git submodule add https://github.com/CaiJimmy/hugo-theme-stack/ themes/hugo-theme-stack
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;echo &amp;#34;theme = &amp;#39;hugo-theme-stack&amp;#39;&amp;#34; &amp;gt;&amp;gt; hugo.toml
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;hugo server
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;나는 가이드에 적힌 theme과는 다른 &lt;a class=&#34;link&#34; href=&#34;https://github.com/CaiJimmy/hugo-theme-stack&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;hugo-theme-stack&lt;/a&gt;을 사용했다.
+가이드에는 새 post를 만들고 config 파일인 &lt;code&gt;hugo.toml&lt;/code&gt;을 수정하는 부분도 나와있지만, 이후에 둘 다 다른 내용으로 덮어써서 넘어가도 되는 과정이었다.&lt;/p&gt;
+&lt;h2 id=&#34;2-theme-커스터마이징하기&#34;&gt;2. theme 커스터마이징하기&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;themes/hugo-theme-stack/exampleSite/config.yaml&lt;/code&gt; 파일 내용을 변환하여 제일 상위 폴더의 &lt;code&gt;./hugo.toml&lt;/code&gt; 파일에 붙여넣고,&lt;br&gt;
+(구글에 &amp;lsquo;yaml to toml&amp;rsquo;로 검색하면 많은 converter를 볼 수 있다.)&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;themes/hugo-theme-stack/exampleSite/contetns/&lt;/code&gt; 안의 파일들을 &lt;code&gt;./contetns&lt;/code&gt; 에 붙여넣었다.&lt;/p&gt;
+&lt;p&gt;이 과정에는 &lt;a class=&#34;link&#34; href=&#34;https://kzeoh.github.io&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;이 블로그 글&lt;/a&gt;을 많이 참고했다. 정말 감사합니다👍🏻&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;hugo.toml&lt;/code&gt; 파일에 오류가 좀 있는 것 같지만&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;내가 아직 hugo configuration 관련해서 잘 모르고&lt;/li&gt;
+&lt;li&gt;오류가 있는데도 서버가 잘 돌아가고 빌드도 돼서
+나중에 고치기로 했다. (🤔 이게 왜 되지?)&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;3-배포하기&#34;&gt;3. 배포하기&lt;/h2&gt;
+&lt;p&gt;(사실 배포가 제일 쉬웠다)
+github 사이트에서 &lt;code&gt;&amp;lt;username&amp;gt;.github.io&lt;/code&gt; 이름의 레포지토리를 만들고
+&lt;strong&gt;로컬&lt;/strong&gt;에서 변경 내용을 모두 commit한 이후,&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;git remote add origin https://github.com/&amp;lt;username&amp;gt;/&amp;lt;username&amp;gt;.github.io.git
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;위 커맨드를 입력해 로컬과 원격 레포지토리를 연결한다.
+&lt;br&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;git push -u origin master
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;그리고 push하면 레포지토리 관련은 끝. (branch 관련 건드린 게 있다면 push하기 전에 master로 옮길것.)
++) 요즘은 master가 아닌 main branch로 바뀌었더라.
+&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;빌드와 배포는 git actions기능을 활용했는데, hugo 사이트에 &lt;a class=&#34;link&#34; href=&#34;https://gohugo.io/hosting-and-deployment/hosting-on-github/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;github hosting 가이드라인&lt;/a&gt;이 잘 적혀있다.&lt;/p&gt;
+&lt;p&gt;이 링크의 내용을 요약하자면&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;레포지토리 settings/pages에서 source를 &lt;code&gt;GitHub Actions&lt;/code&gt;로 변경&lt;/li&gt;
+&lt;li&gt;로컬에서 &lt;code&gt;.github/workflows/hugo.yaml&lt;/code&gt; 파일 생성 후 내용 붙여넣기 (폴더도 직접 생성해줘야함)&lt;/li&gt;
+&lt;li&gt;변경사항을 commit, push한 이후 레포지토리의  &lt;code&gt;Actions&lt;/code&gt; 탭에 들어가면 &lt;strong&gt;빌드/배포 기능을 하는 Action&lt;/strong&gt;이 추가됨&lt;/li&gt;
+&lt;li&gt;Run Workflow 버튼을 누르면 빌드/배포가 자동으로 진행되며 내 github page에 테마가 적용된 사이트가 잘 올라와 있다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://srlee056.github.io/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;왜인지 모르겠지만 잘 돌아가는 블로그&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/srlee056/srlee056.github.io&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;블로그 github repo.&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;느낀점&#34;&gt;느낀점&lt;/h3&gt;
+&lt;p&gt;전체적으로 해결하지 못한 오류도 많고, 이해하지 못한 구조도 많지만 오늘은 배포에 성공한 것에 의의를 두려고 한다.🥲&lt;/p&gt;
+&lt;h3 id=&#34;다음엔&#34;&gt;다음엔?&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;hugo로 포스트 올리기&lt;/li&gt;
+&lt;li&gt;오류 해결하기 (layout 인식 문제 등)&lt;/li&gt;
+&lt;li&gt;theme custom 으로 링크 등 UI 추가해보기&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        </item>
+        <item>
+        <title>Day 1</title>
+        <link>https://srlee056.github.io/p/day-1/</link>
+        <pubDate>Mon, 16 Oct 2023 00:00:00 +0000</pubDate>
+        
+        <guid>https://srlee056.github.io/p/day-1/</guid>
+        <description>&lt;h1 id=&#34;span-stylecolor79ac781-자료구조--알고리즘-강의-및-코드-리뷰span&#34;&gt;&lt;strong&gt;&lt;span style=&#34;color:#79AC78&#34;&gt;1. 자료구조 &amp;amp; 알고리즘 강의 및 코드 리뷰&lt;/span&gt;&lt;/strong&gt;&lt;/h1&gt;
+&lt;h2 id=&#34;span-stylecolorb0d9b1공부-내용span&#34;&gt;📋 &lt;strong&gt;&lt;span style=&#34;color:#B0D9B1&#34;&gt;공부 내용&lt;/span&gt;&lt;/strong&gt;&lt;/h2&gt;
+&lt;h3 id=&#34;span-stylecolord0e7d2선형-배열---linear-arraysspan&#34;&gt;&lt;span style=&#34;color:#D0E7D2&#34;&gt;선형 배열 - Linear Arrays&lt;/span&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;배열(array) : 개념적 구조 / 리스트 : python 데이터형&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;리스트 methods&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;time complexity O(1)
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;.append()&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;.pop()&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;time complexity O(n)
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;.insert()&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;.del()&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;.index()&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;.insert()&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;정렬(sort)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;sorted()&lt;/code&gt; : function, 정렬된 새로운 리스트를 반환하며 기존 리스트에는 변화 없음.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;.sort()&lt;/code&gt; : method, 기존 리스트가 정렬됨&lt;/li&gt;
+&lt;li&gt;숫자가 아닌 문자열 등 데이터형의 정렬 : 사전순이 기본, 문자열의 길이 등 다른 정렬 조건을 사용하고 싶다면 &lt;code&gt;lambda&lt;/code&gt;  활용
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;문자열을 길이순으로 정렬&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;sorted&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;L&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;key&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;lambda&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;x&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;len&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;x&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;사전 데이터형(dictionary)에 key = ‘name’인 value의 문자열 순서대로 정렬&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;L&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;name&amp;#39;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;John&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;score&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;90&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;},&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;name&amp;#39;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;Paul&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;score&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;80&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;sorted&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;L&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;key&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;lambda&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;x&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;x&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;name&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;탐색(search)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;선형(linear) 탐색, 순차(sequential) 탐색&lt;/li&gt;
+&lt;li&gt;이진(binary) 탐색&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;span-stylecolord0e7d2재귀-알고리즘---recursive-algorithmsspan&#34;&gt;&lt;span style=&#34;color:#D0E7D2&#34;&gt;재귀 알고리즘 - recursive algorithms&lt;/span&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;종결 조건(trivial case)&lt;/strong&gt; 을 명시해야 함&lt;/li&gt;
+&lt;li&gt;예시
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;1부터 x까지 숫자의 합을 구하는 함수 (sum)&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;recursiveSum&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;x&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;x&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;x&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;recursiveSum&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;x&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;x&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;조합의 수 (nCm)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;하노이의 탑&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;피보나치 순열&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;장점 : 알고리즘을 간단하고 이해하기 쉽게 풀어냄&lt;/li&gt;
+&lt;li&gt;단점 : time complexity 부분에서 비효율적인 경우가 많음&lt;/li&gt;
+&lt;li&gt;이러한 특성 때문에 tree 자료구조를 이용하는 알고리즘에 활용&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;span-stylecolord0e7d2complexityspan&#34;&gt;&lt;span style=&#34;color:#D0E7D2&#34;&gt;Complexity&lt;/span&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Time Complexity&lt;/li&gt;
+&lt;li&gt;Space Complexity&lt;/li&gt;
+&lt;li&gt;다루는 데이터가 커질수록, 더 효율적인 complexity를 가지는 방식이 필요함 (2^n, n! 등의 complexity &lt;strong&gt;X&lt;/strong&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;span-stylecolorb0d9b1checkspan&#34;&gt;👀 &lt;strong&gt;&lt;span style=&#34;color:#B0D9B1&#34;&gt;CHECK&lt;/span&gt;&lt;/strong&gt;&lt;/h2&gt;
+&lt;h6 id=&#34;어렵거나-새롭게-알게-된-것-등-다시-확인할-것들&#34;&gt;&lt;em&gt;(어렵거나 새롭게 알게 된 것 등 다시 확인할 것들)&lt;/em&gt;&lt;/h6&gt;
+&lt;ul&gt;
+&lt;li&gt;코드로 elapsed time을 확인 -&amp;gt; 디버깅이나 time complexity를 직관적으로 확인하는 등에 활용&lt;/li&gt;
+&lt;li&gt;list method &lt;code&gt;.pop()&lt;/code&gt; 과 &lt;code&gt;.remove()&lt;/code&gt;의 차이점&lt;/li&gt;
+&lt;li&gt;big O notation - O of n 으로 읽음&lt;/li&gt;
+&lt;li&gt;list의 앞과 뒤에 접근하는것은 O(1)의 time complextity를 갖는다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;span-stylecolorb0d9b1느낀-점span&#34;&gt;‼️ &lt;strong&gt;&lt;span style=&#34;color:#B0D9B1&#34;&gt;느낀 점&lt;/span&gt;&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;아직까지는 전공 과정 복습하는 느낌이고, 쉽다고 느꼈다. 막히는 부분은 없었다. 코드를 작성하면서 조금 더 나은 코드에 대해 생각해보는것 정도. &lt;br&gt;
+공부하는 중이나 이후에 바로 TIL을 적는게 제일 좋다고 생각하는데, 블로그 세팅에 정신이 팔려서 나중에 작성하게 된 건 조금 아쉽다. &lt;br&gt;
+오늘은 코어타임보다 일찍 강의를 들어버려서 시간 분배가 애매했다. 내일은 코어타임 시작할 때 듣기 시작하고, 그 전에는 전날 내용을 복습하거나, 알고리즘 문제를 풀고 code review를 작성하는 시간을 가져야겠다.&lt;/p&gt;
+&lt;h1 id=&#34;span-stylecolor79ac782-블로그-세팅-과정span&#34;&gt;&lt;strong&gt;&lt;span style=&#34;color:#79AC78&#34;&gt;2. 블로그 세팅 과정&lt;/span&gt;&lt;/strong&gt;&lt;/h1&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.kakaocdn.net/dn/cKgXTh/btsyuerJaNh/HhtKTmduAbBOsbBmTD8g00/img.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;https://blog.kakaocdn.net/dn/cKgXTh/btsyuerJaNh/HhtKTmduAbBOsbBmTD8g00/img.png&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;노션이나 옵시디언으로 TIL을 적고 깃에 업로드 한 적은 많지만 블로그에 올리는건 처음이라, 어디에 올리지 고민하다가 일단 티스토리 계정과 블로그를 만들었다.&lt;br&gt;
+그런데 만들다 보니 &lt;strong&gt;github repo와 연동되는 page를 세팅하고 싶다..!&lt;/strong&gt; 라는 욕심이 들기 시작했고, &lt;br&gt;
+jekyll 등을 알아보다가 hugo를 활용한 페이지 세팅을 접하게 되어 장장 3시간을 투자했다.&lt;/p&gt;
+&lt;p&gt;그런데 이 글을 티스토리에 올리는 이유는? 세팅에 실패했기 때문 ㅠㅠ&lt;br&gt;
+TIL 작성하고 나서 다시 도전해서 세팅 과정에 대해서도 글을 써 볼 예정이다.&lt;/p&gt;
+&lt;p&gt;+) 티스토리에서 md로 작성한게 예쁘게 안나와서 벨로그로 옮겼다 😂 훨씬 편한 것 같은데 깃허브랑 연동 전까진 벨로그로 해야겠다 :&amp;gt;&lt;/p&gt;
+&lt;h2 id=&#34;span-stylecolorb0d9b1지금까지-참고한-링크들span&#34;&gt;&lt;span style=&#34;color:#B0D9B1&#34;&gt;(지금까지 참고한 링크들)&lt;/span&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://gohugo.io/getting-started/quick-start/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;휴고 사이트 생성 가이드&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://gohugo.io/hosting-and-deployment/hosting-on-github/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;휴고 사이트 깃허브 연결 가이드&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://themes.gohugo.io/themes/salinger-theme/#quick-start-&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;사용 테마1&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/CaiJimmy/hugo-theme-stack-starter&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;사용 테마2&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>

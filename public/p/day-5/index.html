@@ -1,0 +1,949 @@
+<!DOCTYPE html>
+<html lang="ko" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='TIL - Heap / Dynamic Programming / DFS&amp;amp;BFS (문제풀이 위주) 📋 공부 내용 Heap &amp;lt;더 맵게&amp;gt; 문제 풀이 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 import heapq #heap 라이브러리 사용 def solution(scoville, K): answer ='>
+<title>Day 5</title>
+
+<link rel='canonical' href='https://srlee056.github.io/p/day-5/'>
+
+<link rel="stylesheet" href="/scss/style.min.abbd69b2908fdfcd5179898beaafd374514a86538d81639ddd2c58c06ae54e40.css"><meta property='og:title' content='Day 5'>
+<meta property='og:description' content='TIL - Heap / Dynamic Programming / DFS&amp;amp;BFS (문제풀이 위주) 📋 공부 내용 Heap &amp;lt;더 맵게&amp;gt; 문제 풀이 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 import heapq #heap 라이브러리 사용 def solution(scoville, K): answer ='>
+<meta property='og:url' content='https://srlee056.github.io/p/day-5/'>
+<meta property='og:site_name' content='서림록'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='TIL' /><meta property='article:tag' content='Algorithms' /><meta property='article:tag' content='Data Structure' /><meta property='article:tag' content='Heap' /><meta property='article:tag' content='DP' /><meta property='article:tag' content='DFS&amp;BFS' /><meta property='article:published_time' content='2023-10-20T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2023-10-20T00:00:00&#43;00:00'/>
+<meta name="twitter:title" content="Day 5">
+<meta name="twitter:description" content="TIL - Heap / Dynamic Programming / DFS&amp;amp;BFS (문제풀이 위주) 📋 공부 내용 Heap &amp;lt;더 맵게&amp;gt; 문제 풀이 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 import heapq #heap 라이브러리 사용 def solution(scoville, K): answer =">
+    <link rel="shortcut icon" href="static/favicon.ico" />
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="메뉴 여닫기">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu8ddc8f6dcd4c226f91e5ab7aaf623fd6_118700_300x0_resize_box_3.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🤩</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">서림록</a></h1>
+            <h2 class="site-description">좋은 개발자로 한걸음 더</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='https://github.com/srlee056'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://twitter.com'
+                        target="_blank"
+                        title="Twitter"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/about/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/links/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>Links</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+                <li id="i18n-switch">  
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                    <select name="language" onchange="window.location.href = this.selectedOptions[0].value">
+                        
+                            <option value="https://srlee056.github.io/" selected>Korean</option>
+                        
+                            <option value="https://srlee056.github.io/en/" >English</option>
+                        
+                    </select>
+                </li>
+            
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>다크 모드</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">목차</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#span-stylecolorb0d9b1공부-내용span">📋 <strong><span style="color:#B0D9B1">공부 내용</span></strong></a>
+      <ol>
+        <li><a href="#span-stylecolord0e7d2heapspan"><span style="color:#D0E7D2">Heap</span></a>
+          <ol>
+            <li><a href="#더-맵게-문제-풀이">&lt;더 맵게&gt; 문제 풀이</a></li>
+          </ol>
+        </li>
+        <li><a href="#span-stylecolord0e7d2dynamic-programmingspan"><span style="color:#D0E7D2">Dynamic Programming</span></a>
+          <ol>
+            <li><a href="#dpdynamic-programming">DP(Dynamic Programming)</a></li>
+            <li><a href="#n으로-표현-문제-풀이">&lt;N으로 표현&gt; 문제 풀이</a></li>
+          </ol>
+        </li>
+        <li><a href="#span-stylecolord0e7d2dfs--bfsspan"><span style="color:#D0E7D2">DFS &amp; BFS</span></a>
+          <ol>
+            <li><a href="#1-depth-first-search">1. Depth First Search</a></li>
+            <li><a href="#2-breadth-first-search">2. Breadth First Search</a></li>
+            <li><a href="#3-graph">3. Graph</a></li>
+            <li><a href="#여행-경로-문제-풀이">&lt;여행 경로&gt; 문제 풀이</a></li>
+          </ol>
+        </li>
+        <li><a href="#span-stylecolord0e7d2추가-문제풀이span"><span style="color:#D0E7D2">추가 문제풀이</span></a></li>
+      </ol>
+    </li>
+    <li><a href="#span-stylecolorb0d9b1checkspan">👀 <strong><span style="color:#B0D9B1">CHECK</span></strong></a>
+      <ol>
+        <li>
+          <ol>
+            <li></li>
+            <li><a href="#pep-8">PEP 8</a></li>
+            <li><a href="#tim-sort">Tim sort</a></li>
+            <li><a href="#dp-익숙해지기">DP 익숙해지기</a></li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+    <li><a href="#span-stylecolorb0d9b1느낀-점span">❗ <strong><span style="color:#B0D9B1">느낀 점</span></strong></a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/devcourse/" >
+                DevCourse
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/day-5/">Day 5</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">2023 Oct 20</time>
+            </div>
+        
+
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <h1 id="span-stylecolor79ac78til---heap--dynamic-programming--dfsbfs-문제풀이-위주span"><strong><span style="color:#79AC78">TIL - Heap / Dynamic Programming / DFS&amp;BFS (문제풀이 위주)</span></strong></h1>
+<h2 id="span-stylecolorb0d9b1공부-내용span">📋 <strong><span style="color:#B0D9B1">공부 내용</span></strong></h2>
+<h3 id="span-stylecolord0e7d2heapspan"><span style="color:#D0E7D2">Heap</span></h3>
+<hr>
+<h4 id="더-맵게-문제-풀이">&lt;더 맵게&gt; 문제 풀이</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">heapq</span> <span class="c1">#heap 라이브러리 사용</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">solution</span><span class="p">(</span><span class="n">scoville</span><span class="p">,</span> <span class="n">K</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">answer</span> <span class="o">=</span> <span class="mi">0</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># heapify, heappop, heappush 활용</span>
+</span></span><span class="line"><span class="cl">    <span class="n">heapq</span><span class="o">.</span><span class="n">heapify</span><span class="p">(</span><span class="n">scoville</span><span class="p">)</span> <span class="c1">#min heap 구성</span>
+</span></span><span class="line"><span class="cl">    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">s1</span> <span class="o">=</span> <span class="n">heapq</span><span class="o">.</span><span class="n">heappop</span><span class="p">(</span><span class="n">scoville</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="n">s1</span> <span class="o">&gt;=</span> <span class="n">K</span> <span class="p">:</span> <span class="c1">#모든 스코빌 지수가 K이상</span>
+</span></span><span class="line"><span class="cl">            <span class="k">break</span>
+</span></span><span class="line"><span class="cl">        <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">scoville</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span> <span class="c1"># K이상으로 만들 수 없는 경우</span>
+</span></span><span class="line"><span class="cl">            <span class="n">answer</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+</span></span><span class="line"><span class="cl">            <span class="k">break</span>
+</span></span><span class="line"><span class="cl">        <span class="n">s2</span> <span class="o">=</span> <span class="n">heapq</span><span class="o">.</span><span class="n">heappop</span><span class="p">(</span><span class="n">scoville</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">newS</span> <span class="o">=</span> <span class="n">s1</span> <span class="o">+</span> <span class="n">s2</span><span class="o">*</span><span class="mi">2</span>
+</span></span><span class="line"><span class="cl">        <span class="n">heapq</span><span class="o">.</span><span class="n">heappush</span><span class="p">(</span><span class="n">scoville</span><span class="p">,</span><span class="n">newS</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">answer</span> <span class="o">+=</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">answer</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><br>
+<h3 id="span-stylecolord0e7d2dynamic-programmingspan"><span style="color:#D0E7D2">Dynamic Programming</span></h3>
+<hr>
+<h4 id="dpdynamic-programming">DP(Dynamic Programming)</h4>
+<blockquote>
+<p>알고리즘 진행에 따라 <code>탐색해야 할 범위를 동적으로 결정</code>하여 탐색 범위를 한정</p>
+</blockquote>
+<p><strong>EX1)</strong> <em>피보나치 수열</em></p>
+<div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>Complexity</th>
+<th>재귀함수</th>
+<th>DP</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Time</td>
+<td>O(2^n)</td>
+<td>O(n)</td>
+</tr>
+<tr>
+<td>Space</td>
+<td>O(n)</td>
+<td>O(n)</td>
+</tr>
+</tbody>
+</table></div>
+<p>참고 : <a class="link" href="https://towardsdatascience.com/dynamic-programming-i-python-8b20387870f5"  target="_blank" rel="noopener"
+    >Recursion vs Dynamic Programming - Fibonacci</a></p>
+<p><strong>EX2)</strong> <em>knapsack problem</em><br>
+weight / value를 가진 여러 물건이 있을 때, weight 제한이 있는 베낭에 value의 합이 가장 높도록 물건을 골라 담는 문제</p>
+<br>
+<h4 id="n으로-표현-문제-풀이">&lt;N으로 표현&gt; 문제 풀이</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">solution</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="n">number</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">strN</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># 직관적인 코드를 위해 다음과 같이 index : 1~8 사용 설정 (index 0은 사용하지 않음)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">numberUsed</span> <span class="o">=</span> <span class="p">[{}</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">9</span><span class="p">)]</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">9</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="n">numberUsed</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="nb">int</span><span class="p">(</span><span class="n">strN</span> <span class="o">*</span> <span class="p">(</span><span class="n">i</span><span class="p">))}</span>   <span class="c1"># N을 i번 나열한 숫자 ex) 555, 7777, ...</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span> <span class="p">,</span> <span class="n">i</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">            <span class="k">for</span> <span class="n">n1</span> <span class="ow">in</span> <span class="n">numberUsed</span><span class="p">[</span><span class="n">j</span><span class="p">]:</span>
+</span></span><span class="line"><span class="cl">                <span class="k">for</span> <span class="n">n2</span> <span class="ow">in</span> <span class="n">numberUsed</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="n">j</span><span class="p">]:</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">newNumbers</span> <span class="o">=</span> <span class="p">[</span><span class="n">n1</span><span class="o">*</span><span class="n">n2</span><span class="p">,</span> <span class="n">n1</span><span class="o">+</span><span class="n">n2</span><span class="p">,</span> <span class="n">n1</span><span class="o">-</span><span class="n">n2</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">                    <span class="k">if</span> <span class="n">n2</span> <span class="o">!=</span> <span class="mi">0</span> <span class="p">:</span> <span class="n">newNumbers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">n1</span><span class="o">//</span><span class="n">n2</span> <span class="p">)</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">numberUsed</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">newNumbers</span><span class="p">)</span> <span class="c1">#set1.update(set2) 사용하여 원소 추가. set 아닌 list를 넘겨줄수도 있다.</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="n">number</span> <span class="ow">in</span> <span class="n">numberUsed</span><span class="p">[</span><span class="n">i</span><span class="p">]:</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="n">i</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><br>
+<h3 id="span-stylecolord0e7d2dfs--bfsspan"><span style="color:#D0E7D2">DFS &amp; BFS</span></h3>
+<h4 id="1-depth-first-search">1. Depth First Search</h4>
+<blockquote>
+<p>한 vertex에서 인접한 모든 vertex를 방문할 때, 인접한 vertex를 기준으로 <code>깊이 우선 탐색</code>을 끝낸 후 다음 vertex로 진행하는 방식<br>
+<code>스택</code>을 이용하여 어느 정점에서 DFS를 진행하고 있는지를 기억</p>
+</blockquote>
+<h4 id="2-breadth-first-search">2. Breadth First Search</h4>
+<blockquote>
+<p>한 vertex에서 인접한 모든 vertex를 방문하고, 방문한 인접 vertex를 기준으로 <code>너비 우선 탐색</code>을 진행하는 방식</p>
+</blockquote>
+<h4 id="3-graph">3. Graph</h4>
+<blockquote>
+<p>-vertex(=node) &amp; edge(=link)<br>
+-directed / undirected graph</p>
+</blockquote>
+<h4 id="여행-경로-문제-풀이">&lt;여행 경로&gt; 문제 풀이</h4>
+<p>DFS를 응용한 재귀 한 붓 그리기</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">solution</span><span class="p">(</span><span class="n">tickets</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">routes</span> <span class="o">=</span> <span class="p">{}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="ow">in</span> <span class="n">tickets</span><span class="p">:</span> <span class="c1">#출발지, 도착지</span>
+</span></span><span class="line"><span class="cl">        <span class="n">routes</span><span class="p">[</span><span class="n">a</span><span class="p">]</span> <span class="o">=</span> <span class="n">routes</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="p">[])</span> 
+</span></span><span class="line"><span class="cl">        <span class="n">routes</span><span class="p">[</span><span class="n">a</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">routes</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">routes</span><span class="p">[</span><span class="n">r</span><span class="p">]</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> 
+</span></span><span class="line"><span class="cl">        <span class="c1"># 역순인 이유? 파이썬의 데이터 삭제 과정을 살펴보면 뒤에서 뽑는게 더 효울적이기 때문    </span>
+</span></span><span class="line"><span class="cl">    <span class="n">stack</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&#34;ICN&#34;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">    <span class="n">path</span> <span class="o">=</span> <span class="p">[]</span>
+</span></span><span class="line"><span class="cl">    <span class="k">while</span> <span class="mi">0</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">stack</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="n">top</span> <span class="o">=</span> <span class="n">stack</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="n">top</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">routes</span> <span class="ow">or</span> <span class="nb">len</span><span class="p">(</span><span class="n">routes</span><span class="p">[</span><span class="n">top</span><span class="p">])</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span> <span class="c1"># 이 공항에서 떠나는 티켓이 존재하지 않음</span>
+</span></span><span class="line"><span class="cl">            <span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">stack</span><span class="o">.</span><span class="n">pop</span><span class="p">())</span> 
+</span></span><span class="line"><span class="cl">        <span class="k">else</span> <span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="n">stack</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">routes</span><span class="p">[</span><span class="n">top</span><span class="p">]</span><span class="o">.</span><span class="n">pop</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">path</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><br>
+<h3 id="span-stylecolord0e7d2추가-문제풀이span"><span style="color:#D0E7D2">추가 문제풀이</span></h3>
+<details>
+<summary>문제 링크 모음(많이 김)</summary>
+<!-- summary 아래 한칸 공백 두어야함 -->
+<br>
+프로그래머스 코딩테스트 문제 링크 (코스에 있는 문제여도 프로그래머스 코테 링크로 적음)
+<ul>
+<li><a class="link" href="https://school.programmers.co.kr/learn/courses/30/lessons/42576"  target="_blank" rel="noopener"
+    >완주하지 못한 사람</a></li>
+<li><a class="link" href="https://school.programmers.co.kr/learn/courses/30/lessons/12909"  target="_blank" rel="noopener"
+    >올바른 괄호</a></li>
+<li><a class="link" href="https://school.programmers.co.kr/learn/courses/30/lessons/49993"  target="_blank" rel="noopener"
+    >스킬트리</a>
+<br></li>
+<li><a class="link" href="https://school.programmers.co.kr/learn/courses/30/lessons/12978"  target="_blank" rel="noopener"
+    >배달</a>
+<br></li>
+<li>[세 소수의 합]</li>
+<li>[주사위 게임]</li>
+<li><a class="link" href="https://school.programmers.co.kr/app/courses/19071/curriculum/lessons/236812"  target="_blank" rel="noopener"
+    >사탕 담기</a>
+<br></li>
+<li>[빙고]</li>
+<li><a class="link" href="https://school.programmers.co.kr/learn/courses/30/lessons/49994"  target="_blank" rel="noopener"
+    >방문 길이</a></li>
+<li>[쇠막대기]</li>
+<li><a class="link" href="https://school.programmers.co.kr/learn/courses/30/lessons/60059"  target="_blank" rel="noopener"
+    >자물쇠와 열쇠</a>
+<br></li>
+<li>[게임 아이템]
+<br></li>
+<li><a class="link" href="https://school.programmers.co.kr/app/courses/19071/curriculum/lessons/236806"  target="_blank" rel="noopener"
+    >기능개발</a></li>
+<li><a class="link" href="https://school.programmers.co.kr/learn/courses/30/lessons/42626"  target="_blank" rel="noopener"
+    >더 맵게</a></li>
+<li>[배상 비용 최소화]</li>
+<li>[문자열 압축 코드]
+<br></li>
+<li><a class="link" href="https://school.programmers.co.kr/app/courses/19071/curriculum/lessons/236811"  target="_blank" rel="noopener"
+    >카펫</a></li>
+<li><a class="link" href="https://school.programmers.co.kr/learn/courses/30/lessons/12982"  target="_blank" rel="noopener"
+    >예산</a></li>
+<li><a class="link" href="https://school.programmers.co.kr/learn/courses/30/lessons/12952"  target="_blank" rel="noopener"
+    >N-Queen</a></li>
+<li>[버스 여행]
+<br></li>
+<li><a class="link" href="https://school.programmers.co.kr/app/courses/19071/curriculum/lessons/236805"  target="_blank" rel="noopener"
+    >예산_소팅</a></li>
+<li><a class="link" href="https://school.programmers.co.kr/app/courses/19071/curriculum/lessons/236808"  target="_blank" rel="noopener"
+    >최솟값 만들기</a></li>
+<li><a class="link" href="https://school.programmers.co.kr/app/courses/19071/curriculum/lessons/236807"  target="_blank" rel="noopener"
+    >가장 큰 수</a></li>
+<li><a class="link" href="https://school.programmers.co.kr/learn/courses/30/lessons/42895"  target="_blank" rel="noopener"
+    >N으로 표현</a></li>
+<li><a class="link" href="https://school.programmers.co.kr/learn/courses/30/lessons/12900"  target="_blank" rel="noopener"
+    >2 x n 타일링</a></li>
+<li><a class="link" href="https://school.programmers.co.kr/learn/courses/30/lessons/42898"  target="_blank" rel="noopener"
+    >등굣길</a></li>
+<li><a class="link" href="https://school.programmers.co.kr/learn/courses/30/lessons/12904"  target="_blank" rel="noopener"
+    >가장 긴 팰린드롬</a>
+<br></li>
+</ul>
+</details>
+<h2 id="span-stylecolorb0d9b1checkspan">👀 <strong><span style="color:#B0D9B1">CHECK</span></strong></h2>
+<h6 id="어렵거나-새롭게-알게-된-것-등-다시-확인할-것들"><em>(어렵거나 새롭게 알게 된 것 등 다시 확인할 것들)</em></h6>
+<h4 id="pep-8">PEP 8</h4>
+<p>파이썬이 추구하는 코드 스타일. 들여쓰기, 공백, 변수명 작성 규칙 등이 포함된다.</p>
+<ul>
+<li><a class="link" href="https://peps.python.org/pep-0008/"  target="_blank" rel="noopener"
+    >PEP 8 - Style Guide for Python Code(공식 문서)</a></li>
+<li><a class="link" href="https://wayhome25.github.io/python/2017/05/04/pep8/"  target="_blank" rel="noopener"
+    >PEP8 스타일 가이드를 설명하는 블로그(한국어)</a></li>
+</ul>
+<h4 id="tim-sort">Tim sort</h4>
+<p>Insertion sort + Merge sort</p>
+<ul>
+<li>Insertion sort는 <code>n이 작을 때</code> (Quick sort보다도) 빠름</li>
+<li>전체를 작은 덩어리로 잘라 Insertion sort -&gt; Merge</li>
+<li><a class="link" href="https://d2.naver.com/helloworld/0315536"  target="_blank" rel="noopener"
+    >Tim sort에 대해 설명하는 글</a></li>
+</ul>
+<h4 id="dp-익숙해지기">DP 익숙해지기</h4>
+<ul>
+<li>knapsack problem 등 문제풀이를 통해 익숙해지기</li>
+</ul>
+<h2 id="span-stylecolorb0d9b1느낀-점span">❗ <strong><span style="color:#B0D9B1">느낀 점</span></strong></h2>
+<p>오늘은 DP(Dynamic Programming)과 DFS&amp;BFS의 개념에 대해 가볍게 배우고, 문제풀이를 위주로 강의가 진행되었다.</p>
+<p>아는 알고리즘들이고 어제 강의의 문제가 나에겐 어렵지 않았기 때문에, 해설 강의를 듣기 전에 문제를 먼저 풀어 보았다. 문제를 풀다가 막히는 부분이 있으면 강의를 틀고, 해결되면 멈추고 다시 풀어보곤 했다.<br>
+Heap 문제를 제외한 두 문제는 해설 없이 풀었고, Heap 문제도 heapq 라이브러리를 사용해야하는 것을 깨닫고는 금방 풀 수 있었다.</p>
+<p>이번주 강의를 듣고 문제를 풀면서 느낀점이 몇개 있다.</p>
+<ol>
+<li>
+<p>나는 알고리즘 자체는 꽤 잘 알고 활용도 잘 하는 편이지만 라이브러리 사용에 있어서 소극적인 면이 있다. 문제를 풀 때 파이썬 표준 라이브러리조차도 잘 import하지 않고 Dictionary나 Set정도만 사용하는 편이었다. <em>(Heap도 자체적으로 구현하거나 list를 사용하곤 했는데 왜 이런 습관이 들었는지는 잘 모르겠다.)</em> <br>
+이번 강의를 들으면서 표준 라이브러리에 있는 여러 데이터형을 활용했고 다음에 문제를 풀 때도 적극적으로 활용하면서 더 효과적인 코드를 작성하는데 가까워지려고 한다.</p>
+</li>
+<li>
+<p>나는 CS 용어를 잘 모른다. 아예 모른다는게 아니라, 많이 헷갈리며 정확한 명칭을 찾아보지 않았다는 의미이다. member method, list comprehension 등 용어들은 분명 내가 궁금해서 찾아봤지만 아직도 헷갈리거나 명칭 자체를 몰랐던 것들이다. 강의를 통해 명확해지거나 새롭게 알게 된 용어들이 있어서 좋았고, 이제부터는 모르는 부분에 대해 검색할 때는 아예 용어와 그 정의부터 찾는것부터 시작해야겠다고 다짐했다.</p>
+</li>
+</ol>
+<p>내일은 강의가 없는 날이다. 하지만 해야 할 일들은 있다. 오늘까지 배운걸 복습하고, 배운 자료구조와 알고리즘을 활용하는 문제들을 lv3정도로 풀어 볼 것이다. 내일도 화이팅!!</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/til/">TIL</a>
+        
+            <a href="/tags/algorithms/">Algorithms</a>
+        
+            <a href="/tags/data-structure/">Data Structure</a>
+        
+            <a href="/tags/heap/">Heap</a>
+        
+            <a href="/tags/dp/">DP</a>
+        
+            <a href="/tags/dfsbfs/">DFS&amp;BFS</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">관련 글</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="">
+    <a href="/p/day-3/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Day 3</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/day-4/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Day 4</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/day-2/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Day 2</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/day-1/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Day 1</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/day-8/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Day 8</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "hugo-theme-stack" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2023 Seorim Lee
+    </section>
+    
+    <section class="powerby">
+        <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a>로 만듦 <br />
+        <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>의 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.21.0">Stack</a></b> 테마 사용 중
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Tree on 서림록</title>
+        <link>https://srlee056.github.io/tags/tree/</link>
+        <description>Recent content in Tree on 서림록</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>ko</language>
+        <copyright>Seorim Lee</copyright>
+        <lastBuildDate>Wed, 18 Oct 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://srlee056.github.io/tags/tree/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Day 3</title>
+        <link>https://srlee056.github.io/p/day-3/</link>
+        <pubDate>Wed, 18 Oct 2023 00:00:00 +0000</pubDate>
+        
+        <guid>https://srlee056.github.io/p/day-3/</guid>
+        <description>&lt;h1 id=&#34;span-stylecolor79ac78til---queue-tree--heapspan&#34;&gt;&lt;strong&gt;&lt;span style=&#34;color:#79AC78&#34;&gt;TIL - Queue, Tree &amp;amp; Heap&lt;/span&gt;&lt;/strong&gt;&lt;/h1&gt;
+&lt;h2 id=&#34;span-stylecolorb0d9b1공부-내용span&#34;&gt;📋 &lt;strong&gt;&lt;span style=&#34;color:#B0D9B1&#34;&gt;공부 내용&lt;/span&gt;&lt;/strong&gt;&lt;/h2&gt;
+&lt;h3 id=&#34;span-stylecolord0e7d2queuesspan&#34;&gt;&lt;span style=&#34;color:#D0E7D2&#34;&gt;Queues&lt;/span&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Queue?&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;FIFO (First In First Out)&lt;/li&gt;
+&lt;li&gt;operations
+&lt;ul&gt;
+&lt;li&gt;enqueue&lt;/li&gt;
+&lt;li&gt;dequeue
+&lt;ul&gt;
+&lt;li&gt;선형 배열으로 구현: &lt;code&gt;O(n)&lt;/code&gt; -&amp;gt; 연결 리스트로 구현하는것이 더 좋음&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Circular Queues&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;배열의 한쪽 끝과 다른쪽 끝이 닿아 있는 모습&lt;/li&gt;
+&lt;li&gt;원소의 개수가 정해져있음&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;front / rear 포인터&lt;/code&gt;를 기억하고, dequeue된 원소 저장소는 재활용&lt;/li&gt;
+&lt;li&gt;선형 배열으로 구현하는것이 더 좋음&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Priority Queues&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;원소들 사이의 우선순위를 따름&lt;/li&gt;
+&lt;li&gt;우선순위 구현
+&lt;ul&gt;
+&lt;li&gt;원소를 넣을 때 enqueue vs. 원소를 꺼낼 때 dequeue
+&lt;ul&gt;
+&lt;li&gt;넣을 때(enqueue) 우선순위에 따라 정렬하는것이 조금 더 나은 Time Complexity를 가짐&lt;/li&gt;
+&lt;li&gt;데이터를 관리하고 활용하는 데에도 더 편리함&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;span-stylecolord0e7d2treesspan&#34;&gt;&lt;span style=&#34;color:#D0E7D2&#34;&gt;Trees&lt;/span&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Tree?&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;구성
+&lt;ul&gt;
+&lt;li&gt;root node&lt;/li&gt;
+&lt;li&gt;interner nodes&lt;/li&gt;
+&lt;li&gt;leaf nodes&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;특성
+&lt;ul&gt;
+&lt;li&gt;parent node / child node&lt;/li&gt;
+&lt;li&gt;노드의 수준 (level) : root node로부터 거리&lt;/li&gt;
+&lt;li&gt;노드의 차수 (degree) : 노드의 자식 수&lt;/li&gt;
+&lt;li&gt;트리의 높이(height) 또는 깊이(depth) : 제일 큰 level + 1&lt;/li&gt;
+&lt;li&gt;subtree&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Binary Trees&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;모든 node의 degree &amp;lt;= 2&lt;/li&gt;
+&lt;li&gt;operations
+&lt;ul&gt;
+&lt;li&gt;size()&lt;/li&gt;
+&lt;li&gt;depth()&lt;/li&gt;
+&lt;li&gt;순회 traversal
+&lt;ul&gt;
+&lt;li&gt;Depth First Traversal : 재귀 호출을 통해 구현
+&lt;ul&gt;
+&lt;li&gt;inorder&lt;/li&gt;
+&lt;li&gt;preorder&lt;/li&gt;
+&lt;li&gt;postorder&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Breadth Tirst Traversal : queue 사용!
+&lt;ul&gt;
+&lt;li&gt;level이 낮은 노드를 우선으로 방문&lt;/li&gt;
+&lt;li&gt;같은 level인 경우 부모 노드의 순서를 따름&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;포화 이진 트리 (full binary trees)
+&lt;ul&gt;
+&lt;li&gt;모든 node의 degree == 2&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;완전 이진 트리 (complete binary trees)
+&lt;ul&gt;
+&lt;li&gt;(depth k) &lt;code&gt;level k-2&lt;/code&gt;까지는 full binary tree, &lt;code&gt;level k-1&lt;/code&gt;은 왼쪽부터 node 채워짐&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Binary Search Trees&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;모든 노드에 대해 다음 성질을 만족하는 Binary Tree
+&lt;ul&gt;
+&lt;li&gt;왼쪽 subtree&amp;rsquo;s data &amp;lt; 현재 node&amp;rsquo;s data &amp;lt; 오른쪽 subtree&amp;rsquo;s data&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;장단점
+&lt;ul&gt;
+&lt;li&gt;장점 : 원소의 추가, 삭제가 편함&lt;/li&gt;
+&lt;li&gt;단점 : 큰 공간을 소요함 (연결 리스트로 구현)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;operations
+&lt;ul&gt;
+&lt;li&gt;insert()&lt;/li&gt;
+&lt;li&gt;remove()&lt;/li&gt;
+&lt;li&gt;lookup()&lt;/li&gt;
+&lt;li&gt;inorder()&lt;/li&gt;
+&lt;li&gt;min(), max()&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;span-stylecolord0e7d2heapspan&#34;&gt;&lt;span style=&#34;color:#D0E7D2&#34;&gt;Heap&lt;/span&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Heaps?
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Binary Tree의 한 종류 (binary heap)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Min / Max heap&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;root node가 항상 최소/최대 값을 가진다&lt;/li&gt;
+&lt;li&gt;complete binary tree
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;n&lt;/code&gt; nodes -&amp;gt; depth &lt;code&gt;log(n)+1&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;insert / remove operation의 Time Complexity : &lt;code&gt;O(log(n))&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;subtree 또한 Min / Max heap&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Binary Seacrh Tree vs. Heap?&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;th&gt;BST&lt;/th&gt;
+&lt;th&gt;Heap&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;데이터 정렬&lt;/td&gt;
+&lt;td&gt;크기순서대로 완전 정렬&lt;/td&gt;
+&lt;td&gt;완전 정렬 X&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;데이터 검색&lt;/td&gt;
+&lt;td&gt;O&lt;/td&gt;
+&lt;td&gt;X&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;완전 이진 트리&lt;/td&gt;
+&lt;td&gt;X&lt;/td&gt;
+&lt;td&gt;O&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;연산 시간&lt;/td&gt;
+&lt;td&gt;(최악의 경우) O(n)&lt;/td&gt;
+&lt;td&gt;O(log(n))&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;선형 배열로 구현&lt;/td&gt;
+&lt;td&gt;X&lt;/td&gt;
+&lt;td&gt;O&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;operations&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;insert()&lt;/li&gt;
+&lt;li&gt;remove()&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;span-stylecolorb0d9b1checkspan&#34;&gt;👀 &lt;strong&gt;&lt;span style=&#34;color:#B0D9B1&#34;&gt;CHECK&lt;/span&gt;&lt;/strong&gt;&lt;/h2&gt;
+&lt;h6 id=&#34;어렵거나-새롭게-알게-된-것-등-다시-확인할-것들&#34;&gt;&lt;em&gt;(어렵거나 새롭게 알게 된 것 등 다시 확인할 것들)&lt;/em&gt;&lt;/h6&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;노드의 차수(degree) : # of children&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;binary tree : 모든 노드의 degree가 항상 2이하&lt;/li&gt;
+&lt;li&gt;leaf nodes : degree 0&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;단축 평가&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://pydole.tistory.com/entry/Python-%EB%8B%A8%EC%B6%95%ED%8F%89%EA%B0%80short-circuit-evalution&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;단축평가에 대해 참고한 블로그&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;2개 이상의 논리 조건식이 있을 경우에, &lt;strong&gt;앞 조건이 계산한 값에 의해 결과가 확실해지면 두번째 조건은 확인하지 않음&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;False and (), True or () 인 경우 등이 해당됨&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;span-stylecolorb0d9b1느낀-점span&#34;&gt;❗ &lt;strong&gt;&lt;span style=&#34;color:#B0D9B1&#34;&gt;느낀 점&lt;/span&gt;&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;어제의 교훈이 있어서 그런지, 오늘은 프로그래밍 과정에 실수가 적었다.
+그리고, 자료구조를 구현하는 과정에서 더 나은 방식에 대해 고민하는 상황이 많아졌다.&lt;/p&gt;
+&lt;p&gt;오늘 주로 고민한 부분은&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;코드를 더 직관적으로 적고싶음
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;- 반복되는 같은 코드를 합칠 수 있는가?
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;같은 코드 다른 효율?
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;- 같은 기능을 하지만 살짝 다른 두 코드 중 더 나은것은?
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;정도였다.&lt;/p&gt;
+&lt;p&gt;전자는 내가 평소 프로그래밍 할 때 자주 하긴 하는데, 항상 고민하는 부분이다.
+반복되는 기능을 함수로 빼던가, 적용되는 변수를 리스트로 묶어서 반복하는 등의 방법을 쓰는데, 다른 방법은 뭐가 있을까 고민하고 있다.&lt;/p&gt;
+&lt;p&gt;후자는 Complexity를 구하는 방법에 대한 의문이 아니다. 실제로 이 operation이 어떻게 구현되고 있는지, 왜 그렇게 구현되었는지가 궁금한 것이다. &lt;br&gt;
+실습 문제에서 우선순위 queue를 구현할 때, skeleton code의 dequeue 함수는 마지막 elements를 가져오는 방식으로 되어있었다.(&lt;code&gt;getAt(data.size())&lt;/code&gt;)  &lt;br&gt;
+나는 처음 element를 가져오는 방식으로 생각하고(&lt;code&gt;getAt(1)&lt;/code&gt;) 이에 해당하는 enqueue 함수를 작성했기 때문에 잠깐 막혔다가, 결국은 눈치채고 해결했다.&lt;br&gt;
+그 코드를 보면서 이렇게 구현하는게 더 나은건지 궁금증이 들었고, 같은 기능을 하지만 결함이 적은(?) 코드를 작성하자는 생각이 들었다.&lt;/p&gt;
+&lt;p&gt;오늘은 추가 알고리즘 문제들이 있고 아직 풀지 않았는데, 쉬운 문제들이지만 이 두가지를 생각하면서 풀려고 노력해야겠다.&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>

@@ -1,0 +1,1281 @@
+<!DOCTYPE html>
+<html lang="ko" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='TIL - LinkedList &amp;amp; Stack 📋 공부 내용 연결 리스트 Linked List 추상적 자료구조 Abstract Data Structures 내부 구현에는 신경쓸 필요 없는 구조 data &amp;amp; a set of operations 이 두 가지를 추상적으로 보여줌 Linke List? Node가 선형'>
+<title>Day 2</title>
+
+<link rel='canonical' href='https://srlee056.github.io/p/day-2/'>
+
+<link rel="stylesheet" href="/scss/style.min.abbd69b2908fdfcd5179898beaafd374514a86538d81639ddd2c58c06ae54e40.css"><meta property='og:title' content='Day 2'>
+<meta property='og:description' content='TIL - LinkedList &amp;amp; Stack 📋 공부 내용 연결 리스트 Linked List 추상적 자료구조 Abstract Data Structures 내부 구현에는 신경쓸 필요 없는 구조 data &amp;amp; a set of operations 이 두 가지를 추상적으로 보여줌 Linke List? Node가 선형'>
+<meta property='og:url' content='https://srlee056.github.io/p/day-2/'>
+<meta property='og:site_name' content='서림록'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='TIL' /><meta property='article:tag' content='Algorithms' /><meta property='article:tag' content='Data Structure' /><meta property='article:tag' content='LinkedList' /><meta property='article:tag' content='Stack' /><meta property='article:published_time' content='2023-10-17T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2023-10-17T00:00:00&#43;00:00'/>
+<meta name="twitter:title" content="Day 2">
+<meta name="twitter:description" content="TIL - LinkedList &amp;amp; Stack 📋 공부 내용 연결 리스트 Linked List 추상적 자료구조 Abstract Data Structures 내부 구현에는 신경쓸 필요 없는 구조 data &amp;amp; a set of operations 이 두 가지를 추상적으로 보여줌 Linke List? Node가 선형">
+    <link rel="shortcut icon" href="static/favicon.ico" />
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="메뉴 여닫기">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu8ddc8f6dcd4c226f91e5ab7aaf623fd6_118700_300x0_resize_box_3.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🤩</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">서림록</a></h1>
+            <h2 class="site-description">좋은 개발자로 한걸음 더</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='https://github.com/srlee056'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://twitter.com'
+                        target="_blank"
+                        title="Twitter"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/about/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/links/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>Links</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+                <li id="i18n-switch">  
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                    <select name="language" onchange="window.location.href = this.selectedOptions[0].value">
+                        
+                            <option value="https://srlee056.github.io/" selected>Korean</option>
+                        
+                            <option value="https://srlee056.github.io/en/" >English</option>
+                        
+                    </select>
+                </li>
+            
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>다크 모드</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">목차</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#span-stylecolorb0d9b1공부-내용span">📋 <strong><span style="color:#B0D9B1">공부 내용</span></strong></a>
+      <ol>
+        <li><a href="#span-stylecolord0e7d2연결-리스트-linked-listspan"><span style="color:#D0E7D2">연결 리스트 Linked List</span></a>
+          <ol>
+            <li></li>
+          </ol>
+        </li>
+        <li><a href="#span-stylecolord0e7d2양방향--이중-연결-리스트-double-linked-listspan"><span style="color:#D0E7D2">양방향 / 이중 연결 리스트 Double Linked List</span></a></li>
+        <li><a href="#span-stylecolord0e7d2스택-stackspan"><span style="color:#D0E7D2">스택 Stack</span></a></li>
+      </ol>
+    </li>
+    <li><a href="#span-stylecolorb0d9b1checkspan">👀 <strong><span style="color:#B0D9B1">CHECK</span></strong></a>
+      <ol>
+        <li>
+          <ol>
+            <li></li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+    <li><a href="#span-stylecolorb0d9b1느낀-점span">‼️ <strong><span style="color:#B0D9B1">느낀 점</span></strong></a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/devcourse/" >
+                DevCourse
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/day-2/">Day 2</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">2023 Oct 17</time>
+            </div>
+        
+
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <h1 id="span-stylecolor79ac78til---linkedlist--stackspan"><strong><span style="color:#79AC78">TIL - LinkedList &amp; Stack</span></strong></h1>
+<h2 id="span-stylecolorb0d9b1공부-내용span">📋 <strong><span style="color:#B0D9B1">공부 내용</span></strong></h2>
+<h3 id="span-stylecolord0e7d2연결-리스트-linked-listspan"><span style="color:#D0E7D2">연결 리스트 Linked List</span></h3>
+<ul>
+<li>
+<p><strong>추상적 자료구조 Abstract Data Structures</strong></p>
+<ul>
+<li>내부 구현에는 신경쓸 필요 없는 구조</li>
+<li>data &amp; a set of operations</li>
+<li>이 두 가지를 <strong>추상적으로 보여줌</strong></li>
+</ul>
+</li>
+<li>
+<p><strong>Linke List?</strong></p>
+<ul>
+<li>Node가 선형적으로 연결된 구조</li>
+</ul>
+</li>
+<li>
+<p><strong>Node &amp; LinkedList 구현</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"> <span class="k">class</span> <span class="nc">Node</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl"> 	<span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl"> 		<span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">item</span>
+</span></span><span class="line"><span class="cl"> 		<span class="bp">self</span><span class="o">.</span><span class="n">next</span> <span class="o">=</span> <span class="kc">None</span> <span class="c1"># 다음 노드를 가리킴</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"> <span class="k">class</span> <span class="nc">LinkedList</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl"> 	<span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl"> 		<span class="bp">self</span><span class="o">.</span><span class="n">nodeCount</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1"># 노드의 총 갯수</span>
+</span></span><span class="line"><span class="cl"> 		<span class="bp">self</span><span class="o">.</span><span class="n">head</span> <span class="o">=</span> <span class="kc">None</span> <span class="c1"># 첫번째 노드</span>
+</span></span><span class="line"><span class="cl"> 		<span class="bp">self</span><span class="o">.</span><span class="n">tail</span> <span class="o">=</span> <span class="kc">None</span> <span class="c1"># 마지막 노드</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p><strong>Linked List 연산 (operations)</strong></p>
+<p>linked list의 index는 1부터 시작 / 0은 다른 용도로 사용(Dummy node)</p>
+<h6 id="실습으로-구현한-코드만-첨부했음">(실습으로 구현한 코드만 첨부했음)</h6>
+<ul>
+<li>
+<p>kth element 참조</p>
+</li>
+<li>
+<p>리스트 순회</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"> <span class="k">def</span> <span class="nf">traverse</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">         <span class="n">curr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">head</span>
+</span></span><span class="line"><span class="cl">         <span class="n">returnList</span> <span class="o">=</span> <span class="p">[]</span>
+</span></span><span class="line"><span class="cl">         <span class="k">while</span> <span class="n">curr</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span> 
+</span></span><span class="line"><span class="cl">             <span class="n">returnList</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">curr</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">             <span class="n">curr</span> <span class="o">=</span> <span class="n">curr</span><span class="o">.</span><span class="n">next</span>
+</span></span><span class="line"><span class="cl">         <span class="k">return</span> <span class="n">returnList</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>길이 얻기</p>
+</li>
+<li>
+<p>원소 삽입</p>
+<ul>
+<li>Time complexity
+<ul>
+<li>맨 앞에 삽입 : O(1)</li>
+<li>중간에 삽입 : O(n)</li>
+<li>맨 끝에 삽입 : (Tail pointer가 있기 때문에) O(1)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>원소 삭제</p>
+<ul>
+<li>Time complexity
+<ul>
+<li>맨 앞에 삽입 : O(1)</li>
+<li>중간에 삽입 : O(n)</li>
+<li>맨 끝에 삽입 : O(n)
+→ 이 상황을 피하기 위해 이중 연결 리스트를 사용</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl">   <span class="c1"># 삭제한 node 데이터를 반환</span>
+</span></span><span class="line"><span class="cl">   <span class="k">def</span> <span class="nf">popAt</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pos</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">   	<span class="k">if</span> <span class="n">pos</span> <span class="o">&lt;</span> <span class="mi">1</span> <span class="ow">or</span> <span class="n">pos</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">nodeCount</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">   	  <span class="k">raise</span> <span class="ne">IndexError</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">   	<span class="k">if</span> <span class="n">pos</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">   	  <span class="n">prev</span> <span class="o">=</span> <span class="kc">None</span>
+</span></span><span class="line"><span class="cl">   	  <span class="n">curr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">head</span>
+</span></span><span class="line"><span class="cl">   	  <span class="bp">self</span><span class="o">.</span><span class="n">head</span> <span class="o">=</span> <span class="n">curr</span><span class="o">.</span><span class="n">next</span>
+</span></span><span class="line"><span class="cl">   	<span class="k">else</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">       <span class="n">prev</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">getAt</span><span class="p">(</span><span class="n">pos</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">       <span class="n">curr</span> <span class="o">=</span> <span class="n">prev</span><span class="o">.</span><span class="n">next</span>
+</span></span><span class="line"><span class="cl">       <span class="n">prev</span><span class="o">.</span><span class="n">next</span> <span class="o">=</span> <span class="n">curr</span><span class="o">.</span><span class="n">next</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">   	<span class="k">if</span> <span class="n">pos</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">nodeCount</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">       <span class="bp">self</span><span class="o">.</span><span class="n">tail</span> <span class="o">=</span> <span class="n">prev</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">   	<span class="bp">self</span><span class="o">.</span><span class="n">nodeCount</span> <span class="o">-=</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl">   	<span class="k">return</span> <span class="n">curr</span><span class="o">.</span><span class="n">data</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>두 리스트 합치기 concat</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>배열 Array vs 연결 리스트 Linked List</strong></p>
+<div class="table-wrapper"><table>
+<thead>
+<tr>
+<th></th>
+<th>배열</th>
+<th>연결 리스트</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>저장 공간</td>
+<td>연속된 위치</td>
+<td>임의의 위치</td>
+</tr>
+<tr>
+<td>특정 원소 참조</td>
+<td>매우 간편</td>
+<td>선형탐색과 유사</td>
+</tr>
+<tr>
+<td></td>
+<td>O(1)</td>
+<td>O(n)</td>
+</tr>
+</tbody>
+</table></div>
+<p><em>time complexity에 불리함이 있는데도 사용하는 이유는?</em></p>
+</li>
+<li>
+<p><strong>연결 리스트 Linked List의 힘</strong></p>
+<ul>
+<li>유연한 삽입 및 삭제</li>
+<li>Head, Tail에 dummy node를 추가하여 간편하고 직관적인 설계 가능</li>
+<li>추가 구현 operations
+<ul>
+<li>
+<p>insertAfter(prev, node)</p>
+</li>
+<li>
+<p>popAfter(prev) &amp; popAt(pos)</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">popAfter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">prev</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">	<span class="n">curr</span> <span class="o">=</span> <span class="n">prev</span><span class="o">.</span><span class="n">next</span>
+</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="n">curr</span> <span class="ow">is</span> <span class="kc">None</span> <span class="p">:</span> 
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="kc">None</span>
+</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="n">curr</span><span class="o">.</span><span class="n">next</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="bp">self</span><span class="o">.</span><span class="n">tail</span> <span class="o">=</span> <span class="n">prev</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="n">prev</span><span class="o">.</span><span class="n">next</span> <span class="o">=</span> <span class="n">curr</span><span class="o">.</span><span class="n">next</span>
+</span></span><span class="line"><span class="cl">	<span class="bp">self</span><span class="o">.</span><span class="n">nodeCount</span> <span class="o">-=</span> <span class="mi">1</span> <span class="c1"># nodeCount 꼭 체크하기</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="n">curr</span><span class="o">.</span><span class="n">data</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">popAt</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pos</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="n">pos</span> <span class="o">&lt;</span> <span class="mi">1</span> <span class="ow">or</span> <span class="n">pos</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">nodeCount</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="k">raise</span> <span class="ne">IndexError</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="n">prev</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">getAt</span><span class="p">(</span><span class="n">pos</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">popAfter</span><span class="p">(</span><span class="n">prev</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="span-stylecolord0e7d2양방향--이중-연결-리스트-double-linked-listspan"><span style="color:#D0E7D2">양방향 / 이중 연결 리스트 Double Linked List</span></h3>
+<ul>
+<li><strong>양쪽</strong>으로 연결된 link
+- next node, previous node로 두 방향 모두 진행 가능
+- 메모리 사용량이 늘어나지만, 앞에서뿐만 아니라 뒤에서도 데이터를 찾아갈 수 있다는게 장점
+<ul>
+<li>getAt() 함수 또한 pos가 중간값 이상일 때는 뒤에서부터 찾도록 구현할 수 있음</li>
+</ul>
+</li>
+<li><strong>operations</strong>
+<ul>
+<li>
+<p>reverse</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">reverse</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
+</span></span><span class="line"><span class="cl">    <span class="n">curr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">tail</span>
+</span></span><span class="line"><span class="cl">    <span class="k">while</span> <span class="n">curr</span><span class="o">.</span><span class="n">prev</span><span class="o">.</span><span class="n">prev</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">curr</span> <span class="o">=</span> <span class="n">curr</span><span class="o">.</span><span class="n">prev</span>
+</span></span><span class="line"><span class="cl">        <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">curr</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">result</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>insertBefore</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">insertBefore</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">next</span><span class="p">,</span> <span class="n">newNode</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">prev</span> <span class="o">=</span> <span class="nb">next</span><span class="o">.</span><span class="n">prev</span>
+</span></span><span class="line"><span class="cl">    <span class="n">newNode</span><span class="o">.</span><span class="n">next</span> <span class="o">=</span> <span class="nb">next</span>
+</span></span><span class="line"><span class="cl">    <span class="n">newNode</span><span class="o">.</span><span class="n">prev</span> <span class="o">=</span> <span class="n">prev</span>
+</span></span><span class="line"><span class="cl">    <span class="n">prev</span><span class="o">.</span><span class="n">next</span> <span class="o">=</span> <span class="n">newNode</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">next</span><span class="o">.</span><span class="n">prev</span> <span class="o">=</span> <span class="n">newNode</span>
+</span></span><span class="line"><span class="cl">    <span class="bp">self</span><span class="o">.</span><span class="n">nodeCount</span> <span class="o">+=</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl">		<span class="k">return</span> <span class="kc">True</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>popAfter, popBefore, popAt</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">popAfter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">prev</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">curr</span> <span class="o">=</span> <span class="n">prev</span><span class="o">.</span><span class="n">next</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">next</span> <span class="o">=</span> <span class="n">curr</span><span class="o">.</span><span class="n">next</span>
+</span></span><span class="line"><span class="cl">    <span class="n">prev</span><span class="o">.</span><span class="n">next</span> <span class="o">=</span> <span class="nb">next</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">next</span><span class="o">.</span><span class="n">prev</span> <span class="o">=</span> <span class="n">prev</span>
+</span></span><span class="line"><span class="cl">    <span class="bp">self</span><span class="o">.</span><span class="n">nodeCount</span> <span class="o">-=</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">curr</span><span class="o">.</span><span class="n">data</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">popBefore</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">next</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">curr</span> <span class="o">=</span> <span class="nb">next</span><span class="o">.</span><span class="n">prev</span>
+</span></span><span class="line"><span class="cl">    <span class="n">prev</span> <span class="o">=</span> <span class="n">curr</span><span class="o">.</span><span class="n">prev</span>
+</span></span><span class="line"><span class="cl">    <span class="n">prev</span><span class="o">.</span><span class="n">next</span> <span class="o">=</span> <span class="nb">next</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">next</span><span class="o">.</span><span class="n">prev</span> <span class="o">=</span> <span class="n">prev</span>
+</span></span><span class="line"><span class="cl">    <span class="bp">self</span><span class="o">.</span><span class="n">nodeCount</span> <span class="o">-=</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">curr</span><span class="o">.</span><span class="n">data</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">popAt</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pos</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="n">pos</span> <span class="o">&lt;</span> <span class="mi">1</span> <span class="ow">or</span> <span class="n">pos</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">nodeCount</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="k">raise</span> <span class="ne">IndexError</span>
+</span></span><span class="line"><span class="cl">    <span class="n">prev</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">getAt</span><span class="p">(</span><span class="n">pos</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">popAfter</span><span class="p">(</span><span class="n">prev</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1"># next = self.getAt(pos+1) # getAt 함수가 pos == nodeCount+1 일 때 지원을 하지 않아서 사용은 어려움</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># next = self.getAt(pos).next #로 사용 가능</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># return self.popBefore(next)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>concat(self, L)</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">concat</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">L</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">lastNode</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">tail</span><span class="o">.</span><span class="n">prev</span>
+</span></span><span class="line"><span class="cl">    <span class="n">firstNode</span> <span class="o">=</span> <span class="n">L</span><span class="o">.</span><span class="n">head</span><span class="o">.</span><span class="n">next</span>
+</span></span><span class="line"><span class="cl">    <span class="n">lastNode</span><span class="o">.</span><span class="n">next</span> <span class="o">=</span> <span class="n">firstNode</span>
+</span></span><span class="line"><span class="cl">    <span class="n">firstNode</span><span class="o">.</span><span class="n">prev</span> <span class="o">=</span> <span class="n">lastNode</span>
+</span></span><span class="line"><span class="cl">    <span class="bp">self</span><span class="o">.</span><span class="n">tail</span> <span class="o">=</span> <span class="n">L</span><span class="o">.</span><span class="n">tail</span>
+</span></span><span class="line"><span class="cl">    <span class="bp">self</span><span class="o">.</span><span class="n">nodeCount</span> <span class="o">+=</span> <span class="n">L</span><span class="o">.</span><span class="n">nodeCount</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="span-stylecolord0e7d2스택-stackspan"><span style="color:#D0E7D2">스택 Stack</span></h3>
+<ul>
+<li><strong>data element를 보관할 수 있는 선형 구조 / LIFO</strong></li>
+<li><strong>operations</strong>
+<ul>
+<li>size()</li>
+<li>isEmpty()</li>
+<li>push(x)
+<ul>
+<li>꽉 찬 스택에 push(x)로 원소를 더 추가하려고 할 때 <code>stack overflow</code> 발생</li>
+</ul>
+</li>
+<li>pop()
+<ul>
+<li>비어있는 스택에서 pop()으로 없는 원소를 꺼내려 할 때 <code>stack underflow</code> 발생</li>
+</ul>
+</li>
+<li>peek()
+<ul>
+<li>데이터 참조, 제거하지는 않음</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>추상적 자료구조로 구현</strong>
+<ul>
+<li>Array 또는 LinkedList 이용</li>
+<li>만들어져있는 Stack library 를 import 할 수도 있음
+<code>from pythonds.basic.stack import Stack</code></li>
+</ul>
+</li>
+</ul>
+<hr>
+<ul>
+<li>
+<p><strong>스택의 응용 1) 후위 표기법으로 변환</strong></p>
+<ul>
+<li>중위 표기법 (infix notation) : (A+B) * (C+D)
+→ 후위 표기법 (postfix notation) : AB+CD+*</li>
+<li>알고리즘 설계
+<ul>
+<li>
+<p>operator 연산자를 스택에 넣는 방식</p>
+</li>
+<li>
+<p>연산자 우선순위 설정</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">prec</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;*&#39;</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;/&#39;</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;+&#39;</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;-&#39;</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;(&#39;</span><span class="p">:</span><span class="mi">1</span><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>구현 코드</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">solution</span><span class="p">(</span><span class="n">S</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">opStack</span> <span class="o">=</span> <span class="n">ArrayStack</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="n">charList</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># 수식을 리스트 형태로 저장한 후 .join을 통해 문자열로 변환</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">S</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">prec</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>  <span class="c1"># 연산자 + 여는 괄호</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="n">s</span> <span class="o">==</span> <span class="s2">&#34;(&#34;</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">                <span class="n">opStack</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="k">else</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">                <span class="k">while</span> <span class="ow">not</span> <span class="n">opStack</span><span class="o">.</span><span class="n">isEmpty</span><span class="p">():</span>  <span class="c1"># 스택이 비어있는 동안 계속</span>
+</span></span><span class="line"><span class="cl">                    <span class="k">if</span> <span class="n">prec</span><span class="p">[</span><span class="n">opStack</span><span class="o">.</span><span class="n">peek</span><span class="p">()]</span> <span class="o">&gt;=</span> <span class="n">prec</span><span class="p">[</span><span class="n">s</span><span class="p">]:</span>  <span class="c1"># 스택 맨 위의 우선순위가 높거나 같은 경우에만</span>
+</span></span><span class="line"><span class="cl">                        <span class="n">charList</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">opStack</span><span class="o">.</span><span class="n">pop</span><span class="p">())</span>  <span class="c1"># pop()하여 문자열에 출력</span>
+</span></span><span class="line"><span class="cl">                    <span class="k">else</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">                        <span class="k">break</span>
+</span></span><span class="line"><span class="cl">                <span class="n">opStack</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="k">elif</span> <span class="n">s</span> <span class="o">==</span> <span class="s2">&#34;)&#34;</span><span class="p">:</span>  <span class="c1"># 닫는 괄호</span>
+</span></span><span class="line"><span class="cl">            <span class="k">while</span> <span class="n">opStack</span><span class="o">.</span><span class="n">peek</span><span class="p">()</span> <span class="o">!=</span> <span class="s2">&#34;(&#34;</span><span class="p">:</span>  <span class="c1"># 여는 괄호가 나올때까지 모든 연산자를 꺼내 출력</span>
+</span></span><span class="line"><span class="cl">                <span class="n">charList</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">opStack</span><span class="o">.</span><span class="n">pop</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">            <span class="n">opStack</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>  <span class="c1"># pop &#39;(&#39;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="k">else</span><span class="p">:</span>  <span class="c1"># 피연산자</span>
+</span></span><span class="line"><span class="cl">            <span class="n">charList</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">while</span> <span class="ow">not</span> <span class="n">opStack</span><span class="o">.</span><span class="n">isEmpty</span><span class="p">():</span>  <span class="c1"># 스택에 남아있는 연산자들을 모두 출력</span>
+</span></span><span class="line"><span class="cl">        <span class="n">charList</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">opStack</span><span class="o">.</span><span class="n">pop</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">answer</span> <span class="o">=</span> <span class="s2">&#34;&#34;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">charList</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">answer</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>스택의 응용 2) 후위 표기법 계산</strong></p>
+<ul>
+<li>앞에서부터 뒤로 읽어나가면서 먼저 만나는 연산자를 먼저 계산</li>
+<li>알고리즘 설계
+<ul>
+<li>
+<p>operands 피연산자들을 스택에 넣는 방식</p>
+</li>
+<li>
+<p>구현 코드</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">postfixEval</span><span class="p">(</span><span class="n">tokenList</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">valStack</span> <span class="o">=</span> <span class="n">ArrayStack</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">tokenList</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="ow">is</span> <span class="nb">int</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="n">valStack</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">else</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="n">b</span> <span class="o">=</span> <span class="n">valStack</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">            <span class="n">a</span> <span class="o">=</span> <span class="n">valStack</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="n">t</span> <span class="o">==</span> <span class="s1">&#39;*&#39;</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">                <span class="n">valStack</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="n">a</span><span class="o">*</span><span class="n">b</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="k">elif</span> <span class="n">t</span> <span class="o">==</span> <span class="s1">&#39;/&#39;</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">                <span class="n">valStack</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="n">a</span><span class="o">/</span><span class="n">b</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="k">elif</span> <span class="n">t</span> <span class="o">==</span> <span class="s1">&#39;+&#39;</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">                <span class="n">valStack</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="k">elif</span> <span class="n">t</span> <span class="o">==</span> <span class="s1">&#39;-&#39;</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">                <span class="n">valStack</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="n">a</span><span class="o">-</span><span class="n">b</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">valStack</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>	
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="span-stylecolorb0d9b1checkspan">👀 <strong><span style="color:#B0D9B1">CHECK</span></strong></h2>
+<h6 id="어렵거나-새롭게-알게-된-것-등-다시-확인할-것들"><em>(어렵거나 새롭게 알게 된 것 등 다시 확인할 것들)</em></h6>
+<ul>
+<li>
+<p>member field, member method</p>
+<ul>
+<li>용어의 뜻은 알지만 애매해서 다시 정리하기 위해 찾아봄 <br>
+<a class="link" href="https://as-i-am-programing.tistory.com/7"  target="_blank" rel="noopener"
+    >정리에 참고한 사이트</a></li>
+</ul>
+</li>
+<li>
+<p>추상적 자료구조</p>
+<ul>
+<li>abstract data type vs. data structure
+<ul>
+<li>an ADT (Abstract Data Type) is more of a logical description, while a Data Structure is concrete.</li>
+</ul>
+</li>
+<li><a class="link" href="https://velog.io/@hwan2da/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0-%EC%B6%94%EC%83%81%EC%9E%90%EB%A3%8C%ED%98%95"  target="_blank" rel="noopener"
+    >정리에 참고한 사이트 : 추상적 자료형 vs. 자료구조</a></li>
+</ul>
+</li>
+<li>
+<p>dummy node를 추가한 구조의 linked list</p>
+</li>
+<li>
+<p>stack underflow</p>
+</li>
+</ul>
+<h2 id="span-stylecolorb0d9b1느낀-점span">‼️ <strong><span style="color:#B0D9B1">느낀 점</span></strong></h2>
+<p>오늘은 두 가지 교훈(?) 을 얻었다.</p>
+<ol>
+<li>
+<p>한번에 두가지 일을 하지 않기
+강의를 들으면서 TIL을 적으려고 했는데, 외려 더 정신없고 힘들었다. 강의 듣는 중간에 적다 보니, 그냥 받아쓰기가 되는것도 별로였다. 큰 주제 (오늘 같은 경우 LinkedList / Stack)를 다 듣고 정리하는게 나을 듯!</p>
+</li>
+<li>
+<p>사소한 실수 하지 않고 꼼꼼하게 체크하기
+오늘 연습문제를 풀면서</p>
+<blockquote>
+</blockquote>
+<p>node.data 대신 node 객체를 반환함
+linked list의 nodeCount 증감시키는걸 빼먹음</p>
+<p>명시된 조건을 빼먹는 실수를 저질러서 디버깅 한다고 다 합해서 한시간 가까이 소모했다.
+몰라서 못 푸는것 보다 이런 부분에서 꼼꼼하지 못해서 못 푸는게 더 싫다. 심지어 원래는 그렇게 자주 하는 실수도 아니어서 자존심이 더 상했다. ㅠㅠ <br>
+그래도 이런 날이 있어야 앞으로 안 그럴 수 있으니까 계속 담아두지는 말아야지!</p>
+</li>
+</ol>
+<p>내일은 강의와 실습을 꼼꼼하게 진행하고, 내가 이해한 내용을 토대로 TIL을 잘 적어봐야겠다. :&gt;.
+그리고 내일은 github 블로그에 올려봐야지! 🔥 어렵지만 할 만한 가치가 있어보인다 😊</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/til/">TIL</a>
+        
+            <a href="/tags/algorithms/">Algorithms</a>
+        
+            <a href="/tags/data-structure/">Data Structure</a>
+        
+            <a href="/tags/linkedlist/">LinkedList</a>
+        
+            <a href="/tags/stack/">Stack</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">관련 글</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="">
+    <a href="/p/day-5/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Day 5</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/day-4/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Day 4</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/day-3/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Day 3</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/day-1/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Day 1</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/day-8/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Day 8</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "hugo-theme-stack" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2023 Seorim Lee
+    </section>
+    
+    <section class="powerby">
+        <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a>로 만듦 <br />
+        <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>의 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.21.0">Stack</a></b> 테마 사용 중
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

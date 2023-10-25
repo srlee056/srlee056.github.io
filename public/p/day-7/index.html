@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="ko" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='TIL - HTTP 📋 공부 내용 웹 웹 페이지와 HTML 웹 페이지 웹 속의 문서 하나 ex) 네이버 메인 페이지 HTML으로 구성되어있음 웹 사이트 여러 웹 페이지의 모음 ex) 네이버라는 웹 사이트'>
+<title>Day 7</title>
+
+<link rel='canonical' href='https://srlee056.github.io/p/day-7/'>
+
+<link rel="stylesheet" href="/scss/style.min.abbd69b2908fdfcd5179898beaafd374514a86538d81639ddd2c58c06ae54e40.css"><meta property='og:title' content='Day 7'>
+<meta property='og:description' content='TIL - HTTP 📋 공부 내용 웹 웹 페이지와 HTML 웹 페이지 웹 속의 문서 하나 ex) 네이버 메인 페이지 HTML으로 구성되어있음 웹 사이트 여러 웹 페이지의 모음 ex) 네이버라는 웹 사이트'>
+<meta property='og:url' content='https://srlee056.github.io/p/day-7/'>
+<meta property='og:site_name' content='서림록'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='TIL' /><meta property='article:tag' content='HTTP' /><meta property='article:tag' content='requests' /><meta property='article:tag' content='DOM' /><meta property='article:published_time' content='2023-10-24T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2023-10-24T00:00:00&#43;00:00'/>
+<meta name="twitter:title" content="Day 7">
+<meta name="twitter:description" content="TIL - HTTP 📋 공부 내용 웹 웹 페이지와 HTML 웹 페이지 웹 속의 문서 하나 ex) 네이버 메인 페이지 HTML으로 구성되어있음 웹 사이트 여러 웹 페이지의 모음 ex) 네이버라는 웹 사이트">
+    <link rel="shortcut icon" href="static/favicon.ico" />
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="메뉴 여닫기">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu8ddc8f6dcd4c226f91e5ab7aaf623fd6_118700_300x0_resize_box_3.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🤩</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">서림록</a></h1>
+            <h2 class="site-description">좋은 개발자로 한걸음 더</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='https://github.com/srlee056'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://twitter.com'
+                        target="_blank"
+                        title="Twitter"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/about/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/links/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>Links</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+                <li id="i18n-switch">  
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                    <select name="language" onchange="window.location.href = this.selectedOptions[0].value">
+                        
+                            <option value="https://srlee056.github.io/" selected>Korean</option>
+                        
+                            <option value="https://srlee056.github.io/en/" >English</option>
+                        
+                    </select>
+                </li>
+            
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>다크 모드</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">목차</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#span-stylecolorb0d9b1공부-내용span">📋 <span style="color:#B0D9B1">공부 내용</span></a>
+      <ol>
+        <li><a href="#span-stylecolord0e7d2웹span"><span style="color:#D0E7D2">웹</span></a>
+          <ol>
+            <li><a href="#span-stylecolorf9b572웹-페이지와-htmlspan"><span style="color:#F9B572">웹 페이지와 HTML</span></a></li>
+            <li><a href="#span-stylecolorf9b572웹-스크래핑--웹-크롤링span"><span style="color:#F9B572">웹 스크래핑 / 웹 크롤링</span></a></li>
+            <li><a href="#span-stylecolorf9b572올바른-http-requestspan"><span style="color:#F9B572">올바른 HTTP Request</span></a></li>
+          </ol>
+        </li>
+        <li><a href="#span-stylecolord0e7d2httpspan"><span style="color:#D0E7D2">HTTP</span></a>
+          <ol>
+            <li><a href="#span-stylecolorf9b572httpspan"><span style="color:#F9B572">HTTP?</span></a></li>
+            <li><a href="#span-stylecolorf9b572통신하기span"><span style="color:#F9B572">통신하기</span></a></li>
+          </ol>
+        </li>
+        <li><a href="#span-stylecolord0e7d2domspan"><span style="color:#D0E7D2">DOM</span></a>
+          <ol>
+            <li><a href="#span-stylecolorf9b572domspan"><span style="color:#F9B572">DOM?</span></a></li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+    <li><a href="#span-stylecolorb0d9b1checkspan">👀 <span style="color:#B0D9B1">CHECK</span></a></li>
+    <li><a href="#span-stylecolorb0d9b1느낀-점span">❗ <span style="color:#B0D9B1">느낀 점</span></a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/devcourse/" >
+                DevCourse
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/day-7/">Day 7</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">2023 Oct 24</time>
+            </div>
+        
+
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <h1 id="span-stylecolor79ac78til---httpspan"><span style="color:#79AC78">TIL - HTTP</span></h1>
+<h2 id="span-stylecolorb0d9b1공부-내용span">📋 <span style="color:#B0D9B1">공부 내용</span></h2>
+<h3 id="span-stylecolord0e7d2웹span"><span style="color:#D0E7D2">웹</span></h3>
+<h4 id="span-stylecolorf9b572웹-페이지와-htmlspan"><span style="color:#F9B572">웹 페이지와 HTML</span></h4>
+<p>웹 페이지</p>
+<ul>
+<li>웹 속의 <strong>문서 하나</strong></li>
+<li>ex) 네이버 메인 페이지</li>
+<li>HTML으로 구성되어있음</li>
+</ul>
+<p>웹 사이트</p>
+<ul>
+<li>여러 웹 페이지의 모음</li>
+<li>ex) <em>네이버</em>라는 웹 사이트</li>
+</ul>
+<p>웹 브라우저</p>
+<ul>
+<li>HTTP요청을 보낸 후, HTTP응답에 담긴 HTML문서를 사용자가 보기 쉽게 화면으로 그려주는 (렌더링) 역할</li>
+</ul>
+<p><a class="link" href="https://velog.io/@srlee056/%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%97%94%EC%A7%80%EB%8B%88%EC%96%B4%EB%A7%81-%EB%8D%B0%EB%B8%8C%EC%BD%94%EC%8A%A4-6%EC%9D%BC%EC%B0%A8"  target="_blank" rel="noopener"
+    >HTML(개념 정리 글 링크)</a></p>
+<ul>
+<li>이전 강의에서 다룬 내용 참고</li>
+<li>웹 브라우저마다 지원하는 태그와 속성이 달라짐</li>
+</ul>
+<h4 id="span-stylecolorf9b572웹-스크래핑--웹-크롤링span"><span style="color:#F9B572">웹 스크래핑 / 웹 크롤링</span></h4>
+<p>웹 스크래핑</p>
+<ul>
+<li>특정 목적에 따라 웹 페이지에서 원하는 데이터를 &ldquo;추출&rdquo;</li>
+<li>ex) 날씨 정보 가져오기, 주식 데이터 가져오기, &hellip;</li>
+</ul>
+<p>웹 크롤링</p>
+<ul>
+<li>크롤러를 이용해 URL을 타고 이동하며 반복적으로 웹 페이지의 데이터를 가져와 &ldquo;인덱싱&rdquo;(데이터 색인)</li>
+<li>구글, 네이버 등 검색 엔진의 웹 크롤러</li>
+</ul>
+<h4 id="span-stylecolorf9b572올바른-http-requestspan"><span style="color:#F9B572">올바른 HTTP Request</span></h4>
+<p>올바른 HTTP Request를 위해선..</p>
+<ul>
+<li>어떤 목적을 달성하려 하는가?</li>
+<li>서버에 영향을 미치는가?</li>
+</ul>
+<p>로봇 배제 프로토콜(REP)</p>
+<ul>
+<li>웹 크롤링, 스크래핑은 로봇에 의해 실행 가능</li>
+<li>사이트의 모든 정보를 취득하는것이 정당한가? 의문에서 시작</li>
+<li>robots.txt
+<ul>
+<li>각 사이트마다 허용하는 크롤러 정보와 허용범위에 대한 정보를 담고 있음</li>
+<li>User-agent, Disallow, Allow</li>
+</ul>
+</li>
+</ul>
+<h3 id="span-stylecolord0e7d2httpspan"><span style="color:#D0E7D2">HTTP</span></h3>
+<h4 id="span-stylecolorf9b572httpspan"><span style="color:#F9B572">HTTP?</span></h4>
+<blockquote>
+<p>HyterText Transfer Protocol<br>
+웹 상에서 정보를 주고받기 위한 <em>약속</em></p>
+</blockquote>
+<div class="table-wrapper"><table>
+<thead>
+<tr>
+<th></th>
+<th>HTTP Request</th>
+<th>HTTP Response</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>방향</td>
+<td>Client -&gt; Server</td>
+<td>Client &lt;- Server</td>
+</tr>
+<tr>
+<td>역할</td>
+<td>정보 요청</td>
+<td>요청에 대한 내용을 담은 응답</td>
+</tr>
+<tr>
+<td>HEAD</td>
+<td>method, path, &hellip;</td>
+<td>content-type, date, &hellip;</td>
+</tr>
+<tr>
+<td>BODY</td>
+<td></td>
+<td>document</td>
+</tr>
+</tbody>
+</table></div>
+<h4 id="span-stylecolorf9b572통신하기span"><span style="color:#F9B572">통신하기</span></h4>
+<p><code>requests</code></p>
+<ul>
+<li>Python으로 HTTP 통신을 진행할 수 있게 해주는 라이브러리</li>
+</ul>
+<p><code>GET</code></p>
+<ul>
+<li>naver 메인 페이지를 요청하는 코드</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">requests</span>
+</span></span><span class="line"><span class="cl"><span class="n">res</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&#34;https://www.naver.com&#34;</span><span class="p">)</span> <span class="c1"># HTTP Response</span>
+</span></span><span class="line"><span class="cl"><span class="n">res</span><span class="o">.</span><span class="n">headers</span> <span class="c1"># Header 확인</span>
+</span></span><span class="line"><span class="cl"><span class="n">res</span><span class="o">.</span><span class="n">text</span> <span class="c1"># Body(document) text 형태로 확인</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><code>POST</code></p>
+<ul>
+<li><a class="link" href="https://webhook.site"  target="_blank" rel="noopener"
+    >https://webhook.site</a> 를 통해 POST 통신을 진행할 수 있음</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">payload</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;Hello&#34;</span><span class="p">,</span> <span class="s2">&#34;age&#34;</span><span class="p">:</span> <span class="mi">13</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="n">url</span> <span class="o">=</span> <span class="s2">&#34;https://webhook.site/&lt;개인 주소&gt;&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="n">res</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">payload</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">res</span><span class="o">.</span><span class="n">status_code</span> <span class="c1"># 상태 코드 확인</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="span-stylecolord0e7d2domspan"><span style="color:#D0E7D2">DOM</span></h3>
+<h4 id="span-stylecolorf9b572domspan"><span style="color:#F9B572">DOM?</span></h4>
+<blockquote>
+<p>Document Object Model<br>
+HTML을 파싱하여, 브라우저가 이해하도록 만든 Tree형태의 자료구조</p>
+</blockquote>
+<ul>
+<li>
+<p>DOM의 각 노드를 객체로 생각하여, 문서를 편리하게 관리할 수 있음</p>
+</li>
+<li>
+<p>원하는 요소를 동적으로 변경할 수 있음</p>
+</li>
+<li>
+<p>원하는 요소를 쉽게 찾을 수 있음</p>
+</li>
+<li>
+<p>python으로 HTML을 직접 분석하려면 DOM을 생성해주는 브라우저를 거치지 않기 때문에,
+직접 HTML을 분석하는 <code>HTML Parser</code>가 필요</p>
+</li>
+</ul>
+<h2 id="span-stylecolorb0d9b1checkspan">👀 <span style="color:#B0D9B1">CHECK</span></h2>
+<p><em><span style = "font-size:15px">(어렵거나 새롭게 알게 된 것 등 다시 확인할 것들)</span></em></p>
+<ul>
+<li>
+<p>Jupyter lab</p>
+<ul>
+<li>Jupyter notebook이나 Colab은 써 봤는데 Jupyter lab은 처음 접해봄</li>
+<li>Jupyter notebook과 비슷하지만 더 개선된 버전(?)</li>
+</ul>
+</li>
+<li>
+<p>DOM에 대한 설명 및 활용 : 복습 후 다른 예시들을 더 찾아볼 것</p>
+</li>
+</ul>
+<h2 id="span-stylecolorb0d9b1느낀-점span">❗ <span style="color:#B0D9B1">느낀 점</span></h2>
+<p>HTML 스크래핑을 해본적이 있어서 이론이나 실습 모두 빠르게 진행했다. 5시간 분량의 강의인데 3시간 내로 끝난 것 같다. TIL을 잘 적고 싶어서 고민을 좀 했고 그 외의 시간은 평소보다는 널널하게 흘려보냈다.</p>
+<p>TIL을 적을 때 기존에는 강의 받아쓰기처럼 적는 경향이 있었는데, 나중에 다시 읽어보니 이해하고 쓴 것 같은 느낌이 전혀 들지 않았다. 어제 HTML이론에 대한 TIL은 실습 부분 외에도 직접 사용해보고 하면서 적은거라, &lsquo;내가 직접 써보고 이해한 내용&rsquo;임을 알 수 있었다. 그런데 초반에 적은 TIL을 다시 보니까 그냥 받아적은게 티가 나기도 하고 잘 기억이 나지 않았다.</p>
+<p>오늘은 강의를 처음부터 끝까지 들은 후 키워드만 체크해 필기한 다음, TIL을 적으면서 중간중간 다시 듣는 방식을 사용했다. 이 방식으로 더 잘 읽히고 짜임새 있는 구성의 글을 쓰게 되어서 만족스러웠다.  TIL 쓰는 시간은 오래 걸리지만 익숙해지면 줄어들 것 같아서 걱정은 되지 않는다.</p>
+<p>커리큘럼을 보니 내일부터는 BeautifulSoup를 사용해 스크래핑을 시작하는데, 모르는 부분이 많을 것 같아 벌써부터 기대가 된다. :&gt;</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/til/">TIL</a>
+        
+            <a href="/tags/http/">HTTP</a>
+        
+            <a href="/tags/requests/">requests</a>
+        
+            <a href="/tags/dom/">DOM</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">관련 글</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="">
+    <a href="/p/day-8/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Day 8</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/day-6/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Day 6</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/day-5/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Day 5</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/day-4/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Day 4</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/day-3/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Day 3</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "hugo-theme-stack" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2023 Seorim Lee
+    </section>
+    
+    <section class="powerby">
+        <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a>로 만듦 <br />
+        <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>의 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.21.0">Stack</a></b> 테마 사용 중
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

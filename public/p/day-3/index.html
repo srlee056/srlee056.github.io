@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html lang="ko" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='TIL - Queue, Tree &amp;amp; Heap 📋 공부 내용 Queues Queue? FIFO (First In First Out) operations enqueue dequeue 선형 배열으로 구현: O(n) -&amp;gt; 연결 리스트로 구현하는것이 더 좋음 Circular Queues 배열의 한쪽 끝과 다른쪽 끝이 닿아 있는 모습 원소의'>
+<title>Day 3</title>
+
+<link rel='canonical' href='https://srlee056.github.io/p/day-3/'>
+
+<link rel="stylesheet" href="/scss/style.min.abbd69b2908fdfcd5179898beaafd374514a86538d81639ddd2c58c06ae54e40.css"><meta property='og:title' content='Day 3'>
+<meta property='og:description' content='TIL - Queue, Tree &amp;amp; Heap 📋 공부 내용 Queues Queue? FIFO (First In First Out) operations enqueue dequeue 선형 배열으로 구현: O(n) -&amp;gt; 연결 리스트로 구현하는것이 더 좋음 Circular Queues 배열의 한쪽 끝과 다른쪽 끝이 닿아 있는 모습 원소의'>
+<meta property='og:url' content='https://srlee056.github.io/p/day-3/'>
+<meta property='og:site_name' content='서림록'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='TIL' /><meta property='article:tag' content='Algorithms' /><meta property='article:tag' content='Data Structure' /><meta property='article:tag' content='Queue' /><meta property='article:tag' content='Tree' /><meta property='article:tag' content='Heap' /><meta property='article:published_time' content='2023-10-18T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2023-10-18T00:00:00&#43;00:00'/>
+<meta name="twitter:title" content="Day 3">
+<meta name="twitter:description" content="TIL - Queue, Tree &amp;amp; Heap 📋 공부 내용 Queues Queue? FIFO (First In First Out) operations enqueue dequeue 선형 배열으로 구현: O(n) -&amp;gt; 연결 리스트로 구현하는것이 더 좋음 Circular Queues 배열의 한쪽 끝과 다른쪽 끝이 닿아 있는 모습 원소의">
+    <link rel="shortcut icon" href="static/favicon.ico" />
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="메뉴 여닫기">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu8ddc8f6dcd4c226f91e5ab7aaf623fd6_118700_300x0_resize_box_3.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🤩</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">서림록</a></h1>
+            <h2 class="site-description">좋은 개발자로 한걸음 더</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='https://github.com/srlee056'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://twitter.com'
+                        target="_blank"
+                        title="Twitter"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/about/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/links/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>Links</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+                <li id="i18n-switch">  
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                    <select name="language" onchange="window.location.href = this.selectedOptions[0].value">
+                        
+                            <option value="https://srlee056.github.io/" selected>Korean</option>
+                        
+                            <option value="https://srlee056.github.io/en/" >English</option>
+                        
+                    </select>
+                </li>
+            
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>다크 모드</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">목차</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#span-stylecolorb0d9b1공부-내용span">📋 <strong><span style="color:#B0D9B1">공부 내용</span></strong></a>
+      <ol>
+        <li><a href="#span-stylecolord0e7d2queuesspan"><span style="color:#D0E7D2">Queues</span></a></li>
+        <li><a href="#span-stylecolord0e7d2treesspan"><span style="color:#D0E7D2">Trees</span></a></li>
+        <li><a href="#span-stylecolord0e7d2heapspan"><span style="color:#D0E7D2">Heap</span></a></li>
+      </ol>
+    </li>
+    <li><a href="#span-stylecolorb0d9b1checkspan">👀 <strong><span style="color:#B0D9B1">CHECK</span></strong></a>
+      <ol>
+        <li>
+          <ol>
+            <li></li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+    <li><a href="#span-stylecolorb0d9b1느낀-점span">❗ <strong><span style="color:#B0D9B1">느낀 점</span></strong></a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/devcourse/" >
+                DevCourse
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/day-3/">Day 3</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">2023 Oct 18</time>
+            </div>
+        
+
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <h1 id="span-stylecolor79ac78til---queue-tree--heapspan"><strong><span style="color:#79AC78">TIL - Queue, Tree &amp; Heap</span></strong></h1>
+<h2 id="span-stylecolorb0d9b1공부-내용span">📋 <strong><span style="color:#B0D9B1">공부 내용</span></strong></h2>
+<h3 id="span-stylecolord0e7d2queuesspan"><span style="color:#D0E7D2">Queues</span></h3>
+<ul>
+<li>
+<p>Queue?</p>
+<ul>
+<li>FIFO (First In First Out)</li>
+<li>operations
+<ul>
+<li>enqueue</li>
+<li>dequeue
+<ul>
+<li>선형 배열으로 구현: <code>O(n)</code> -&gt; 연결 리스트로 구현하는것이 더 좋음</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Circular Queues</p>
+<ul>
+<li>배열의 한쪽 끝과 다른쪽 끝이 닿아 있는 모습</li>
+<li>원소의 개수가 정해져있음</li>
+<li><code>front / rear 포인터</code>를 기억하고, dequeue된 원소 저장소는 재활용</li>
+<li>선형 배열으로 구현하는것이 더 좋음</li>
+</ul>
+</li>
+<li>
+<p>Priority Queues</p>
+<ul>
+<li>원소들 사이의 우선순위를 따름</li>
+<li>우선순위 구현
+<ul>
+<li>원소를 넣을 때 enqueue vs. 원소를 꺼낼 때 dequeue
+<ul>
+<li>넣을 때(enqueue) 우선순위에 따라 정렬하는것이 조금 더 나은 Time Complexity를 가짐</li>
+<li>데이터를 관리하고 활용하는 데에도 더 편리함</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="span-stylecolord0e7d2treesspan"><span style="color:#D0E7D2">Trees</span></h3>
+<ul>
+<li>
+<p><strong>Tree?</strong></p>
+<ul>
+<li>구성
+<ul>
+<li>root node</li>
+<li>interner nodes</li>
+<li>leaf nodes</li>
+</ul>
+</li>
+<li>특성
+<ul>
+<li>parent node / child node</li>
+<li>노드의 수준 (level) : root node로부터 거리</li>
+<li>노드의 차수 (degree) : 노드의 자식 수</li>
+<li>트리의 높이(height) 또는 깊이(depth) : 제일 큰 level + 1</li>
+<li>subtree</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Binary Trees</strong></p>
+<ul>
+<li>모든 node의 degree &lt;= 2</li>
+<li>operations
+<ul>
+<li>size()</li>
+<li>depth()</li>
+<li>순회 traversal
+<ul>
+<li>Depth First Traversal : 재귀 호출을 통해 구현
+<ul>
+<li>inorder</li>
+<li>preorder</li>
+<li>postorder</li>
+</ul>
+</li>
+<li>Breadth Tirst Traversal : queue 사용!
+<ul>
+<li>level이 낮은 노드를 우선으로 방문</li>
+<li>같은 level인 경우 부모 노드의 순서를 따름</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>포화 이진 트리 (full binary trees)
+<ul>
+<li>모든 node의 degree == 2</li>
+</ul>
+</li>
+<li>완전 이진 트리 (complete binary trees)
+<ul>
+<li>(depth k) <code>level k-2</code>까지는 full binary tree, <code>level k-1</code>은 왼쪽부터 node 채워짐</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Binary Search Trees</strong></p>
+<ul>
+<li>모든 노드에 대해 다음 성질을 만족하는 Binary Tree
+<ul>
+<li>왼쪽 subtree&rsquo;s data &lt; 현재 node&rsquo;s data &lt; 오른쪽 subtree&rsquo;s data</li>
+</ul>
+</li>
+<li>장단점
+<ul>
+<li>장점 : 원소의 추가, 삭제가 편함</li>
+<li>단점 : 큰 공간을 소요함 (연결 리스트로 구현)</li>
+</ul>
+</li>
+<li>operations
+<ul>
+<li>insert()</li>
+<li>remove()</li>
+<li>lookup()</li>
+<li>inorder()</li>
+<li>min(), max()</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="span-stylecolord0e7d2heapspan"><span style="color:#D0E7D2">Heap</span></h3>
+<ul>
+<li>Heaps?
+<ul>
+<li>
+<p>Binary Tree의 한 종류 (binary heap)</p>
+</li>
+<li>
+<p>Min / Max heap</p>
+<ul>
+<li>root node가 항상 최소/최대 값을 가진다</li>
+<li>complete binary tree
+<ul>
+<li><code>n</code> nodes -&gt; depth <code>log(n)+1</code></li>
+<li>insert / remove operation의 Time Complexity : <code>O(log(n))</code></li>
+</ul>
+</li>
+<li>subtree 또한 Min / Max heap</li>
+</ul>
+</li>
+<li>
+<p>Binary Seacrh Tree vs. Heap?</p>
+<div class="table-wrapper"><table>
+<thead>
+<tr>
+<th></th>
+<th>BST</th>
+<th>Heap</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>데이터 정렬</td>
+<td>크기순서대로 완전 정렬</td>
+<td>완전 정렬 X</td>
+</tr>
+<tr>
+<td>데이터 검색</td>
+<td>O</td>
+<td>X</td>
+</tr>
+<tr>
+<td>완전 이진 트리</td>
+<td>X</td>
+<td>O</td>
+</tr>
+<tr>
+<td>연산 시간</td>
+<td>(최악의 경우) O(n)</td>
+<td>O(log(n))</td>
+</tr>
+<tr>
+<td>선형 배열로 구현</td>
+<td>X</td>
+<td>O</td>
+</tr>
+</tbody>
+</table></div>
+</li>
+<li>
+<p>operations</p>
+<ul>
+<li>insert()</li>
+<li>remove()</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="span-stylecolorb0d9b1checkspan">👀 <strong><span style="color:#B0D9B1">CHECK</span></strong></h2>
+<h6 id="어렵거나-새롭게-알게-된-것-등-다시-확인할-것들"><em>(어렵거나 새롭게 알게 된 것 등 다시 확인할 것들)</em></h6>
+<ul>
+<li><strong>노드의 차수(degree) : # of children</strong>
+<ul>
+<li>binary tree : 모든 노드의 degree가 항상 2이하</li>
+<li>leaf nodes : degree 0</li>
+</ul>
+</li>
+<li><strong>단축 평가</strong>
+<ul>
+<li><a class="link" href="https://pydole.tistory.com/entry/Python-%EB%8B%A8%EC%B6%95%ED%8F%89%EA%B0%80short-circuit-evalution"  target="_blank" rel="noopener"
+    >단축평가에 대해 참고한 블로그</a></li>
+<li>2개 이상의 논리 조건식이 있을 경우에, <strong>앞 조건이 계산한 값에 의해 결과가 확실해지면 두번째 조건은 확인하지 않음</strong></li>
+<li>False and (), True or () 인 경우 등이 해당됨</li>
+</ul>
+</li>
+</ul>
+<h2 id="span-stylecolorb0d9b1느낀-점span">❗ <strong><span style="color:#B0D9B1">느낀 점</span></strong></h2>
+<p>어제의 교훈이 있어서 그런지, 오늘은 프로그래밍 과정에 실수가 적었다.
+그리고, 자료구조를 구현하는 과정에서 더 나은 방식에 대해 고민하는 상황이 많아졌다.</p>
+<p>오늘 주로 고민한 부분은</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">코드를 더 직관적으로 적고싶음
+</span></span><span class="line"><span class="cl">- 반복되는 같은 코드를 합칠 수 있는가?
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">같은 코드 다른 효율?
+</span></span><span class="line"><span class="cl">- 같은 기능을 하지만 살짝 다른 두 코드 중 더 나은것은?
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>정도였다.</p>
+<p>전자는 내가 평소 프로그래밍 할 때 자주 하긴 하는데, 항상 고민하는 부분이다.
+반복되는 기능을 함수로 빼던가, 적용되는 변수를 리스트로 묶어서 반복하는 등의 방법을 쓰는데, 다른 방법은 뭐가 있을까 고민하고 있다.</p>
+<p>후자는 Complexity를 구하는 방법에 대한 의문이 아니다. 실제로 이 operation이 어떻게 구현되고 있는지, 왜 그렇게 구현되었는지가 궁금한 것이다. <br>
+실습 문제에서 우선순위 queue를 구현할 때, skeleton code의 dequeue 함수는 마지막 elements를 가져오는 방식으로 되어있었다.(<code>getAt(data.size())</code>)  <br>
+나는 처음 element를 가져오는 방식으로 생각하고(<code>getAt(1)</code>) 이에 해당하는 enqueue 함수를 작성했기 때문에 잠깐 막혔다가, 결국은 눈치채고 해결했다.<br>
+그 코드를 보면서 이렇게 구현하는게 더 나은건지 궁금증이 들었고, 같은 기능을 하지만 결함이 적은(?) 코드를 작성하자는 생각이 들었다.</p>
+<p>오늘은 추가 알고리즘 문제들이 있고 아직 풀지 않았는데, 쉬운 문제들이지만 이 두가지를 생각하면서 풀려고 노력해야겠다.</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/til/">TIL</a>
+        
+            <a href="/tags/algorithms/">Algorithms</a>
+        
+            <a href="/tags/data-structure/">Data Structure</a>
+        
+            <a href="/tags/queue/">Queue</a>
+        
+            <a href="/tags/tree/">Tree</a>
+        
+            <a href="/tags/heap/">Heap</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">관련 글</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="">
+    <a href="/p/day-5/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Day 5</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/day-4/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Day 4</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/day-2/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Day 2</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/day-1/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Day 1</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/day-8/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Day 8</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "hugo-theme-stack" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2023 Seorim Lee
+    </section>
+    
+    <section class="powerby">
+        <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a>로 만듦 <br />
+        <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>의 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.21.0">Stack</a></b> 테마 사용 중
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>
