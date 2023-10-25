@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>서림록</title>
+        <link>https://srlee056.github.io/ko/</link>
+        <description>Recent content on 서림록</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>ko</language>
+        <copyright>Seorim Lee</copyright><atom:link href="https://srlee056.github.io/ko/index.xml" rel="self" type="application/rss+xml" />
+    </channel>
+</rss>
