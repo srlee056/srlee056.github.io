@@ -9,6 +9,10 @@ tags = [
 ]
 +++
 
+# <span style="color:#79AC78">TIL - </span> 
+
+## 📋 <span style="color:#B0D9B1">공부 내용</span>
+
 Hugo ships with several [Built-in Shortcodes](https://gohugo.io/content-management/shortcodes/#use-hugo-s-built-in-shortcodes) for rich content, along with a [Privacy Config](https://gohugo.io/about/hugo-and-gdpr/) and a set of Simple Shortcodes that enable static and no-JS versions of various social media embeds.
 <!--more-->
 ---
