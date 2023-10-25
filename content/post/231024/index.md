@@ -7,15 +7,6 @@ tags = [
 ]
 +++
 
-<style>
-g1 { color: #79AC78 }
-g2 { color: #B0D9B1 }
-g3 { color: #D0E7D2 }
-g4 { color: #618264 }
-o1 { color: #F9B572 }
-w1 { color: #FAF8ED }
-</style>
-
 # <span style="color:#79AC78">TIL - HTTP</span> 
 
 ## 📋 <span style="color:#B0D9B1">공부 내용</span>
