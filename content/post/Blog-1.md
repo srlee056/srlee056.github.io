@@ -1,7 +1,7 @@
 +++
 author = "Seorim"
 title = 'Blog 제작기 #1'
-date = 2023-10-25T17:56:20+09:00
+date = 2023-10-16
 draft = false
 categories = [
     "Blog", 
