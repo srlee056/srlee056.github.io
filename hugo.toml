@@ -1,11 +1,11 @@
 baseURL = "https://srlee056.github.io"
-languageCode = "en-us"
+languageCode = "ko-KR"
 theme = "hugo-theme-stack"
 paginate = 5
 title = "Seorim Log"
 copyright = "Seorim Lee"
 disqusShortname = "hugo-theme-stack"
-DefaultContentLanguage = "en"
+DefaultContentLanguage = "ko"
 hasCJKLanguage = false
 
 
