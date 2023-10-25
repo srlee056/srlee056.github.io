@@ -34,26 +34,26 @@ w1 { color: #FAF8ED }
 
 #### <span style="color:#F9B572">설치 방법</span>
 _(mac, python3 기준)_
-  ```
-  pip install bs4
-  or
-  pip3 install bs4
-  ```
+```
+pip install bs4
+or
+pip3 install bs4
+```
 
 #### <span style="color:#F9B572">HTML 분석 실습</span>
 
 - 필요 라이브러리 불러오기
-```python
-import requests
-from bs4 import BeautifulSoup #import bs library
-```
+    ```python
+    import requests
+    from bs4 import BeautifulSoup #import bs library
+    ```
 
 
 - 사이트를 요청하고 응답받기
-```python
-# requests.get으로 사이트 HTML을 받아 와 저장
-res = requests.get("https://www.example.com")
-```
+    ```python
+    # requests.get으로 사이트 HTML을 받아 와 저장
+    res = requests.get("https://www.example.com")
+    ```
 
 - 응답받은 HTML으로 BeautifulSoup 객체를 만들고 내용을 출력해보기
     ```python
@@ -82,39 +82,41 @@ res = requests.get("https://www.example.com")
     h1.text
     ```
 - 특정 요소를 찾아 그 안의 원하는 정보만 추려내기
-```python
-# 책 리스트를 찾아 그 제목만 추출하는 코드
+    ```python
+    # 책 리스트를 찾아 그 제목만 추출하는 코드
 
-# 직접 사이트를 확인하고 h3태그에 책 이미지, 저자, 제목 등이 있는것을 확인하여 find_all로 가져옴
-h3_results = soup.find_all('h3')
+    # 직접 사이트를 확인하고 h3태그에 책 이미지, 저자, 제목 등이 있는것을 확인하여 find_all로 가져옴
+    h3_results = soup.find_all('h3')
 
-# 객체로 만들게 되면, 내부 태그를 속성처럼 쓸 수 있음
-# h3 > a 태그 내에 title 속성 value를 출력하는 함수
-for book in h3_results:
-	print(book.a['title'])
-```
+    # 객체로 만들게 되면, 내부 태그를 속성처럼 쓸 수 있음
+    # h3 > a 태그 내에 title 속성 value를 출력하는 함수
+    for book in h3_results:
+        print(book.a['title'])
+    ```
+    
 - `id`를 이용해 요소 가져오기
-```python
-# .find(<tag_name>, id = <id_name>)
-soup.find_all("div", id="bo_list")
-soup.find("div", id="bo_cate")
-```
+    ```python
+    # .find(<tag_name>, id = <id_name>)
+    soup.find_all("div", id="bo_list")
+    soup.find("div", id="bo_cate")
+    ```
+
 - `class`를 이용해 요소 가져오기
-```python
-# .find(<tag_name>, <class_name>)
-soup.find_all("li", "questions") 
-soup.find("div", "question")
-```
+    ```python
+    # .find(<tag_name>, <class_name>)
+    soup.find_all("li", "questions") 
+    soup.find("div", "question")
+    ```
 
 - `user-agent` 정보를 넘기면서 요청하기   
     [user agent 확인 사이트](https://www.whatismybrowser.com/detect/what-is-my-user-agent/)
-```python
-user_agent = {"User-Agent": <본인의 user agent 정보>}
-import requests
-from bs4 import BeautifulSoup
-url = "https://qna.programmers.co.kr/"
-res = requests.get(url, user_agent)
-```
+    ```python
+    user_agent = {"User-Agent": <본인의 user agent 정보>}
+    import requests
+    from bs4 import BeautifulSoup
+    url = "https://qna.programmers.co.kr/"
+    res = requests.get(url, user_agent)
+    ```
 
 - 페이지네이션 (Pagination)   
     > 정보를 인덱스로 구분하는 기법
