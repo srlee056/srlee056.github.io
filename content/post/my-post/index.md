@@ -1,8 +1,8 @@
 +++
 author = "srlee"
 title = 'My Post'
-date = 2023-10-25T14:04:55+09:00
-draft = true
+date = "2023-10-25"
+
 tags = [
     "TIL",
 ]
