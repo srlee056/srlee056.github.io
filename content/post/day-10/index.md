@@ -7,7 +7,7 @@ categories = [
     "DevCourse",
 ]
 tags = [
-    "TIL",
+    "TIL", "데이터 시각화", "Seaborn", "WordCloud" 
 ]
 +++
 
