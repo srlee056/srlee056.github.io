@@ -132,7 +132,7 @@ plt.show()
 
 ![temperature-data](day-10-7.png)
 
-#### 데이터 시각화2 - 기상청 날씨 정보 표현하기
+#### 데이터 시각화3 - 제목에 사용되는 단어의 빈도
 ```python
 import requests
 from bs4 import BeautifulSoup
@@ -177,8 +177,8 @@ plt.show()
 ```
 ![frequency](day-10-8.png)
 
-#### 데이터 시각화 3 - 스크래핑한 내용으로 단어구름 만들기
-- 데이터 시각화 2와 같은 조건에서 스크래핑한 내용으로 단어구름을 만든다.
+#### 데이터 시각화 4 - 스크래핑한 내용으로 단어구름 만들기
+- 데이터 시각화 3와 같은 조건에서 스크래핑한 내용으로 단어구름을 만든다.
 ```python
 # 스크래핑에 사용되는 라이브러리
 import requests
