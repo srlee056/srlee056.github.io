@@ -435,7 +435,7 @@ now = timezone.now()
 # datetime.datetime(2023, 10, 28, 6, 25, 23, tzinfo=datetime.timezone.utc)
 ```
 
-## 👀 CHECK
+## 👀 <g2>CHECK</g2>
 
 _<span style = "font-size:15px">(어렵거나 새롭게 알게 된 것 등 다시 확인할 것들)</span>_
 
@@ -479,7 +479,7 @@ _<span style = "font-size:15px">(어렵거나 새롭게 알게 된 것 등 다�
   - MTV(Model-Template-View) : MVC에 대응되는 Django의 디자인 패턴
   - [참고 블로그](https://tibetsandfox.tistory.com/16)
 
-## ❗ 느낀 점
+## ❗ <g2>느낀 점</g2>
 
 오늘은 Django 프레임워크의 소개 및 기본 기능과 구조에 대해 배웠다. 간단한 개념 및 소개였기 때문에 어렵다기 보다는 정리하고 기억해야 할 내용이 많아 공부하고 정리하는 데 오랜 시간이 들었다.
 
