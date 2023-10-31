@@ -31,19 +31,19 @@ w1 { color: #FAF8ED }
 > 서로 다른 환경에서 개발되는 여러 프로젝트를 진행할 때, 환경을 체크하고 변경하는 번거로움 및 프로젝트간의 충돌이 발생한다.  
 > 이와 같은 문제점을 방지하고 프로젝트들을 각 목적에 맞게 효율적으로 관리하기 위해, 프로젝트마다 가상환경을 만들어 사용하는것을 권장한다.
 
-- 가상환경 프로젝트 생성
+-   가상환경 프로젝트 생성
 
 ```shell
 $ python -m venv {project-name}
 ```
 
-- 활성화
+-   활성화
 
 ```shell
 $ source project-name/bin/activate
 ```
 
-- 비활성화
+-   비활성화
 
 ```shell
 $ deactivate
@@ -74,13 +74,13 @@ _(python으로 입력하는 경우 실행이 되지 않을 때가 많아 python3
 
 #### App & Url
 
-- 새로운 앱 `polls`와 `index`, `some_url` 페이지를 생성하고 url 연결
+-   새로운 앱 `polls`와 `index`, `some_url` 페이지를 생성하고 url 연결
 
 ```shell
 $ python3 manage.py startapp polls
 ```
 
-- `polls/views.py`
+-   `polls/views.py`
 
 ```python
 from django.http import HttpResponse
@@ -92,7 +92,7 @@ def some_url(request):
     return HttpResponse("Some ulr을 구현해 봤습니다.")
 ```
 
-- `mysite/urls.py`
+-   `mysite/urls.py`
 
 ```python
 from django.contrib import admin
@@ -104,7 +104,7 @@ urlpatterns = [
 ]
 ```
 
-- `polls/urls.py`
+-   `polls/urls.py`
 
 ```python
 from django.urls import path
@@ -121,28 +121,28 @@ urlpatterns = [
 > 관계형 데이터베이스
 > 데이터를 `행`과 `열`로 이루어진 `테이블`의 형태로 구성하고, `테이블 간의 관계`를 정의하는 데이터베이스
 
-- 테이블 table
-  > 행과 열로 구성되어 있는 `데이터의 집합`
-- 열 column
+-   테이블 table
+    > 행과 열로 구성되어 있는 `데이터의 집합`
+-   열 column
 
-  > 테이블의 `필드(field)`
+    > 테이블의 `필드(field)`
 
-  - primary key
-    : 테이블의 각 행(row)을 고유하게 식별할 수 있는 열(column)
-  - forien key
-    : 다른 테이블의 primary key를 참조하는 열(column)으로, 두 테이블 간의 관계를 설정할 수 있음
+    -   primary key
+        : 테이블의 각 행(row)을 고유하게 식별할 수 있는 열(column)
+    -   forien key
+        : 다른 테이블의 primary key를 참조하는 열(column)으로, 두 테이블 간의 관계를 설정할 수 있음
 
-- 행 row
-  > 테이블에 저장된 `데이터 레코드(Record)`
+-   행 row
+    > 테이블에 저장된 `데이터 레코드(Record)`
 
 #### Model
 
 > Django에서 RDB와 연동을 담당하는 클래스로, 각 모델은 데이터베이스의 테이블(Table)에 해당하며 필드(Field)를 가지고 있다.
 
-- 모델 필드 (model field)
-  - 다양한 타입의 필드와 옵션이 존재한다. 자세한 설명은 아래 링크를 참고.
-  - [Django Model Fields](https://docs.djangoproject.com/en/4.2/ref/models/fields/)
-- `mysite/settings.py`
+-   모델 필드 (model field)
+    -   다양한 타입의 필드와 옵션이 존재한다. 자세한 설명은 아래 링크를 참고.
+    -   [Django Model Fields](https://docs.djangoproject.com/en/4.2/ref/models/fields/)
+-   `mysite/settings.py`
 
 ```python
 ...
@@ -160,7 +160,7 @@ INSTALLED_APPS = [
 ...
 ```
 
-- `polls/models.py`
+-   `polls/models.py`
 
 ```python
 from django.db import models
@@ -179,25 +179,25 @@ class Choice(models.Model):
     votes = models.IntegerField(default=0)
 ```
 
-- migration 파일 생성
+-   migration 파일 생성
 
 ```shell
 $ python3 manage.py makemigrations polls
 ```
 
-- migration으로 실행될 SQL 문장 살펴보기
+-   migration으로 실행될 SQL 문장 살펴보기
 
 ```shell
 $ python3 manage.py sqlmigrate polls 0001
 ```
 
-- migration 실행하기
+-   migration 실행하기
 
 ```shell
 $ python3 manage.py migrate
 ```
 
-- migration 롤백
+-   migration 롤백
 
 ```shell
 #0001 버전으로 롤백
@@ -209,13 +209,13 @@ $ python3 manage.py migrate polls 0001
 > 관리자 계정을 생성하고 웹 브라우저를 통해 사이트에 접속하여  
 > User, App 그리고 Model 등을 생성, 수정 및 삭제할 수 있다.
 
-- Admin 생성
+-   Admin 생성
 
 ```shell
 $ python manage.py createsuperuser
 ```
 
-- `polls/admin.py`
+-   `polls/admin.py`
 
 ```python
 from django.contrib import admin
@@ -226,7 +226,7 @@ admin.site.register(Question)
 admin.site.register(Choice)
 ```
 
-- `polls/models.py`
+-   `polls/models.py`
 
 ```python
 from django.db import models
@@ -247,7 +247,7 @@ class Choice(models.Model):
 
 #### Model Method
 
-- `polls/modes.py`
+-   `polls/modes.py`
 
 ```python
 from django.utils import timezone
@@ -275,7 +275,7 @@ class Question(models.Model):
 
 (_Django Shell에서 진행_)
 
-- Django Shell 실행
+-   Django Shell 실행
 
 ```shell
 $ python manage.py shell
@@ -346,7 +346,7 @@ $ python manage.py shell
 
 #### Filter model objects
 
-- QuerySet method `get()`
+-   QuerySet method `get()`
 
 ```python
 # 조건에 맞는 오브젝트 필터링
@@ -357,7 +357,7 @@ $ python manage.py shell
 # get() returned more than one Question
 ```
 
-- QuerySet method `filter() & exclude()`
+-   QuerySet method `filter() & exclude()`
 
 ```python
 # 여러 오브젝트를 반환하는 필터링 가능
@@ -372,7 +372,7 @@ $ python manage.py shell
 >>> Choice.objects.exclude(question__question_text__startswith='휴가')
 ```
 
-- SQL query
+-   SQL query
 
 ```python
 # example 1
@@ -386,7 +386,7 @@ SELECT "polls_question"."id", "polls_question"."question_text", "polls_question"
 SELECT "polls_choice"."id", "polls_choice"."question_id", "polls_choice"."choice_text", "polls_choice"."votes" FROM "polls_choice" WHERE "polls_choice"."question_id" = 1
 ```
 
-- Field lookups
+-   Field lookups
 
 QuerySet methods `filter()`, `exclude()` & `get()` 에서 `keyword arguments`로 지정됨
 
@@ -407,11 +407,11 @@ SELECT "polls_question"."id", "polls_question"."question_text", "polls_question"
 
 #### 날짜와 시간 date & time information
 
-- datetime
-  - date : 날짜를 다루기 위한 클래스(Year, Month, Day)
-  - time : 시간을 다루기 위한 클래스(Hour, Minute, Second, Microsecond)
-  - datetime : 날짜와 시간을 다루기 위한 클래스 (date 클래스와 time 클래스의 속성을 모두 가짐)
-  - timedelta : 시간 간격을 다루기 위한 클래스
+-   datetime
+    -   date : 날짜를 다루기 위한 클래스(Year, Month, Day)
+    -   time : 시간을 다루기 위한 클래스(Hour, Minute, Second, Microsecond)
+    -   datetime : 날짜와 시간을 다루기 위한 클래스 (date 클래스와 time 클래스의 속성을 모두 가짐)
+    -   timedelta : 시간 간격을 다루기 위한 클래스
 
 ```python
 from datetime import datetime, timedelta
@@ -425,8 +425,8 @@ week_after = now + timedelta(days=7) # weeks=1
 year_after = now + timedelta(days=365)
 ```
 
-- timezone
-  - UTC 정보를 포함하며, 기본값은 `UTC+0`
+-   timezone
+    -   UTC 정보를 포함하며, 기본값은 `UTC+0`
 
 ```python
 from django.utils import timezone
@@ -439,45 +439,46 @@ now = timezone.now()
 
 _<span style = "font-size:15px">(어렵거나 새롭게 알게 된 것 등 다시 확인할 것들)</span>_
 
-- vscode 세팅
+-   vscode 세팅
 
-  - [vscode 파이썬 가상환경 세팅 참고 블로그](https://blog.devwon.site/python/2021/08/01/Vscode-venv-python-interpreter/)
-  - vscode setting 에서 가상환경(venv) 루트 지정 가능
-  - `f1` -> interpreter -> 가상환경의 interpreter 지정하여 django 개발 환경으로 설정
+    -   [vscode 파이썬 가상환경 세팅 참고 블로그](https://blog.devwon.site/python/2021/08/01/Vscode-venv-python-interpreter/)
+    -   vscode setting 에서 가상환경(venv) 루트 지정 가능
+    -   `f1` -> interpreter -> 가상환경의 interpreter 지정하여 django 개발 환경으로 설정
 
-- 문자열 보간 String Interpolation
+-   문자열 보간 String Interpolation
 
-  - `%`, `.format`, `f`
+    -   `%`, `.format`, `f`
 
-  ```python
-  def __str__(self):
-      return f"제목: {self.question_text}, 날짜: {self.pub_date}"
-  ```
-
-  - [참고 블로그](https://velog.io/@cmin95/Python-string-interpolation)
-
-- 에러노트
-
-  1. 사용중인 Port
-
-  ```
-  Error: That port is already in use.
-  ```
-
-  - Ctrl + z 로 종료해서 서버가 제대로 종료되지 않아 생기는 에러 (Ctrl + c 로 종료해야 함)
-  - 해당 포트에서 돌아가고 있는 서버 확인
-    ```
-    lsof -i:{port number}
-    ```
-  - 해당 프로세스 kill
-    ```
-    kill -9 {port number}
+    ```python
+    def __str__(self):
+        return f"제목: {self.question_text}, 날짜: {self.pub_date}"
     ```
 
-- MVC in Django : MTV
-  - MVC(Model-View-Controller) : 웹 개발 디자인 패턴 중 하나
-  - MTV(Model-Template-View) : MVC에 대응되는 Django의 디자인 패턴
-  - [참고 블로그](https://tibetsandfox.tistory.com/16)
+    -   [참고 블로그](https://velog.io/@cmin95/Python-string-interpolation)
+
+-   에러노트
+
+    1. 사용중인 Port
+
+    ```
+    Error: That port is already in use.
+    ```
+
+    -   Ctrl + z 로 종료해서 서버가 제대로 종료되지 않아 생기는 에러 (Ctrl + c 로 종료해야 함)
+    -   해당 포트에서 돌아가고 있는 서버 확인
+        ```
+        lsof -i:{port number}
+        ```
+    -   해당 프로세스 kill
+        ```
+        kill -9 {port number}
+        ```
+
+-   MVC in Django : MTV
+    -   MVC(Model-View-Controller) : 웹 개발 디자인 패턴 중 하나
+    -   MTV(Model-Template-View) : MVC에 대응되는 Django의 디자인 패턴
+    -   [참고 블로그1](https://tibetsandfox.tistory.com/16)
+    -   [참고 블로그2](https://velog.io/@hidaehyunlee/Django-MTV-%ED%8C%A8%ED%84%B4)
 
 ## ❗ <g2>느낀 점</g2>
 
