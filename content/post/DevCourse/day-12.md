@@ -7,17 +7,21 @@ categories = [
     "DevCourse",
 ]
 tags = [
-    "TIL",
+    "TIL", "Django", "Template", "View"
 ]
 +++
 
-# TIL -
+# TIL - Django
 
 ## 📋 공부 내용
 
-###
+### Templates
 
-####
+### Views
+
+### Forms
+
+### Customizing
 
 ## 👀 CHECK
 
