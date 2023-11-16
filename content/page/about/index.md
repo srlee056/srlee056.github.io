@@ -1,34 +1,46 @@
 ---
-title: About
-description: Hugo, the world's fastest framework for building websites
-date: '2019-02-28'
+title: About Me
+description: 이서림 / CSE / Junior developer
+date: "2023-11-16"
 aliases:
-  - about-us
-  - about-hugo
-  - contact
+    - about-us
+    - about-hugo
+    - contact
 license: CC BY-NC-ND
-lastmod: '2020-10-09'
+lastmod: "2023-11-16"
 menu:
-    main: 
+    main:
         weight: -90
         params:
             icon: user
 ---
 
-Written in Go, Hugo is an open source static site generator available under the [Apache Licence 2.0.](https://github.com/gohugoio/hugo/blob/master/LICENSE) Hugo supports TOML, YAML and JSON data file types, Markdown and HTML content files and uses shortcodes to add rich content. Other notable features are taxonomies, multilingual mode, image processing, custom output formats, HTML/CSS/JS minification and support for Sass SCSS workflows.
+### 소개
 
-Hugo makes use of a variety of open source projects including:
+-   Major in in CSE
+-   데이터 엔지니어가 되기 위해 공부중
+-   탐구적이고 호기심이 많아, 떠오르는 아이디어는 많음
+-   하지만 생각을 정리하여 말이나 글로 풀어내기가 어려운 사람
 
-* https://github.com/yuin/goldmark
-* https://github.com/alecthomas/chroma
-* https://github.com/muesli/smartcrop
-* https://github.com/spf13/cobra
-* https://github.com/spf13/viper
+### 활용 언어
 
-Hugo is ideal for blogs, corporate websites, creative portfolios, online magazines, single page applications or even a website with thousands of pages.
+언어 레벨
 
-Hugo is for people who want to hand code their own website without worrying about setting up complicated runtimes, dependencies and databases.
+-   레벨 1 : 간단한 알고리즘 문제 풀이 가능
+-   레벨 2 : 간단한 프로젝트 진행은 가능하나 어려움이 많이 존재함
+-   레벨 3 : 큰 어려움 없이 언어와 라이브러리를 활용할 수 있음
 
-Websites built with Hugo are extremelly fast, secure and can be deployed anywhere including, AWS, GitHub Pages, Heroku, Netlify and any other hosting provider.
+| 언어       | 레벨 | 비고         |
+| ---------- | ---- | ------------ |
+| python     | 3    | 주 사용 언어 |
+| java       | 2    |              |
+| C & C++    | 1    |              |
+| javascript | 1    |              |
 
-Learn more and contribute on [GitHub](https://github.com/gohugoio).
+### 프로젝트
+
+[Seorim's GitHub](https://github.com/srlee056)
+
+| 기간    | 프로젝트 명  | 설명                  | GitHub repo                                                  | Demo |
+| ------- | ------------ | --------------------- | ------------------------------------------------------------ | ---- |
+| 2023.11 | Estate Trend | 주택 거래 동향 시각화 | [repo](https://github.com/EstateTrend-DevCourse/EstateTrend) |
