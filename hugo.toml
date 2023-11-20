@@ -1,7 +1,7 @@
 baseURL = "https://srlee056.github.io"
 languageCode = "ko-KR"
 theme = "hugo-theme-stack"
-paginate = 5
+paginate = 10
 title = "Seorim Log"
 copyright = "Seorim Lee"
 disqusShortname = "hugo-theme-stack"
