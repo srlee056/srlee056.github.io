@@ -7,7 +7,7 @@ copyright = "Seorim Lee"
 disqusShortname = "hugo-theme-stack"
 DefaultContentLanguage = "ko"
 hasCJKLanguage = true
-
+enableEmoji = true
 
 [languages.ko]
 languageName = "Korean"
