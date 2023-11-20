@@ -7,7 +7,7 @@ categories = [
     "DevCourse",
 ]
 tags = [
-    "TIL", "EC2"
+    "TIL", "EC2", "Elastic Beanstalk"
 ]
 +++
 
