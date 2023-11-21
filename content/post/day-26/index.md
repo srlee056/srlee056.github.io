@@ -54,6 +54,12 @@ tags = [
 -   `인스턴스` : 가상 컴퓨팅 환경
 -   `AMI`(Amazon Machine Image) : 서버에 필요한 OS, Software 등이 구성되어있는 템플릿
 -   `Key pair` : 인스턴스 로그인 정보를 보호하기 위해 제공
+    -   ~/.ssh 폴더에 발급받은 키 이동
+        ![](image-1.png)
+    -   키의 권한 변경
+        ![](image-3.png)
+    -   커맨드 입력을 통해 EC2 서버에 연결
+        ![](image-2.png)
 -   Amazon EBS(Elastic Block Store)
 -   Security Group : 인스턴스에 연결할 수 있는 protocol, port, IP 등을 지정
 -   `EIP` (Elastic IP) : 실행될 때 마다 동적으로 변경되는 IP 대신 사용하기 위해 발급받는 고정 IPv4 주소
