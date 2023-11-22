@@ -156,12 +156,14 @@ enabled = true
     [menu.social.params]
         icon = "brand-github"
 
+
+
 [[menu.social]]
-identifier = "twitter"
-name = "Twitter"
-url = "https://twitter.com"
-[menu.social.params]
-icon = "brand-twitter"
+identifier = "contact"
+name = "Contact"
+url = "mailto:imsolem1226@gmail.com"
+    [menu.social.params]
+        icon = "mail"
 
 [related]
 includeNewer = true
