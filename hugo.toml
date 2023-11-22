@@ -141,21 +141,25 @@ enabled = true
 enabled = true
 
 [menu]
-main = []
-
+[[menu.main]]
+    name = "Home"
+    url = "/"
+    weight = 10
+    identifier = "home"
+    [menu.main.params]
+        icon = "home"
+        newTab = true
 [[menu.social]]
-identifier = "github"
-name = "GitHub"
-url = "https://github.com/srlee056"
-
-[menu.social.params]
-icon = "brand-github"
+    identifier = "github"
+    name = "GitHub"
+    url = "https://github.com/srlee056"
+    [menu.social.params]
+        icon = "brand-github"
 
 [[menu.social]]
 identifier = "twitter"
 name = "Twitter"
 url = "https://twitter.com"
-
 [menu.social.params]
 icon = "brand-twitter"
 
