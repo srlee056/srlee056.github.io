@@ -146,15 +146,17 @@ enabled = true
     identifier = "github"
     name = "GitHub"
     url = "https://github.com/srlee056"
+    weight = 1
     [menu.social.params]
         icon = "brand-github"
 
 
 
 [[menu.social]]
-identifier = "contact"
-name = "Contact"
-url = "mailto:imsolem1226@gmail.com"
+    identifier = "contact"
+    name = "Contact"
+    url = "mailto:imsolem1226@gmail.com"
+    weight = 2
     [menu.social.params]
         icon = "mail"
 
