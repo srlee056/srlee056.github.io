@@ -4,7 +4,7 @@ DefaultContentLanguage = "ko"
 hasCJKLanguage = true
 
 theme = "hugo-theme-stack"
-paginate = 10
+paginate = 5
 title = "Seorim Log"
 copyright = "Seorim Lee"
 disqusShortname = "hugo-theme-stack"
