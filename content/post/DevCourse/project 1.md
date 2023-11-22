@@ -1,13 +1,13 @@
 +++
 author = "Seorim"
-title =  "Day 16 Project 1"
+title =  "Day 16-20 Project 1"
 date = 2023-11-06T17:18:28+09:00
 
 categories = [
     "DevCourse", "Project"
 ]
 tags = [
-    "TIL", 
+    "Django"
 ]
 +++
 
