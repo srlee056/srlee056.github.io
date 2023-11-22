@@ -35,7 +35,7 @@ tags = [
     - html 문법 사용 가능
 
         ![](Untitled.png)
-        ![](Untitled%201.png)
+        ![](Untitled1.png)
 
 ## 정적 사이트 생성기
 
@@ -79,8 +79,8 @@ tags = [
         ```bash
         hugo new site testsite
         ```
-        ![](Untitled%202.png)
-        ![](Untitled%203.png)
+        ![](Untitled2.png)
+        ![](Untitled3.png)
 
 3. **테마 연결**
     - 선택한 테마를 다운로드하거나 Git submodule로 연결하여 사이트에 적용합니다.
@@ -124,17 +124,17 @@ tags = [
 5. **서버 구동**
 
 -   `hugo server`
-    ![](Untitled%204.png)
+    ![](Untitled4.png)
 -   `http://localhost:1313/`
-    ![](Untitled%205.png)
+    ![](Untitled5.png)
 
 6. 글 템플릿 설정
 
 -   `archetypes` 폴더 내에 `.md` 템플릿을 추가하여, 새 글을 발행할 때 템플릿으로 활용할 수 있습니다.
 -   ‘til’ 템플릿과 그 내용
 
-    ![](Untitled%206.png)
-    ![](Untitled%207.png)
+    ![](Untitled6.png)
+    ![](Untitled7.png)
 
 -   새 글 발행 : `--kind` 커맨드로 template 적용
 
@@ -142,8 +142,8 @@ tags = [
     hugo new content content/post/newpost.md --kind til
     ```
 
-    ![](Untitled%208.png)
-    ![](Untitled%209.png)
+    ![](Untitled8.png)
+    ![](Untitled9.png)
 
 7. 아바타, 파비콘 등 resource 위치
 
@@ -151,13 +151,13 @@ tags = [
 
     -   `hogo.toml`
 
-    ![](Untitled%2010.png)
+    ![](Untitled10.png)
 
 -   Favicon: `static/img/favicon.ico`
 
     -   `hugo.toml`
 
-    ![](Untitled%2011.png)
+    ![](Untitled11.png)
 
 8. 글 속성 및 구조
 
@@ -201,7 +201,7 @@ tags = [
 
 -   글 본문에 이미지 삽입
 
-    ![](Untitled%2012.png)
+    ![](Untitled12.png)
 
 ## Hosting
 
@@ -220,18 +220,18 @@ tags = [
 
 -   Settings > Pages.
 -   Build and Deployment 소스를 branch → GitHub Actions 변경
-    ![](Untitled%2013.png)
+    ![](Untitled13.png)
     b. **GitHub Actions - workflow 파일 생성**
 
     -   [.github/workflows/hugo.yaml](https://github.com/srlee056/srlee056.github.io/blob/master/.github/workflows/hugo.yaml)
 
     -   Actions > New workflow > `hugo` 검색
         ![](image2.png)
-        ![](Untitled%2014.png)
+        ![](Untitled14.png)
 
     3. 설정한대로 build&deploy 자동 실행
 
-        ![](Untitled%2015.png)
+        ![](Untitled15.png)
 
 # 느낀점 및 회고
 
