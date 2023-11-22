@@ -141,14 +141,7 @@ enabled = true
 enabled = true
 
 [menu]
-[[menu.main]]
-    name = "Home"
-    url = "/"
-    weight = 10
-    identifier = "home"
-    [menu.main.params]
-        icon = "home"
-        newTab = true
+
 [[menu.social]]
     identifier = "github"
     name = "GitHub"
