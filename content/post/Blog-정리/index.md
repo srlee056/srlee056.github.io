@@ -11,6 +11,15 @@ tags = [
 ]
 +++
 
+<style>
+g1 { color: #79AC78 }
+g2 { color: #B0D9B1 }
+g3 { color: #D0E7D2 }
+g4 { color: #618264 }
+o1 { color: #F9B572 }
+w1 { color: #FAF8ED }
+</style>
+
 [블로그](https://srlee056.github.io/)
 
 [GitHub repo](https://github.com/srlee056/srlee056.github.io)
@@ -19,13 +28,13 @@ tags = [
 
 [GitHub Pages 공식 페이지](https://pages.github.com/)
 
-> “GitHub Pages is a static site hosting service that takes HTML, CSS, and JavaScript files straight from a repository on GitHub.”
+> “GitHub Pages is a <o1>static site hosting service</o1> that takes HTML, CSS, and JavaScript files straight <o1>from a repository on GitHub.</o1>”
 
 ## 사용 이유
 
-1. **편리한 사이트 제작 및 관리**
+1. 편리한 사이트 제작 및 관리
     - 도메인 및 호스팅 서비스를 직접 관리할 필요 없음
-2. **버전 관리 이점**
+2. 버전 관리 이점
     - 변경 이력을 기록할 수 있고 삭제 및 변경이 자유로움
 3. 다양한 예쁜 테마와 커스터마이징
     - [https://themes.gohugo.io/](https://themes.gohugo.io/)
