@@ -44,26 +44,27 @@ w1 { color: #FAF8ED }
     - html 문법 사용 가능
 
         ![](Untitled.png)
+
         ![](Untitled1.png)
 
 ## 정적 사이트 생성기
 
 지킬과 휴고는 둘 다 정적 사이트 생성기지만, 다른 언어로 개발되었고 각자의 특징을 가지고 있습니다.
 
-### **지킬 (Jekyll)**
+### 지킬 (Jekyll)
 
 -   **장점**
-    -   GitHub에서 기본적으로 지원되는 정적 사이트 생성기로, Ruby로 개발됐습니다.
+    -   <o1>GitHub에서 기본적으로 지원되는 정적 사이트 생성기</o1>로, Ruby로 개발됐습니다.
     -   GitHub Pages에 호스팅할 때 추가적인 설정 없이 지킬을 사용할 수 있습니다.
     -   플러그인이 다양하게 제공되어 확장성이 높습니다.
 -   **단점**
     -   Ruby 기반이기 때문에, Ruby 개발 환경이 필요하고 초기 설정이 복잡할 수 있습니다.
-    -   빌드 시간이 상대적으로 더 오래 걸릴 수 있습니다.
+    -   <o1>빌드 시간이 상대적으로 더 오래 걸릴</o1> 수 있습니다.
 
-### **휴고 (Hugo)**
+### 휴고 (Hugo)
 
 -   **장점**
-    -   Go 언어로 개발되어 빠른 빌드 속도를 자랑합니다.
+    -   Go 언어로 개발되어 <o1>빠른 빌드 속도</o1>를 자랑합니다.
     -   단순하고 직관적인 구조로 빠르게 사이트를 생성할 수 있습니다.
     -   다양한 테마와 플러그인을 제공하며, 커스터마이징이 자유롭습니다.
 -   **단점**
@@ -143,6 +144,7 @@ w1 { color: #FAF8ED }
 -   ‘til’ 템플릿과 그 내용
 
     ![](Untitled6.png)
+
     ![](Untitled7.png)
 
 -   새 글 발행 : `--kind` 커맨드로 template 적용
@@ -152,6 +154,7 @@ w1 { color: #FAF8ED }
     ```
 
     ![](Untitled8.png)
+
     ![](Untitled9.png)
 
 7. 아바타, 파비콘 등 resource 위치
@@ -227,29 +230,30 @@ w1 { color: #FAF8ED }
 
 2. GitHub Actions 세팅
 
--   Settings > Pages.
+-   Settings > Pages
 -   Build and Deployment 소스를 branch → GitHub Actions 변경
     ![](Untitled13.png)
-    b. **GitHub Actions - workflow 파일 생성**
+-   GitHub Actions - workflow 파일 생성
 
     -   [.github/workflows/hugo.yaml](https://github.com/srlee056/srlee056.github.io/blob/master/.github/workflows/hugo.yaml)
 
     -   Actions > New workflow > `hugo` 검색
         ![](image2.png)
+
         ![](Untitled14.png)
 
-    3. 설정한대로 build&deploy 자동 실행
+-   설정한대로 build&deploy 자동 실행
 
-        ![](Untitled15.png)
+    ![](Untitled15.png)
 
 # 느낀점 및 회고
 
 1. **블로그 제작**
-    1. 걱정한 것 보다 쉬웠고(3일 정도 소요) 블로그의 기능에 만족하며, 세부적으로 꾸미는 과정에 재미를 느끼고 있습니다.
-    2. 버전 관리와 고민과 Markdown 표현에 대한 고민을 한번에 해결하게 되어 후련함을 느꼈습니다.
+    - 걱정한 것 보다 쉬웠고(3일 정도 소요) 블로그의 기능에 만족하며, 세부적으로 꾸미는 과정에 재미를 느끼고 있습니다.
+      2-버전 관리와 고민과 Markdown 표현에 대한 고민을 한번에 해결하게 되어 후련함을 느꼈습니다.
 2. **자동 배포 이해**: GitHub Actions를 활용한 자동 배포를 경험하며 이해할 수 있었고, 프로젝트에 활용하게 되는 계기가 되었습니다.
 3. **Hugo 설정 과정의 고난과 성취**
-    1. Hugo의 config 설정 관련 변경사항이 많았고, 한국어로 된 자료도 많이 부족합니다.
-    2. 블로그 제작 기간 중 대부분의 시간을 config 파일 관련된 부분을 찾고 이해하는데 소요했습니다.
-    3. 그만큼 원하는 결과를 얻게 되어 만족스럽습니다.
+    - Hugo의 config 설정 관련 변경사항이 많았고, 한국어로 된 자료도 많이 부족합니다.
+    - 블로그 제작 기간 중 대부분의 시간을 config 파일 관련된 부분을 찾고 이해하는데 소요했습니다.
+    - 그만큼 원하는 결과를 얻게 되어 만족스럽습니다.
 4. **Git Submodule :** Git Submodule 개념을 처음 접하고 활용하면서, 이에 대한 필요성과 활용 가능성을 체감하게 되었습니다.
