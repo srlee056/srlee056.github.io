@@ -2,7 +2,7 @@
 author = "Seorim"
 title =  "Day 33"
 slug = "day-33"
-date = 2023-11-30T14:30:21+09:00
+date = 2023-11-29
 
 categories = [
     "DevCourse",
