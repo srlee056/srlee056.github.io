@@ -1,7 +1,7 @@
 +++
 author = "Seorim"
-title =  "Day 33 Snowflake"
-url = '/day-33'
+title =  "Day 34 Snowflake"
+slug = 'day-34'
 date = 2023-11-30T12:06:30+09:00
 
 categories = [
@@ -79,7 +79,9 @@ AWS, GCP, Azure 과 같은 글로벌 클라우드 위에서 모두 동작(멀티
 
 -   지역간, 또는 (다른)클라우드간 데이터 전송 시 TB 당 비용 청구
 
-### Snowflake Schema
+### Snowflake 실습
+
+#### Schema
 
 ```
 SNOWFLAKE DB & Schema
@@ -89,11 +91,48 @@ dev
 └─ adhoc
 ```
 
+#### db & schema 생성
+
+#### table 생성
+
+#### s3 data 연결
+
+-   S3 read 권한을 가진 IAM User 생성
+
+#### Role & User 생성
+
+![](image-4.png)
+
+## Data Governance
+
+> Snowflake에서 제공하는 서비스
+
+### Object Tagging
+
+Object : Organization, Account, Schema, View, ...
+각각의 오브젝트에 태그를 걸 수 있는 기능
+Snowflake에서 기본적으로 제공하는 태그들 있음
+
+### Data Classification
+
+Snowflake가 데이터를 자동으로 분류하여 태그를 붙이는 기능
+
+### Tag based Masking Policies
+
+태그를 기반으로 유저와 권한을 지정하는 기능
+
+### Access History
+
+### Object Dependencies
+
 # 👀 CHECK
 
 _<span style = "font-size:15px">(어렵거나 새롭게 알게 된 것 등 다시 확인할 것들)</span>_
 
 -   Snowflake SQL - <https://docs.snowflake.com/en/guides-overview-queries>
+
     > "Snowflake supports standard SQL", including a subset of ANSI SQL:1999 and the SQL:2003 analytic extensions. Snowflake also supports common variations for a number of commands where those variations do not conflict with each other.
+
+-   ROLE은 어디에 속한 개념이지
 
 # ❗ 느낀 점
