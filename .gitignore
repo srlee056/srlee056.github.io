@@ -4,3 +4,4 @@ public/
 .prettierrc
 package-lock.json
 package.json
+.vscode/settings.json
