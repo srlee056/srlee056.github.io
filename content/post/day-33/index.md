@@ -1,6 +1,7 @@
 +++
 author = "Seorim"
 title =  "Day 33 Snowflake"
+url = '/day-33'
 date = 2023-11-30T12:06:30+09:00
 
 categories = [
@@ -11,19 +12,17 @@ tags = [
 ]
 +++
 
-#
+# 📋 공부 내용
 
-## 📋 공부 내용
+## Snowflake란
 
-### Snowflake란
-
-#### 소개
+### 소개
 
 클라우드 기반 데이터웨어하우스?
 ["데이터 클라우드"](https://slownews.kr/81312)
 AWS, GCP, Azure 과 같은 글로벌 클라우드 위에서 모두 동작(멀티클라우드)
 
-#### 특징
+### 특징
 
 -   가변비용모델
 
@@ -53,37 +52,48 @@ AWS, GCP, Azure 과 같은 글로벌 클라우드 위에서 모두 동작(멀티
     > "Share, Don't Move"  
     >  Dataset을 `Storage level`에서 공유하는 방식
 
-### Snowflake 활용 실습
+## Snowflake 활용 실습
 
-#### 계정 생성
+### 계정 생성
 
 ![](image-1.png)
+(무료 시험판 계정 생성)
 
 -   무료계정은 별도의 로그인 링크를 통해 접속해야 함
     ![](image-2.png)
 
-#### Snowflake 비용
+### Snowflake 비용
 
-##### 컴퓨팅 비용 : Credit
+#### 컴퓨팅 비용 : Credit
 
 -   Credit : 쿼리 실행, 데이터 로드 등 작업 수행에 소비되는 리소스 단위
 -   1 Credit = $2~$4
 -   Snowflake Warehouse : 사용시간 당 크레딧 청구
     ![](image-3.png)
 
-##### 스토리지 비용
+#### 스토리지 비용
 
 -   TB 당 비용 청구
 
-##### 네트워크 비용
+#### 네트워크 비용
 
 -   지역간, 또는 (다른)클라우드간 데이터 전송 시 TB 당 비용 청구
 
-## 👀 CHECK
+### Snowflake Schema
+
+```
+SNOWFLAKE DB & Schema
+dev
+├─ raw_data
+├─ analytics
+└─ adhoc
+```
+
+# 👀 CHECK
 
 _<span style = "font-size:15px">(어렵거나 새롭게 알게 된 것 등 다시 확인할 것들)</span>_
 
 -   Snowflake SQL - <https://docs.snowflake.com/en/guides-overview-queries>
     > "Snowflake supports standard SQL", including a subset of ANSI SQL:1999 and the SQL:2003 analytic extensions. Snowflake also supports common variations for a number of commands where those variations do not conflict with each other.
 
-## ❗ 느낀 점
+# ❗ 느낀 점
