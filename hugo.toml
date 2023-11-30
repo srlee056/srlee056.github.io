@@ -176,7 +176,7 @@ unsafe = true
 
 [markup.tableOfContents]
 endLevel = 4
-ordered = false
+ordered = true
 startLevel = 1
 
 [markup.highlight]
