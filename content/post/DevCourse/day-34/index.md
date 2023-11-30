@@ -264,3 +264,8 @@ _<span style = "font-size:15px">(어렵거나 새롭게 알게 된 것 등 다�
 ![](https://docs.snowflake.com/en/_images/securable-objects-hierarchy.png)
 
 # ❗ 느낀 점
+
+강의는 Snowflake에 대해 배우고, 간단하게 활용해보는 내용이었다. 전반적으로 어려운 건 없었다. notebook을 따로 써야하는(Colab or Jupyter) Redshift와는 다르게, 자체적으로 notebook 역할을 하는 worksheet를 제공한다. worksheet를 포함한 UI가 redshift를 사용할 때와 비교하면 더 편하고 깔끔해서 좋았다.
+
+오늘은 게더에서 모각코(모각공)을 해봤다. 화면 공유를 하면서 강의를 들으니까 원래보다 집중은 잘 됐는데, 아쉬운점은 같이 공부하는 느낌이 잘 안들더라.
+어떻게 진행해야할지 고민이 좀 된다. 시간을 정해서 말을 걸거나 잘 안되는 걸 물어보면 어떨까? 모각코 참여하시는 분들하고 친해지고 싶은데 말 걸기가 쉽지 않아서 어떤 주제로 어떻게 얘기하면 좋을지 고민을 좀 해봐야겠다.... ㅠㅜ
