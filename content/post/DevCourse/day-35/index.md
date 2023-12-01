@@ -34,16 +34,16 @@ tags = [
 
 ### 어떤 시각화 툴이 있을까?
 
-|    기업    | Tools                           | 특징                                                     |
-| :--------: | ------------------------------- | -------------------------------------------------------- |
-|            | Excel<br>Google Spreadsheet     | 가장 많이 쓰이는 시각화 툴                               |
-|            | Python                          | EDA에 더 적합                                            |
-|   Google   | `Looker`                        |                                                          |
-| Salesforce | `Tableau`                       |                                                          |
-|     MS     | Power BI                        |                                                          |
-|            | Apache Superset<br>`ReDash`     | 오픈소스                                                 |
-|            | `Mode Analytics`                |                                                          |
-|            | Google Studio<br>AWS Quicksight | 자사 클라우드 기반의 Dashboard<br/> 기능이 비교적 떨어짐 |
+|    기업    | Tools                                              | 특징                                                     |
+| :--------: | -------------------------------------------------- | -------------------------------------------------------- |
+|            | Excel<br>Google Spreadsheet                        | 가장 많이 쓰이는 시각화 툴                               |
+|            | Python                                             | EDA에 더 적합                                            |
+|   Google   | [Looker](#looker)                                  |                                                          |
+| Salesforce | [Tableau](#tableau)                                |                                                          |
+|     MS     | Power BI                                           |                                                          |
+|            | [Apache Superset](#supserset)<br>[ReDash](#redash) | 오픈소스                                                 |
+|            | [Mode Analytics](#mode-anlytics)                   |                                                          |
+|            | Google Studio<br>AWS Quicksight                    | 자사 클라우드 기반의 Dashboard<br/> 기능이 비교적 떨어짐 |
 
 -   Excel, Python 등은 코딩이 가능해야 활용 가능, 기능상의 제약 존재
 
@@ -102,7 +102,7 @@ tags = [
 
 -   Airbnb에서 시작된 오픈소스, Maxim(Airflow 개발자)과 같이 시작
 
-#### 특징
+### 특징
 
 -   다양한 형태의 시각화
 -   쉬운 인터페이스
@@ -112,7 +112,7 @@ tags = [
 -   Druid.io(streaming db)와 연동한 실시간 데이터의 시각화 가능
 -   API, 플러그인 아키텍쳐 제공 -> 기능 쉽게 확장 가능
 
-#### 구조
+### 구조
 
 -   Python으로 만들어짐
 -   Web Interface -> Flask & React JS
@@ -121,7 +121,7 @@ tags = [
 -   Redis를 caching layer로 사용하여 성능 최적화 -> #TODO
 -   SQLAlchemy
 
-#### 용어
+### 용어
 
 -   Database : backend db (Redshift, Druid, ...)
 -   Dataset : table
@@ -203,6 +203,8 @@ JOIN raw_data.session_timestamp t ON t.sessionid = usc.sessionid
 
     ![](image-5.png)
 
+    ![](image-9.png)
+
 ### dataset
 
 ![](image-2.png)
@@ -213,11 +215,17 @@ JOIN raw_data.session_timestamp t ON t.sessionid = usc.sessionid
 
 ### snowflake db 연결
 
+![](image-7.png)  
+![](image-8.png)
+
 ## HW - nps chart
 
 ### dataset
 
 ### chart
+
+![](image-11.png)  
+![](image-10.png)
 
 ### result dashboard
 
