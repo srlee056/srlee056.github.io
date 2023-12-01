@@ -309,3 +309,10 @@ JOIN raw_data.session_timestamp t ON t.sessionid = usc.sessionid
 ![](image-14.png)
 
 # ❗ 느낀 점
+
+superset 대시보드를 써 보게 됐다. 내가 걱정? 우려했던 것 보다는 쉬웠다. snowflake도 그렇고 redshift도 그렇고 다들 UI가 편하고 깔끔해서 좋았다.
+docker를 쓰고 싶었는데 맥북 램이 8gb.. 다른 프로그램을 다 끄고 도커만 사용한다면 가능할 수도 있는데 그건 아니라 결국 preset.io 사이트에서 하게 됐다. preset.io 사이트는 어차피 superset 기반으로 한 사이트고 docker를 통해 구동하는것과 UI가 같아서 문제는 없을 것 같다.
+
+모각콩 참가자분들하고 한시간정도 대화하는 시간을 가졌는데 각자 갖고 있는 정보를 공유할 수 있어서 좋았다. 다들 어디서 그렇게 정보를 많이 얻는지 신기하다는 생각도 했다. ㅋㅋㅋ
+
+주말에는 주중에 배운것들 복습 할 겸 미리 세팅을 하려고 한다. 같은 팀 분들하고 상의를 해 봐야 하겠지만, superset-snowflake-s3(or google cloud) 를 활용하는 게 AWS의 요상한 청구 시스템 때문에 발생하는 부차적인 과금없이 무료 플랜으로만 진행할 수 있어 보인다. 그런데 snowflake credit 초과하면 결국은 과금을 해야겠지..?
