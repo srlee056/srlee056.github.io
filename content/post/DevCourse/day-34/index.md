@@ -8,7 +8,7 @@ categories = [
     "DevCourse",
 ]
 tags = [
-    "TIL", "Snowflake"
+    "TIL", "Snowflake", "DataWarehouse",
 ]
 +++
 
