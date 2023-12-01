@@ -85,7 +85,7 @@ tags = [
     -   SQL, R, Python 등으로 분석 가능
     -   KPI 대시보드 보다는 EDA 툴에 더 가까움
 
-#### 시각화 툴 선택?
+### 시각화 툴 선택?
 
 -   Looker & Tableau
 
@@ -98,9 +98,7 @@ tags = [
         -   Data Democratization, Data Decentralization
         -   데이터 품질의 중요성, [데이터 거버넌스](#데이터-거버넌스)가 필요한 이유
 
-## Superset을 활용한 실습
-
-### Supserset
+## Supserset
 
 -   Airbnb에서 시작된 오픈소스, Maxim(Airflow 개발자)과 같이 시작
 
@@ -129,9 +127,9 @@ tags = [
 -   Dataset : table
 -   Dashboard-Chart : Dashboard는 하나 이상의 chart로 구성됨
 
-### 실습을 통해 만들 Dashboard
+## 실습 Dashboard
 
-#### 구성
+### 구성
 
 -   DB : Redshift
 -   2 charts in 1 Dashboard
@@ -140,7 +138,7 @@ tags = [
     -   Monthly Cohort chart
         -   Dataset : analytics.cohort_summary
 
-#### MAU chart
+### MAU chart
 
 -   session단으로 완전한 정보를 갖게 만든 테이블
 
@@ -151,9 +149,79 @@ FROM raw_data.user_session_channel usc
 LEFT JOIN raw_data.session_timestamp t ON t.sessionid = usc.sessionid
 ```
 
-#### Monthly Cohort chart
+### Monthly Cohort chart
 
-Cohort?
+-   Cohort?
+    -   특정 속성을 바탕으로 나뉜 사용자 그룹
+    -   보통은 사용자의 서비스 등록`월`
+-   Cohort 분석?
+
+    -   Cohort 기반으로 `사용자의 이탈률, 잔존률, 총 소비금액 등을 계산`
+    -   Chohort 기반 사용자 `잔존률(Retention)` : 보통 `월` 기반으로 시각화해서 봄
+
+-   analytics.cohort_summary
+
+```sql
+CREATE TABLE analytics.cohort_summary as SELECT cohort_month, visited_month, cohort.userid FROM (
+SELECT userid, date_trunc('month', MIN(ts)) cohort_month
+FROM raw_data.user_session_channel usc
+JOIN raw_data.session_timestamp t ON t.sessionid = usc.sessionid GROUP BY 1
+) cohort JOIN (
+SELECT DISTINCT userid, date_trunc('month', ts) visited_month FROM raw_data.user_session_channel usc
+JOIN raw_data.session_timestamp t ON t.sessionid = usc.sessionid
+) visit ON cohort.cohort_month <= visit.visited_month and cohort.userid = visit.userid;
+```
+
+### Google Spreadsheet를 활용한 시각화 실습
+
+-   Python gspread module을 활용하면 Python을 활용하여 스프레드시트 조작 가능
+-   MAU chart
+
+    ![](image-1.png)
+
+-   Monthly Cohort chart
+
+    ![](image.png)
+
+## Superset 사용 방법
+
+### preset.io
+
+### docker
+
+## preset.io로 superset 실습
+
+### SQL Lab
+
+-   Redshift로 SQL 쿼리 보낼 수 있음
+
+-   설정
+
+    -   사용하는 database에 DML 권한을 부여해야 함
+
+    ![](image-4.png)
+
+    ![](image-5.png)
+
+### dataset
+
+![](image-2.png)
+
+### chart
+
+![](image-3.png)
+
+### snowflake db 연결
+
+## HW - nps chart
+
+### dataset
+
+### chart
+
+### result dashboard
+
+![](image-6.png)
 
 # 👀 CHECK
 
