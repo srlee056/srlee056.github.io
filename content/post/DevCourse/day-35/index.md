@@ -187,13 +187,50 @@ JOIN raw_data.session_timestamp t ON t.sessionid = usc.sessionid
 
 ### preset.io
 
+1. [회원가입](#presetio-가입)
+2. workspace 생성
+3. database 연결
+
 ### docker
 
-## preset.io로 superset 실습
+1. [docker 설치](https://docs.docker.com/desktop/) 및 활용 ram 크기 설정 (mac: 6GB 이상)
+2. Superset Github repo를 클론
+
+    ```bash
+    git clone https://github.com/apache/superset.git
+    ```
+
+3. superset 폴더로 들어가서 다음 두 command 실행
+
+    ```bash
+    cd superset
+    # 특정 버전을 다운로드 하려면 아래 command 실행
+    # git checkout 1.4.0
+    docker-compose -f docker-compose-non-dev.yml pull
+    docker-compose -f docker-compose-non-dev.yml up
+    ```
+
+4. <http://localhost:8088>으로 웹 UI 로그인 (id : admin, pw : admin)
+
+### Redshift db 연결
+
+-   SQLAlchemy URI 를 통해 연결 가능
+
+    ```
+    postgresql://admin:xxxx@default-workgroup.705556746971.ap-northeast-2.redshift-serverless.amazonaws.com:5439/dev
+    ```
+
+    ![](image-18.png)
+
+-   연결된 db 정보
+    ![](image-17.png)
 
 ### SQL Lab
 
 -   Redshift로 SQL 쿼리 보낼 수 있음
+-   [MAU](#mau-chart), [Monthly Cohort](#monthly-cohort-chart) chart를 위한 table을 생성
+
+    ![](image-9.png)
 
 -   설정
 
@@ -203,29 +240,49 @@ JOIN raw_data.session_timestamp t ON t.sessionid = usc.sessionid
 
     ![](image-5.png)
 
-    ![](image-9.png)
+### MAU
 
-### dataset
+-   dataset & chart
 
 ![](image-2.png)
 
-### chart
-
 ![](image-3.png)
 
-### snowflake db 연결
+### Cohort
 
-![](image-7.png)  
+-   dataset & chart
+
+![](image-15.png)
+
+### (추가) snowflake db 연결
+
+-   입력 정보
+
+![](image-7.png)
+
+-   ACCOUNT 확인 방법
+
 ![](image-8.png)
 
 ## HW - nps chart
 
-### dataset
+-   dataset
 
-### chart
+    이전 단계에서 연결시킨 snowflake db를 사용
 
-![](image-11.png)  
-![](image-10.png)
+    ![](image-12.png)
+
+-   chart
+
+    Edit dataset > Metrics > `overal_nps` item 추가
+
+    ![](image-11.png)
+
+    ![](image-10.png)
+
+    chart 설정 및 결과 화면
+
+    ![](image-16.png)
 
 ### result dashboard
 
@@ -239,5 +296,17 @@ JOIN raw_data.session_timestamp t ON t.sessionid = usc.sessionid
 
 -   <https://cloud.google.com/learn/what-is-data-governance?hl=ko>
     _<span style = "font-size:15px">(어렵거나 새롭게 알게 된 것 등 다시 확인할 것들)</span>_
+
+## 기타
+
+### preset.io 가입
+
+-   google account로 가입 시 14일동안 Professional plan 무료 체험 가능
+
+![](image-13.png)
+
+-   14일 이후에는 starter plan(free)로 변경되는 듯 함
+
+![](image-14.png)
 
 # ❗ 느낀 점
