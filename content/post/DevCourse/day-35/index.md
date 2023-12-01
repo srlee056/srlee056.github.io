@@ -8,7 +8,7 @@ categories = [
     "DevCourse",
 ]
 tags = [
-    "TIL", "Superset", "Dashboard", "Visualization", 
+    "TIL", "Superset", "Dashboard", "preset.io", "Docker"
 ]
 +++
 
@@ -45,7 +45,7 @@ tags = [
 |            | [Mode Analytics](#mode-anlytics)                   |                                                          |
 |            | Google Studio<br>AWS Quicksight                    | 자사 클라우드 기반의 Dashboard<br/> 기능이 비교적 떨어짐 |
 
--   Excel, Python 등은 코딩이 가능해야 활용 가능, 기능상의 제약 존재
+-   Excel, Python 등은 코딩이 가능해야 활용 가능 -> 기능상의 제약 존재
 
 #### Looker
 
@@ -54,7 +54,6 @@ tags = [
     -   LookML이 자체 언어로 데이터 모델을 만들어줌
     -   내부고객 뿐 아니라 외부 고객을 위한 대시보드 작성 가능
     -   다른 사람이 작성한 Dashboard를 참고하여 내가 활용할 수 있음(Template 처럼)
-    -   데이터 민주화, 데이터 탈 중앙화에 적합
     -   setup은 힘든 편, backend에 부하가 좀 있는 편
 
 #### Tableau
@@ -62,7 +61,7 @@ tags = [
 -   2019.06 Salesforce에 인수됨
 -   특징
     -   다양한 제품군, 일부는 무료로 사용 가능
-    -   배우기 어렵지만 강력한 대시보드를 작성 가능 -> 일부 전문가만 대시보드 작성 가능
+    -   배우기 어렵지만 강력한 대시보드 -> 일부 전문가만 대시보드 작성 가능
     -   Looker 뜨기 전까지 오랫동안 마켓 리더로 군림해옴
 
 #### ReDash
@@ -70,12 +69,11 @@ tags = [
 -   2020 Databricks에 인수됨
 -   특징
 
-    -   오픈소스로 시작
-    -   Superset과 흡사
+    -   오픈소스로 시작, Superset과 흡사
     -   SQL 에디터 존재 -> Dashboad와 연결된 곳에 Query를 보낼 수 있음
 
 -   Superset이 Redash와 다른 점
-    -   role 기반 사용자 역할, 권한 지정 가능
+    -   `role 기반 사용자 역할, 권한 지정 가능`
     -   dashboard에 역할 지정 가능
 
 #### Mode Anlytics
@@ -87,15 +85,15 @@ tags = [
 
 ### 시각화 툴 선택?
 
--   Looker & Tableau
+-   Looker vs. Tableau
 
-    -   초반 러닝 커브 존재
+    -   둘 다 초반 learning curve 존재
     -   Tableau: 가격적인 부분에 이점
 
 -   Self Service Dashboard의 중요성
     -   매번 사람의 노동을 필요로 하지 않음
     -   사용하기 쉬워야 더 많은 인력들이 직접 대시보드를 만들 수 있음
-        -   Data Democratization, Data Decentralization
+        -   `Data Democratization`, `Data Decentralization`
         -   데이터 품질의 중요성, [데이터 거버넌스](#데이터-거버넌스)가 필요한 이유
 
 ## Supserset
@@ -110,22 +108,21 @@ tags = [
 -   엔더프라이즈 수준의 보안, 권한 제어 기능 제공
 -   SQLALchemy 연동 -> 다양한 db(SQLAlchemy와 연동되는) 지원
 -   Druid.io(streaming db)와 연동한 실시간 데이터의 시각화 가능
--   API, 플러그인 아키텍쳐 제공 -> 기능 쉽게 확장 가능
+-   API, 플러그인 아키텍쳐 제공 -> 기능 확장이 쉬움
 
 ### 구조
 
--   Python으로 만들어짐
+-   Python으로 제작됨
 -   Web Interface -> Flask & React JS
 -   metadata db : sqlite
     -   병렬성이 떨어지는 단점 -> postgresql or mysql 사용
--   Redis를 caching layer로 사용하여 성능 최적화 -> #TODO
--   SQLAlchemy
+-   Redis를 caching layer로 사용하여 성능 최적화
 
 ### 용어
 
 -   Database : backend db (Redshift, Druid, ...)
 -   Dataset : table
--   Dashboard-Chart : Dashboard는 하나 이상의 chart로 구성됨
+-   Dashboard - Chart : Dashboard는 하나 이상의 chart로 구성됨
 
 ## 실습 Dashboard
 
@@ -152,12 +149,13 @@ LEFT JOIN raw_data.session_timestamp t ON t.sessionid = usc.sessionid
 ### Monthly Cohort chart
 
 -   Cohort?
-    -   특정 속성을 바탕으로 나뉜 사용자 그룹
-    -   보통은 사용자의 서비스 등록`월`
+
+    -   특정 속성(보통은 사용자의 서비스 등록`월`)을 바탕으로 나뉜 사용자 그룹
+
 -   Cohort 분석?
 
-    -   Cohort 기반으로 `사용자의 이탈률, 잔존률, 총 소비금액 등을 계산`
-    -   Chohort 기반 사용자 `잔존률(Retention)` : 보통 `월` 기반으로 시각화해서 봄
+    -   Cohort 기반으로 `사용자의 이탈률, 잔존률, 총 소비금액` 등을 계산
+    -   사용자 `잔존률(Retention)` : 보통 `월` 기반으로 시각화해서 봄
 
 -   analytics.cohort_summary
 
@@ -174,7 +172,8 @@ JOIN raw_data.session_timestamp t ON t.sessionid = usc.sessionid
 
 ### Google Spreadsheet를 활용한 시각화 실습
 
--   Python gspread module을 활용하면 Python을 활용하여 스프레드시트 조작 가능
+-   +) Python `gspread` module을 활용하면 Python으로 스프레드시트 조작 가능
+
 -   MAU chart
 
     ![](image-1.png)
@@ -260,7 +259,7 @@ JOIN raw_data.session_timestamp t ON t.sessionid = usc.sessionid
 
 ![](image-7.png)
 
--   ACCOUNT 확인 방법
+-   ACCOUNT 확인 방법 (in Snowflake)
 
 ![](image-8.png)
 
