@@ -99,15 +99,31 @@ tags = [
 
 ### Connect with GCS
 
+write SQL Code
+
+GCS Integration
+
+-   snowflake's GCS account object 생성됨
+
+Make custom IAM Role
+
+-   can read bucket, and CRUD objects in the bucket
+-   connect snowflake's account with this custom Role
+
 ### Bulk Update with `COPY` Command
+
+-   파일을 전부 테이블로 복사하는 방식
+-   파일의 일부 컬럼만 골라서 복사하는 방식을 사용할 수 있다.
 
 ### 남아있는 무료 요금 확인하는 법
 
-![Alt text](image.png)
+![](image.png)
 
 ## Superset ( preset.io )
 
 ### Connect with Snowflake
+
+Security > Network policy
 
 # 👀 CHECK
 
