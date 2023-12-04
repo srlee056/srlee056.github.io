@@ -16,6 +16,10 @@ tags = [
 
 ## GCS (Google Cloud Storage)
 
+### 버킷 생성
+
+![](image-6.png)
+
 ### Scraping using requests
 
 -   [1년간의 데이터를 받아오는 함수 코드]()
@@ -68,7 +72,28 @@ tags = [
     blob.upload_from_string(response.content)
     ```
 
-### IAM ROLE
+### Google Cloud 인증 정보
+
+-   IAM 및 관리자 > 서비스 계정 > 서비스 계정 만들기
+
+    ![](image-1.png)
+
+    ![](image-2.png)
+
+    -   액세스 권한 설정 (GCS에 객체를 생성할 수 있는 권한으로 설정)
+
+    ![](image-3.png)
+
+-   키 생성 및 로컬에 저장
+
+    ![](image-4.png)
+
+    ![](image-5.png)
+
+-   `~/.zshrc`
+    ```
+    export GOOGLE_APPLICATION_CREDENTIALS="/path/to/your/service-account-file.json"
+    ```
 
 ## Snowflake
 
