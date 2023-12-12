@@ -14,7 +14,11 @@ tags = [
 
 # 📋 공부 내용
 
-##
+## Airflow 실습
+
+-   Google Compute Engine - VM instance 만들어서 사용
+    ![Alt text](image.png)
+    ![Alt text](image-3.png)
 
 ###
 
