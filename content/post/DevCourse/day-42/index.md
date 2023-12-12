@@ -1,6 +1,6 @@
 +++
 author = "Seorim"
-title =  "Day 42"
+title =  "Day 42 Airflow"
 slug = "day-42"
 date = 2023-12-12T12:47:43+09:00
 
@@ -8,7 +8,7 @@ categories = [
     "DevCourse",
 ]
 tags = [
-    "TIL",
+    "TIL", "Airflow", 
 ]
 +++
 
