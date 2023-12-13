@@ -18,6 +18,8 @@ tags = [
 
 ## Airflow 과제
 
+[과제 github](https://github.com/srlee056/devcourse-week10-day3-hw)
+
 ###
 
 # 👀 CHECK
@@ -25,6 +27,8 @@ tags = [
 _<span style = "font-size:15px">(어렵거나 새롭게 알게 된 것 등 다시 확인할 것들)</span>_
 
 ## SSH 연결
+
+### in vscode
 
 ### ssh key 생성법
 
@@ -36,6 +40,7 @@ _<span style = "font-size:15px">(어렵거나 새롭게 알게 된 것 등 다�
 
 -   insert into table_name values ('Seorim's name')
     -> 에러 발생
+
 -   replace ' to ''
 
     ```python
