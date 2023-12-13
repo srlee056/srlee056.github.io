@@ -1,7 +1,7 @@
 +++
 author = "Seorim"
 title = 'Day 41 Data pipeline'
-slug = 'day 41'
+slug = 'day-41'
 date = 2023-12-11T11:49:09+09:00
 
 categories = [
