@@ -50,7 +50,6 @@ WHERE seq = 1;
     -   존재하는 레코드라면, 새 정보로 수정
     -   존재하지 않는 레코드라면 새 레코드 적재
 -   DW마다 UPSERT를 효율적으로 실행해주는 문법을 지원해줌
-    -   [자세한 설명](#mysql-to-redshift-dag)
 
 ## Backfill
 
@@ -111,14 +110,50 @@ WHERE seq = 1;
 
 ### date 관련 parameter 정리
 
-[Daily Incremental Update](#daily-dag) 구현
+#### Airflow 스케쥴링
+
+schedule_interval이 지난 이후에, execution_date 기준으로 실행이 된다.
+
+`start_date : 2023-12-01 00:00:00`
+
+| Interval   | execution_date      | 실행 날짜           |
+| ---------- | ------------------- | ------------------- |
+| 1 day      | 2023-12-01          | 2023-12-02          |
+|            | 2023-12-02          | 2023-12-03          |
+| 1 hour     | 2023-12-01 01:00:00 | 2023-12-01 02:00:00 |
+| 10 minutes | 2023-12-01 00:20:00 | 2023-12-01 00:30:00 |
+
+참고 : <https://it-sunny-333.tistory.com/157>
 
 #### start_date
+
+> `처음` 읽어와야 하는 데이터의 날짜
 
 -   2020-11-07의 데이터를 읽어옴
 -   2020-11-08 부터 ETL 동작
 
     -> start_date : 2020-11-07
+
+#### execution_date
+
+> 읽어와야 하는 데이터의 날짜
+
+-   2020-11-08 ETL 동작
+
+    -> execution_date : 2020-11-07
+
+-   2023-12-14 ETL 동작
+    -> execution_date : 2023-12-13
+    (start_date : 2020-11-07)
+
+#### catchup
+
+> DAG 활성화 시점 > start_date  
+> 그 사이 기간동안 실행되지 않은 job을 어떻게 할 지 정하는 파라미터
+
+-   `True`: 디폴트값, 실행되지 않은 job을 모두 실행하여 따라잡으려고 함
+-   `False`: 실행되지 않은 job을 무시함
+-   잘 모르면 항상 False로 세팅!
 
 ## MySQL to Redshift DAG
 
@@ -131,5 +166,28 @@ _<span style = "font-size:15px">(어렵거나 새롭게 알게 된 것 등 다�
 -   https://openweathermap.org/api/one-call-3
 -   구독한 이후에 바로 허가가 안되는 문제가 있음..
 -   기존 코드를 2.5 -> 3.0 으로 바꿔야 함
+
+## 퀴즈
+
+-   ![Alt text](image.png)
+-   ![Alt text](image-1.png)
+
+## gcp sdk 활용해서 서버<->로컬 파일 통신
+
+#### 다운로드
+
+```zsh
+gcloud compute scp --recurse "airflow-test":/var/lib/airflow/dags ~/github-repo/dags
+```
+
+#### 업로드
+
+-   권한이 있어야 업로드 가능
+
+```zsh
+gcloud compute scp ~/github-repo/dags/{filename} root@"airflow-test":/var/lib/airflow/dags
+```
+
+-   업로드한 파일은 airflow 유저에는 권한이 없어서, `chmor 664 {filename}` 으로 권한 부여함
 
 # ❗ 느낀 점
