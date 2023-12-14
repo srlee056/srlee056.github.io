@@ -108,9 +108,9 @@ WHERE seq = 1;
 
 ## DAG Parameter
 
-### date 관련 parameter 정리
+> date 관련 parameter 정리
 
-#### Airflow 스케쥴링
+### Airflow 스케쥴링
 
 schedule_interval이 지난 이후에, execution_date 기준으로 실행이 된다.
 
@@ -125,7 +125,7 @@ schedule_interval이 지난 이후에, execution_date 기준으로 실행이 된
 
 참고 : <https://it-sunny-333.tistory.com/157>
 
-#### start_date
+### start_date
 
 > `처음` 읽어와야 하는 데이터의 날짜
 
@@ -134,7 +134,7 @@ schedule_interval이 지난 이후에, execution_date 기준으로 실행이 된
 
     -> start_date : 2020-11-07
 
-#### execution_date
+### execution_date
 
 > 읽어와야 하는 데이터의 날짜
 
@@ -146,7 +146,7 @@ schedule_interval이 지난 이후에, execution_date 기준으로 실행이 된
     -> execution_date : 2023-12-13
     (start_date : 2020-11-07)
 
-#### catchup
+### catchup
 
 > DAG 활성화 시점 > start_date  
 > 그 사이 기간동안 실행되지 않은 job을 어떻게 할 지 정하는 파라미터
@@ -155,13 +155,11 @@ schedule_interval이 지난 이후에, execution_date 기준으로 실행이 된
 -   `False`: 실행되지 않은 job을 무시함
 -   잘 모르면 항상 False로 세팅!
 
-## MySQL to Redshift DAG
-
 # 👀 CHECK
 
 _<span style = "font-size:15px">(어렵거나 새롭게 알게 된 것 등 다시 확인할 것들)</span>_
 
-### openweathermap api
+## openweathermap api
 
 -   https://openweathermap.org/api/one-call-3
 -   구독한 이후에 바로 허가가 안되는 문제가 있음..
@@ -172,22 +170,74 @@ _<span style = "font-size:15px">(어렵거나 새롭게 알게 된 것 등 다�
 -   ![Alt text](image.png)
 -   ![Alt text](image-1.png)
 
+## DAG 작성 과제
+
+[Code : GitHub Link](https://github.com/srlee056/devcourse-week10-day3-hw/blob/main/UpdateSymbol_v3.py)
+
+### UpdateSymbol_v2의 Incremental Update 방식 수정해보기
+
+-   앞서 배운 ROW_NUMBER 방식을 사용해서 Primary key가 동일한 레코드들을 처리하기
+
+    ```sql
+    alter_sql = f"""DELETE FROM {schema}.{table};
+        INSERT INTO {schema}.{table}
+        SELECT date, "open", high, low, close, volume FROM (
+            SELECT *, ROW_NUMBER() OVER (PARTITION BY date ORDER BY created_date DESC) seq
+            FROM t
+        )
+        WHERE seq = 1;"""
+    ```
+
+-   Incremental Update가 진행됐는지 확인하기 위해, 어제 데이터를 저장한 `stock_info_v2`의 레코드를 복사해왔고, created_date를 어제로 지정했다.
+
+    ![Alt text](image-2.png)
+
+-   Update 이전
+
+    ![Alt text](image-3.png)
+
+-   Update 이후
+
+    새로 레코드가 하나 추가됐으며, created_date가 DAG 실행 시간으로 변경된것을 볼 수 있다.
+
+    ![Alt text](image-4.png)
+
 ## gcp sdk 활용해서 서버<->로컬 파일 통신
 
-#### 다운로드
+```zsh
+gcloud compute scp {option} {from_path} {to_path}
+```
+
+#### 다운로드 (서버 -> 로컬)
+
+-   서버쪽 폴더 안의 모든 파일을 전부 다운로드
 
 ```zsh
 gcloud compute scp --recurse "airflow-test":/var/lib/airflow/dags ~/github-repo/dags
 ```
 
-#### 업로드
+#### 업로드 (로컬 -> 서버)
 
--   권한이 있어야 업로드 가능
+-   권한이 있어야 업로드 가능 -> `root@`
+-   로컬 특정 파일을 서버쪽 폴더 안으로 업로드
 
 ```zsh
 gcloud compute scp ~/github-repo/dags/{filename} root@"airflow-test":/var/lib/airflow/dags
 ```
 
--   업로드한 파일은 airflow 유저에는 권한이 없어서, `chmor 664 {filename}` 으로 권한 부여함
+-   airflow 유저에 업로드한 파일에 대한 권한이 없어서, `chmor 664 {filename}` 으로 수정 권한 부여함
+
+## vscode remote ssh 관련 문제
+
+-   GCP Vm instance의 RAM은 2GB인데, 이 중 airflow 프로세스가 1.3GB정도를 차지함
+-   vscode를 위한 ssh server도 1GB정도 필요함
+-   그래서 vscode remote ssh로 연결하고 있으면 자꾸 멈추고 airflow 웹 서버가 잘 안돌아가는 등 문제가 있었던 것
+-   RAM 증설하기로 결정 (어차피 오래 사용할 것 아니고 무료 크레딧이라 괜찮)
 
 # ❗ 느낀 점
+
+-   알고리즘 문제 풀 때 함수별로 나누는 습관, 주석 적는 습관 만들어보기
+-   다음 질문에 대해 생각/찾아보기
+    -   DAG에서 같은 함수, task를 여러번 호출 할 수 있는가
+    -   @task 외에 다른 decorator 있는지 찾아보기
+    -   과제에서 기존 created_date를 가져오지 않고 새로 레코드를 만들 때 생성하는 이유는 뭘까?
