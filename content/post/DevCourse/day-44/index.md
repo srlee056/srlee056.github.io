@@ -174,7 +174,7 @@ _<span style = "font-size:15px">(어렵거나 새롭게 알게 된 것 등 다�
 
 [Code : GitHub Link](https://github.com/srlee056/devcourse-week10-day3-hw/blob/main/UpdateSymbol_v3.py)
 
-### UpdateSymbol_v2의 Incremental Update 방식 수정해보기
+**UpdateSymbol_v2의 Incremental Update 방식 수정해보기**
 
 -   앞서 배운 ROW_NUMBER 방식을 사용해서 Primary key가 동일한 레코드들을 처리하기
 
@@ -208,7 +208,7 @@ _<span style = "font-size:15px">(어렵거나 새롭게 알게 된 것 등 다�
 gcloud compute scp {option} {from_path} {to_path}
 ```
 
-#### 다운로드 (서버 -> 로컬)
+### 다운로드 (서버 -> 로컬)
 
 -   서버쪽 폴더 안의 모든 파일을 전부 다운로드
 
@@ -216,7 +216,7 @@ gcloud compute scp {option} {from_path} {to_path}
 gcloud compute scp --recurse "airflow-test":/var/lib/airflow/dags ~/github-repo/dags
 ```
 
-#### 업로드 (로컬 -> 서버)
+### 업로드 (로컬 -> 서버)
 
 -   권한이 있어야 업로드 가능 -> `root@`
 -   로컬 특정 파일을 서버쪽 폴더 안으로 업로드
