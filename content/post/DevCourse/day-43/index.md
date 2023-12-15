@@ -68,7 +68,12 @@ ssh-keygen -t rsa -f {key_name} -C root -b 2048
 
 ### root user 로그인 방법 (feat. Google Cloud platform)
 
--
+-   [참고 링크](https://cloud.google.com/compute/docs/connect/root-ssh?hl=ko#third-party-tools) 내용 그대로 따라하기
+-   접속 시에는 기존 gcloud 커맨드에 root@ 붙여주면 됨
+
+```python
+gcloud compute ssh --project root@your-project-id --zone your-zone your-instance-name
+```
 
 ## SQL
 
