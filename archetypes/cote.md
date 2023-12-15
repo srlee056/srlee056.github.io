@@ -5,7 +5,7 @@ slug = "{{ .File.ContentBaseName }}"
 date = {{ .Date }}
 
 categories = [
-    "Coding Test",
+    "CodingTest",
 ]
 tags = [
     "",
