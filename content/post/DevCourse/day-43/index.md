@@ -30,8 +30,11 @@ tags = [
 
 -   airflow 실행 및 성공한 결과 화면
     _(코드 테스트 하느라 많이도 실패함)_
+
     ![Alt text](image-1.png)
+
 -   Data warehouse에 연결하여 생성된 table 내용을 불러온 결과
+
     ![Alt text](image.png)
 
 ###
