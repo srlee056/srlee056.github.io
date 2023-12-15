@@ -36,14 +36,17 @@ tags = [
     ```
 
     -   우분투 vm instance 접속에 성공한 화면
+
         ![Alt text](image-4.png)
+
     -   airflow 2.5.1 설치
         <https://github.com/keeyong/airflow-setup/blob/main/docs/Airflow%202%20Installation.md>
     -   웹 브라우저에서 접속 확인
 
     1. vm instance -> 방화벽 -> http 접근 허용
     2. vpc - 방화벽 규칙 생성 -> 8080포트 접근 허용
-       ![Alt text](image-5.png)
+
+        ![Alt text](image-5.png)
 
     ![Alt text](image-6.png)
 
