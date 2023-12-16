@@ -23,7 +23,29 @@ w1 { color: #FAF8ED }
 
 # 📋 공부 내용
 
-##
+## OLTP 테이블 복사하기
+
+-   Production MySQL Tables (OLTP) -> AWS Redshift (OLAP)
+
+-   MySQL Tables(Source) --> Airflow Server
+    -   --> S3(Cloud Storage) --`COPY Command`--> Data Warehouse
+    -   --`INSERT Command`--> Data Warehouse
+
+### 권한 설정
+
+1. Airflow DAG에서 S3 접근 (Write 권한)
+    - IAM User: S3버킷에 Read/Write 권한 설정
+    - access key, secret key 사용
+2. Redshift에서 S3 접근 (Read 권한)
+    - Redshift에서 S3 접근할 수 있는 Role 생성 후 Redshift에 지정
+
+### Full Refresh
+
+### Incremental Update
+
+## Backfill 실행하기
+
+## Summary 테이블 만들기 (ELT)
 
 ###
 
