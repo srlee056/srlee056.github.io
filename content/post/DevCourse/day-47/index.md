@@ -212,3 +212,8 @@ steps:
 _<span style = "font-size:15px">(어렵거나 새롭게 알게 된 것 등 다시 확인할 것들)</span>_
 
 # ❗ 느낀 점
+
+오늘은 dockerfile을 직접 작성해보고, GitHub Actions를 사용해보았다.
+Dockerfile은 직접 작성해서 문제없이 빌드 됐다는 것에 의의를 뒀고, GitHub Actions는 이미 사용해 본 적이 몇번 있어서 쉽게 이해하고 넘어갈 수 있었다.
+
+강의 듣고 정리하는게 일찍 끝나서 블로그에 댓글기능을 추가했다. 다음엔 viewer 기능을 추가할 까 고민중.
