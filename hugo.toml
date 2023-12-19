@@ -100,7 +100,7 @@ category = "Blog"
 categoryID = "DIC_kwDOK7YF9s4Cb2te"
 mapping = "pathname"
 lang = "ko"
-lightTheme = true
+lightTheme = 1
 
 [params.comments.gitalk]
 
