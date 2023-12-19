@@ -7,29 +7,37 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>ko</language>
         <copyright>Seorim Lee</copyright>
-        <lastBuildDate>Wed, 25 Oct 2023 16:23:38 +0900</lastBuildDate><atom:link href="https://srlee056.github.io/categories/index.xml" rel="self" type="application/rss+xml" /><item>
-        <title>DevCourse</title>
-        <link>https://srlee056.github.io/categories/devcourse/</link>
-        <pubDate>Wed, 25 Oct 2023 16:23:38 +0900</pubDate>
-        
-        <guid>https://srlee056.github.io/categories/devcourse/</guid>
-        <description></description>
-        </item>
-        <item>
+        <lastBuildDate>Tue, 19 Dec 2023 15:22:00 +0900</lastBuildDate><atom:link href="https://srlee056.github.io/categories/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>Blog</title>
         <link>https://srlee056.github.io/categories/blog/</link>
-        <pubDate>Mon, 16 Oct 2023 00:00:00 +0000</pubDate>
+        <pubDate>Tue, 19 Dec 2023 15:22:00 +0900</pubDate>
         
         <guid>https://srlee056.github.io/categories/blog/</guid>
         <description></description>
         </item>
         <item>
-        <title>Test</title>
-        <link>https://srlee056.github.io/categories/test/</link>
-        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        <title>DevCourse</title>
+        <link>https://srlee056.github.io/categories/devcourse/</link>
+        <pubDate>Tue, 19 Dec 2023 12:54:14 +0900</pubDate>
         
-        <guid>https://srlee056.github.io/categories/test/</guid>
-        <description>&lt;img src="https://srlee056.github.io/categories/test/hutomo-abrianto-l2jk-uxb1BY-unsplash.jpg" alt="Featured image of post Test" /&gt;</description>
+        <guid>https://srlee056.github.io/categories/devcourse/</guid>
+        <description>&lt;img src="https://srlee056.github.io/categories/devcourse/Dev_Thumnail_Data_Engineering2.png" alt="Featured image of post DevCourse" /&gt;</description>
+        </item>
+        <item>
+        <title>CodingTest</title>
+        <link>https://srlee056.github.io/categories/codingtest/</link>
+        <pubDate>Tue, 19 Dec 2023 11:39:29 +0900</pubDate>
+        
+        <guid>https://srlee056.github.io/categories/codingtest/</guid>
+        <description>&lt;img src="https://srlee056.github.io/categories/codingtest/image.png" alt="Featured image of post CodingTest" /&gt;</description>
+        </item>
+        <item>
+        <title>Project</title>
+        <link>https://srlee056.github.io/categories/project/</link>
+        <pubDate>Mon, 06 Nov 2023 17:18:28 +0900</pubDate>
+        
+        <guid>https://srlee056.github.io/categories/project/</guid>
+        <description></description>
         </item>
         
     </channel>
