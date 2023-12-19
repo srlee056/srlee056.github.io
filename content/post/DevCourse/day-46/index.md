@@ -23,10 +23,6 @@ w1 { color: #FAF8ED }
 
 # 📋 공부 내용
 
-##
-
-###
-
 ## 실습
 
 1. 로컬에서 이미지 빌드
@@ -47,10 +43,12 @@ _<span style = "font-size:15px">(어렵거나 새롭게 알게 된 것 등 다�
 
 ### 서버 사양
 
-GCP
-vCPU 4, memory 16GB
-Ubuntu 22.04 LTS
-SSD 64GB
+-   Google Cloud Compute Engine
+-   머신 : n1-standard-4
+    -   4 vCPUs, 2 cores, 15GB memory
+-   부팅 디스크
+    -   Ubuntu 22.04 LTS
+    -   SSD 64GB
 
 ### 설치 과정
 
@@ -171,3 +169,15 @@ systemctl --user restart chrome-remote-desktop
 
 -   `killall -3 gnome-shell` 으로 실행했을 때 activities 활성화 된 상태로 갖혀있게되는 문제 해결
 -   overview 안뜨게 하는 [extension](https://askubuntu.com/questions/1370068/ubuntu-now-always-starts-in-overview-mode-when-logging-in-how-to-avoid) 설치
+
+# ❗ 느낀 점
+
+도커를 로컬에서 돌리기 어려운 환경이라, 이참에 도커를 설치한 서버를 만들어서 운영하자는 생각을 하고 있었다.
+
+처음에는 서버에 docker만 설치해서 진행 할 예정이었다. 그런데 Ubuntu 22.04 이상부터 docker desktop을 지원한다는 사실을 알게 되었고, GUI환경을 구성해서 docker desktop 프로그램으로 띄워보고싶은 욕망(ㅋㅋ)이 생겼다.
+
+코어타임 6시간 중 5시간 이상을 서버 설정하고 설치하는데 소모했는데, 여러 시행착오를 거쳤지만 결국 성공했다는게 너무 뿌듯하고 기분이 좋았다.
+
+kvm지원여부를 먼저 확인했다면 참 좋았을텐데... 그랬다면 xfce4를 설치했다 지웠다 난리치고 그럴 일도 없었을텐데... 참 아쉽지만 도커 데스크탑이 안되던 이유를 알고, nested visualization을 지원하는 머신으로 교체한 후 거짓말처럼 성공했기 때문에 잊으려고 한다.. (ㅠㅠ)
+
+이 과정 및 airflow 서버 구성 과정도 정리해서 블로그에 글을 올려볼까 한다. 누군가에겐 도움이 되겠지 ^^
