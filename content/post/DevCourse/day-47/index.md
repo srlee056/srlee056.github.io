@@ -189,6 +189,11 @@ steps:
 
 3. Docker Build & Push 자동화
 
+-   repository settings -> secrets & variables -> Actions 에서 로그인 정보 (ID/PW) 저장하고 가져와서 사용할 수 있다.
+-   ${{secrets.DOCKER_USER}} 형식으로 불러올 수 있으며, 파일에서 사용할 땐 `env`에서 지정하거나, 바로 사용할 수도 있다.
+
+![](image-8.png)
+
 ```yaml
 - name: Login to the Docker Hub
     env:
