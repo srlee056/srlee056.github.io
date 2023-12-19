@@ -49,3 +49,13 @@ lang = "ko"
 lightTheme = "light_high_contrast"
 darkTheme = "dark_high_contrast"
 ```
+
+### 결과 화면
+
+[ 다크모드 ON ]
+
+![](image-4.png)
+
+[ 다크모드 OFF ]
+
+![](image-3.png)
