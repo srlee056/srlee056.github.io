@@ -32,20 +32,20 @@ tags = [
 
 설정은 `hugo.toml`을 수정하면 되는데, 이 때 필요한 repo id나 기타 등등은 <https://giscus.app/ko>를 통해 알 수 있다.
 
-```script
-<script src="https://giscus.app/client.js"
-        data-repo="srlee056/giscus"
-        data-repo-id="R_kgDOK7YF9g"
-        data-category="Blog"
-        data-category-id="DIC_kwDOK7YF9s4Cb2te"
-        data-mapping="pathname"
-        data-strict="0"
-        data-reactions-enabled="1"
-        data-emit-metadata="0"
-        data-input-position="bottom"
-        data-theme="preferred_color_scheme"
-        data-lang="ko"
-        crossorigin="anonymous"
-        async>
-</script>
+```toml
+[params.comments]
+enabled = true
+provider = "giscus"
+
+[params.comments.giscus]
+reactionsEnabled = 1
+emitMetadata = 0
+repo = "srlee056/giscus"
+repoID = "R_kgDOK7YF9g"
+category = "Blog"
+categoryID = "DIC_kwDOK7YF9s4Cb2te"
+mapping = "pathname"
+lang = "ko"
+lightTheme = "light_high_contrast"
+darkTheme = "dark_high_contrast"
 ```
