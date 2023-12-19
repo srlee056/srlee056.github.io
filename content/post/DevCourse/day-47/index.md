@@ -44,7 +44,7 @@ python3 -m flask run --host 0.0.0.0 --port=4000
 
 ## docker 이미지 빌드 실습
 
-1. Dockerfile 작성
+### Dockerfile 작성
 
 ```
 FROM python:3.8-slim-buster
@@ -58,7 +58,7 @@ CMD python3 -m flask run --host 0.0.0.0 --port=4000
 CMD ["python3", "-m", "flask", "run", "--host", "0.0.0.0", "--port=4000"]
 ```
 
-2. docker build & test
+### docker build & test
 
 -   build
 
@@ -67,6 +67,8 @@ docker build -t hangman-web .
 ```
 
 -   run
+    -   `-p` 옵션을 사용해서 포트 포워딩 진행
+    -   외부 포트 : 내부 포트 순서로 작성한다
 
 ```bash
 docker run -p 4000:4000 hangman-web
@@ -74,7 +76,7 @@ docker run -p 4000:4000 hangman-web
 
 ![결과 화면](image-2.png)
 
-3. push image to docker Hub
+### push image to docker Hub
 
 ```bash
 docker tag hangman-web seorim/hangman-web
@@ -84,7 +86,7 @@ docker push seorim/hangman-web
 
 ![uploaded on dockerhub](image-3.png)
 
-4. test in another host
+### test in another host
 
 ```bash
 docker pull seorim/hangman-web
@@ -95,7 +97,7 @@ docker run -p 4000:4000 seorim/hangman-web
 
 ![결과 화면](image-5.png)
 
-5. docker run detach 옵션
+### docker run detach 옵션
 
 -   백그라운드에서 실행하게 해주는 옵션
 
