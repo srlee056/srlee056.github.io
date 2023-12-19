@@ -2,7 +2,7 @@
 author = "Seorim"
 title = 'Blog 제작기 #3'
 url = '/Blog/blog-3'
-date = 2023-10-16
+date = 2023-12-19T15:22:00+09:00
 draft = false
 categories = [
     "Blog", 
@@ -33,6 +33,10 @@ tags = [
 [hugo stack theme doc](https://stack.jimmycai.com/config/comments)
 
 설정은 `hugo.toml`을 수정하면 되는데, 이 때 필요한 repo id나 기타 등등은 <https://giscus.app/ko>를 통해 알 수 있다.
+
+`lightTheme`, `darkTheme`에 각각 라이트, 다크모드의 giscus theme을 적어주면 된다.
+
+나는 위에 언급한 페이지에서 테마를 몇개 구경하고, `light_high_contrast`와 `dark_high_contrast`로 정해서 세팅파일에 적어주었다.
 
 ```toml
 [params.comments]
