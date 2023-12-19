@@ -99,8 +99,8 @@ repoID = "R_kgDOK7YF9g"
 category = "Blog"
 categoryID = "DIC_kwDOK7YF9s4Cb2te"
 mapping = "pathname"
-strict = 0
 lang = "ko"
+lightTheme = true
 
 [params.comments.gitalk]
 
