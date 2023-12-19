@@ -8,9 +8,11 @@ categories = [
     "Blog", 
 ]
 tags = [
-    "Blog", "hugo", "Github Pages",
+    "Blog", "hugo", "Github Pages","Giscus"
 ]
 +++
+
+# hugo theme stack에서 giscus 댓글창 사용하기
 
 ## 댓글창 활성화하기
 
