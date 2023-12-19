@@ -65,7 +65,7 @@ default = "Licensed under CC BY-NC-SA 4.0"
 
 [params.comments]
 enabled = true
-provider = "disqus"
+provider = "giscus"
 
 [params.comments.disqusjs]
 
@@ -94,6 +94,13 @@ siteName = ""
 [params.comments.giscus]
 reactionsEnabled = 1
 emitMetadata = 0
+repo = "srlee056/giscus"
+repoID = "R_kgDOK7YF9g"
+category = "Blog"
+categoryID = "DIC_kwDOK7YF9s4Cb2te"
+mapping = "pathname"
+strict = 0
+lang = "ko"
 
 [params.comments.gitalk]
 
