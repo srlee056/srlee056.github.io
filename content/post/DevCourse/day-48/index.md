@@ -212,11 +212,7 @@ docker image rm -f $(docker image ls -q)
 
 -   Troubleshoot > Clean/Purge data 를 통해 쉽고 직관적이게 삭제 가능
 
-## Docker Compose 실습
-
-### Docker Compose
-
-> 다수의 Container로 구성된 프로그램을 Build하는 데 사용되는 유틸리티
+## Docker 실습 : 여러 container를 가진 소프트웨어
 
 ### 설명 및 구조
 
@@ -294,6 +290,7 @@ docker network create mynetwork
 
 ```bash
 docker run -d --name=redis --network mynetwork redis
+# password를 Postgres로 주어야 서로 연결할 때 오류가 발생하지 않음
 docker run -d --name=db -e POSTGRES_PASSWORD=postgres --network mynetwork postgres
 docker run -d --name=vote -p 5001:80 --network mynetwork vote
 docker run -d --name=result -p 5002:80 --network mynetwork result
