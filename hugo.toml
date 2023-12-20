@@ -119,7 +119,7 @@ default = "auto"
 enabled = true
 
 [params.imageProcessing.content]
-enabled = true
+enabled = false
 
 [menu]
 
