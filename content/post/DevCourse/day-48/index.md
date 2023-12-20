@@ -1,6 +1,6 @@
 +++
 author = "Seorim"
-title =  "Day 48"
+title =  "Day 48 Docker(3)"
 slug = "day-48"
 date = 2023-12-20T12:07:42+09:00
 
@@ -8,7 +8,7 @@ categories = [
     "DevCourse",
 ]
 tags = [
-    "TIL",
+    "TIL", "Docker", "Docker Compose"
 ]
 +++
 
@@ -103,6 +103,8 @@ docker run -d --name=nginx -p 8081:80 nginx
 
 -   http://localhost:8081/에 연결한 웹 브라우저 화면
 
+![](image-2.png)
+
 **<g1>2. 서버에 접속해서 html 파일 수정</g1>**
 
 -   command
@@ -115,7 +117,7 @@ docker exec --user=root -it nginx sh
 
 # -----------------서버 내부----------------------
 apt update
-install nano
+apt install nano
 # 내용을 Welcome to Docker Volume으로 수정
 nano /usr/share/nginx/html/index.html
 exit
@@ -125,6 +127,8 @@ exit
 
 -   웹 브라우저 연결 화면
 
+![](image-3.png)
+
 **<g1>3. 재실행 후 파일 확인</g1>**
 
 -   Volume이 지정되지 않은 상태 -> 변경이 적용되지 않고 원래대로 돌아왔음을 알 수 있음
@@ -133,12 +137,14 @@ exit
 
 ```bash
 # Container 재실행
-docker restart nginx
+docker stop nginx
+docker run nginx
+docker run -d --name=nginx -p 8081:80 nginx
 
 docker exec --user=root -it nginx sh
 # -----------------서버 내부----------------------
 apt update
-install nano
+apt install nano
 # 내용이 수정 전으로 돌아갔음을 확인할 수 있음
 nano /usr/share/nginx/html/index.html
 exit
@@ -148,6 +154,8 @@ exit
 
 -   웹 브라우저 연결 화면
 
+![](image-4.png)
+
 ### nginx container with volume
 
 **<g1>1. nginx container를 다운받고 서버를 실행(볼륨 사용 설정)</g1>**
@@ -156,20 +164,32 @@ exit
 
 ```bash
 # -v 옵션을 사용해서 Host Volumes 방식으로 연결
-docker run -d --name nginx_demo -p 8080:80 -v /home/sarah/devcourse/nginx/html:usr/share/nginx/html nginx
+docker run -d --name nginx_demo -p 8081:80 -v /home/sarah/devcourse/nginx/html:/usr/share/nginx/html nginx
 ```
 
 -   http://localhost:8081/에 연결한 웹 브라우저 화면
+
+![index.html](image-5.png)
+
+![test.html](image-6.png)
 
 **<g1>2. html 파일 수정 </g1>**
 
 -   host 시스템 상에서 파일을 직접 수정
 -   웹 브라우저 연결 화면
 
+![](image-7.png)
+
 **<g1>3. 재실행 후 파일 확인</g1>**
 
 -   host 시스템 상에서 파일 확인
 -   웹 브라우저 연결 화면
+
+![](image-8.png)
+
+## Docker Compose
+
+> 다수의 Container로 구성된 프로그램을 Build하는 데 사용되는 유틸리티
 
 # 👀 CHECK
 
@@ -179,5 +199,19 @@ _<span style = "font-size:15px">(어렵거나 새롭게 알게 된 것 등 다�
 
 -   ![](image.png)
 -   ![](image-1.png)
+
+## Ubuntu 22.04에서 Docker로 airflow 실행하는 법
+
+-   강의에서 알려준대로 실행했는데 webserver 연결이 안되는 문제 발생
+-   로그를 보고 검색해보니까 권한 문제인 것 같아서 chat gpt에게 물어봄
+-   airflow 설정하는데 쓰인 docker-compose.yml를 보니, user id 세팅이 airflow id 세팅값인 50000:0 인걸 확인
+-   내 `호스트의 uid / gid`를 확인하니 (id -u, id -g) 1001:1002임을 알 수 있었음
+-   그래서 .yml를 수정하고, chown chmod로 host 시스템 파일 경로에 권한도 줬음
+    ```bash
+    sudo chown -R 1001:1002 /path/to/your/airflow/directory
+    sudo chmod -R 775 /path/to/your/airflow/directory
+    ```
+-   다시 빌드해야하나 고민했는데 웹 서버가 새로고침 하더니 접속이 됨!
+-   docker exec으로 서버 접속해서 uid/gid 확인하니까 50000:0 그대로인걸 봐선 권한을 주는게 답이었던듯
 
 # ❗ 느낀 점
