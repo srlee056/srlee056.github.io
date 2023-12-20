@@ -187,9 +187,132 @@ docker run -d --name nginx_demo -p 8081:80 -v /home/sarah/devcourse/nginx/html:/
 
 ![](image-8.png)
 
-## Docker Compose
+## Docker 환경 클린업
+
+> 컨테이너 중단 후 삭제 -> 이미지 삭제
+
+### CLI
+
+1. 컨테이너 삭제
+
+```bash
+# -f : force, 실행중인 컨테이너도 바로 삭제
+# ls -a : 실행중이 아닌 컨테이너 목록도 가져옴
+# ls -aq : 모든 컨테이너의 container id만 받아옴
+docker container rm -f $(docker container ls -aq)
+```
+
+2. 이미지 삭제
+
+```bash
+docker image rm -f $(docker image ls -q)
+```
+
+### Docker Desktop
+
+-   Troubleshoot > Clean/Purge data 를 통해 쉽고 직관적이게 삭제 가능
+
+## Docker Compose 실습
+
+### Docker Compose
 
 > 다수의 Container로 구성된 프로그램을 Build하는 데 사용되는 유틸리티
+
+### 설명 및 구조
+
+여러 Container를 가진 소프트웨어를 Docker에서 빌드한다.
+
+Docker에서 제공해주는 예제 프로그램 : [example-voting-app](https://github.com/dockersamples/example-voting-app)
+
+![voting-app-architecture](https://github.com/dockersamples/example-voting-app/blob/main/architecture.excalidraw.png?raw=true)
+
+### 실습 : 일일이 매뉴얼하게 실행
+
+**<g1>1. Build</g1>**
+
+```bash
+docker build -t vote ./vote
+docker build -t result ./result
+docker build -t worker ./worker
+
+docker images
+```
+
+**<g1>2. Run</g1>**
+
+```bash
+docker run -d --name=redis redis
+docker run -d -e POSTGRES_PASSWORD=postgres --name=db postgres
+docker run -d --name=vote -p 5001:80 vote
+docker run -d --name=result -p 5002:80 result
+docker run -d --name=worker worker
+```
+
+-   이 경우 각 컴포턴트들 간 네트워크 연결이 되지 않음
+
+**<g1>3. 네트워크 관련 이슈 확인</g1>**
+
+-   vote에 로그인하여 iputils-ping 설치 후 ping
+
+```bash
+docker exec --user=root -it vote sh
+apt update
+apt install iputils-ping
+ping redis
+```
+
+![Result of ping redis(failled) in connected network](image-9.png)
+
+### 실습 : 네트워크를 만들어 연결하여 실행
+
+**<g1>네트워크 이슈 해결 방법</g1>**
+
+-   docker network 기능 사용
+
+    -   이전에는 docker run - link 옵션을 사용했었음
+
+-   network를 만들고, 모든 컨테이너를 네트워크 안으로 지정
+    -   연결에 따라 별개의 네트워크를 만들어 사용하는것도 가능 (back-tier, front-tier)
+
+**<g1>1. Create newtork </g1>**
+
+-   먼저 이전에 생성한 container들은 삭제한다. 빌드한 이미지는 삭제하지 않아도 됨
+
+```bash
+docker container rm -f $(docker container ls -aq)
+```
+
+-   네트워크를 생성한다.
+
+```bash
+docker network create mynetwork
+```
+
+**<g1>2. Run in network </g1>**
+
+-   앞서 입력한 커맨드에 `--network mynetwork` 를 추가하여 컨테이너를 네트워크 안에 지정한다.
+
+```bash
+docker run -d --name=redis --network mynetwork redis
+docker run -d --name=db -e POSTGRES_PASSWORD=postgres --network mynetwork postgres
+docker run -d --name=vote -p 5001:80 --network mynetwork vote
+docker run -d --name=result -p 5002:80 --network mynetwork result
+docker run -d --name=worker --network mynetwork worker
+
+```
+
+![Result of ping redis(success) in connected network](image-10.png)
+
+**<g1>3. 결과 화면 </g1>**
+
+-   votes
+
+![votes web page](image-11.png)
+
+-   result
+
+![result(of votes) web page that show 2 votes, 100% of votes were dog](image-12.png)
+**<g1></g1>**
 
 # 👀 CHECK
 
