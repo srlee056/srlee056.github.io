@@ -207,6 +207,7 @@ sudo passwd ubuntu
     -   <https://remotedesktop.google.com/headless>
 
     ![](image-9.png)
+
     ![](image-10.png)
 
     -   PIN 6자리를 설정하는데, 본인이 자주 사용하는걸로 설정해야 나중에 잊지 않음
@@ -223,7 +224,8 @@ sudo passwd ubuntu
     ![](image-13.png)
 
 **<o1>기타 접속을 위한 설정</o1>**
-[설정 관련 참고 링크1](https://askubuntu.com/questions/1370068/ubuntu-now-always-starts-in-overview-mode-when-logging-in-how-to-avoid)
+
+[참고 링크1](https://askubuntu.com/questions/1370068/ubuntu-now-always-starts-in-overview-mode-when-logging-in-how-to-avoid)
 
 [참고 링크 2](https://askubuntu.com/questions/1418937/your-native-host-connector-do-not-support-following-apis-v6)
 
