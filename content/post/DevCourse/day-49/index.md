@@ -58,7 +58,10 @@ docker-compose rm
 **1. services**
 
 - 프로그램을 구성하는 서비스들
-- 각각 Docker Image 지정, Docker Container 실행으로 구성됨 (각각 Dockerfile을 갖고 있거나 docker Hub에서 이미지를 다운로드받아야 함)
+
+- 각각 Docker Image 지정, Docker Container 실행으로 구성됨  
+  (각각 Dockerfile을 갖고 있거나 docker Hub에서 이미지를 다운로드받아야 함)
+
 - 서비스별로 포트번호, 환경변수, 디스크 볼륨 등을 지정
 
 **2. volumes**
@@ -67,7 +70,7 @@ docker-compose rm
 
 ---
 
-기본 이름이 아닌 다른 이름의 파일을 사용하고 싶다면 `-f` 옵션 사용
+**기본 이름이 아닌 다른 이름의 파일을 사용하고 싶다면 `-f` 옵션 사용**
 
 ```bash
 docker-compose -f docker-compose.dev.yml up
@@ -105,7 +108,7 @@ docker-compose -f docker-compose.dev.yml up
 
 **docker-compose down**
 
-- stop + remove
+- stop + remove (이미지는 남아있음)
 
 **docker-compose stop**
 
@@ -142,7 +145,8 @@ docker-compose -f docker-compose.dev.yml up
 
 ### docker-compose.mac.yml
 
-- 읽어올 수 있는 이미지는 dockerhub에서 읽어오며, 이미지가 없는 경우엔 dockerfile의 위치를 제공하여 빌드를 진행
+- 읽어올 수 있는 이미지는 dockerhub에서 읽어오며,  
+  이미지가 없는 경우엔 dockerfile의 위치를 제공하여 빌드를 진행
 - 네트워크를 지정하지 않고 내부 네트워크 사용
 
 ```yaml
@@ -174,6 +178,8 @@ services:
       POSTGRES_USER: "postgres"
       POSTGRES_PASSWORD: "postgres"
 ```
+
+<br>
 
 - 클린업 후 새로 만든 docker compose 파일을 활용하여 컨테이너들을 실행해보기
 
@@ -241,19 +247,152 @@ volumes:
 
 ### docker-compose.yml 개선하기 (2)
 
+<o1>[최종 개선된 .yml 파일](https://github.com/dockersamples/example-voting-app/blob/main/docker-compose.yml)</o1>
+
+**서비스 개선**
+
+- depends_on : 서비스들 간 의존성이 있을 경우, 사전에 실행되어야 하는 서비스를 기술
+
+```yaml
+vote:
+  depends_on:
+    redis: #longform
+      condition: service_healthy # service_started, service_completed_successfully
+    - db # shortform
+```
+
+- healthcheck : 해당 서비스의 건강 상태(잘 작동하고 있는지)를 확인할 수 있도록 기술  
+  dockerfile에 기술된 내용을 overwrite 할 수 있음
+  - return : service_started, service_healthy, service_completed_successfully
+
+```yaml
+vote:
+  healthcheck:
+    test: ...
+    interval: 15s
+    timeout: 5s
+    ...
+```
+
+- volumes : 호스트의 폴더와 container의 폴더를 연결하는, mount하는 기능
+
+```yaml
+vote:
+  volumes:
+    - ./vote:/app
+db:
+  volumes:
+    - "db-data:/var/lib/postgresql/data" #named volume
+    - "./healthchecks:/healthchecks" #host volume
+```
+
+- environment : 서비스가 컨테이너 안에서 실행될 때 `환경변수`들을 지정 (Dockerfile의 ENV)
+
+  - `map` 문법
+
+  ```yaml
+  environment:
+    RACK_ENV: development
+    SHOW: "true"
+      USER_INPUT:
+  ```
+
+  - `array` 문법
+
+  ```yaml
+  environment:
+    - RACK_ENV=development
+    - SHOW=true
+      - USER_INPUT
+  ```
+
+- build : context, dockerfile, args 등 `빌드 관련 정보`를 넘겨줄 수 있음
+
+```yaml
+worker:
+  build:
+    context: ./worker
+    ...
+```
+
+## airflow의 docker-compose.yml 파일 분석
+
+### x-airflow-common
+
+- 여러 서비스에서 공유하는 `공통 구성`을 정의
+- `anchor`(별칭) - &airflow-common
+  - 나중에 YML 파일 블록을 `계승 형태로 재사용` 가능하게 해줌
+  - 재사용 문법: `<<: *airflow-common`
+- *version, services, volumes, networks*를 제외한 최상위 레벨의 키워드는 모두 `anchor`
+
+```yaml
+x-airflow-common:
+  &airflow-common # 앵커, 별칭
+  image: ${AIRFLOW_IMAGE_NAME:-apache/airflow:2.5.1}
+  # build: .
+  environment:
+    &airflow-common-env
+    AIRFLOW__CORE__EXECUTOR: CeleryExecutor
+    ...
+    _PIP_ADDITIONAL_REQUIREMENTS: ${_PIP_ADDITIONAL_REQUIREMENTS:-}
+  volumes:  # 모든 container들은 이 세개의 volume을 공유함, host volumes
+    - ${AIRFLOW_PROJ_DIR:-.}/dags:/opt/airflow/dags
+    - ${AIRFLOW_PROJ_DIR:-.}/logs:/opt/airflow/logs
+    - ${AIRFLOW_PROJ_DIR:-.}/plugins:/opt/airflow/plugins
+  user: "${AIRFLOW_UID:-50000}:0"
+  depends_on:
+    &airflow-common-depends-on
+    redis:
+      condition: service_healthy
+    postgres:
+      condition: service_healthy
+```
+
+### services
+
+- postgres
+- redis
+- airflow-webserver
+- airflow-scheduler
+
+```yaml
+services:
+  ...
+  airflow-scheduler:
+    <<: *airflow-common # 위에서 언급되었던 별칭을 사용
+    command: scheduler
+    healthcheck:
+      test: ["CMD-SHELL", 'airflow jobs check --job-type SchedulerJob --hostname "$${HOSTNAME}"']
+      interval: 10s
+      timeout: 10s
+      retries: 5
+    restart: always
+    depends_on:
+      <<: *airflow-common-depends-on
+      airflow-init:
+        condition: service_completed_successfully
+```
+
+- airflow-worker
+- airflow-triggerer
+- airflow-init
+
+### 파이썬 모듈을 추가로 설치하는 경우
+
+- 매번 container에 접속해 설치하는 방법은 유지보수가 어렵고, 보존되지 않아 유지보수 측면에서 **BAD**
+- docker-compose.yml의 값을 변경하는 방식을 사용
+
+```diff
+- _PIP_ADDITIONAL_REQUIREMENTS: ${_PIP_ADDITIONAL_REQUIREMENTS:-}
++ _PIP_ADDITIONAL_REQUIREMENTS: ${_PIP_ADDITIONAL_REQUIREMENTS:- yfinance pandas numpy}
+```
+
 # 👀 CHECK
 
 _<span style = "font-size:15px">(어렵거나 새롭게 알게 된 것 등 다시 확인할 것들)</span>_
 
 # ❗ 느낀 점
 
-<details>
-  <summary>
+방학동안 이전 수업을 복습해야겠다고 느꼈다. 그리고 슬슬 CS 공부도 시간 정해서 시작해야겠다. 뭔지는 아는데 설명이 안되는 상황이 점점 많이 늘어나고 있어서 답답하고 불안하다.
 
-**Lorem ipsum**
-
-  </summary>
-
-Lorem ipsum _dolor sit amet_, consectetur [adipiscing elit](https://example.org/)
-
-</details>
+시간을 쪼개서 뭘 할지 정해놓는게 제일 좋은 것 같다.
