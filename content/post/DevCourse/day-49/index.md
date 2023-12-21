@@ -192,6 +192,12 @@ docker-compose -f docker-compose.mac.yml up
 - 각 service에 적절하게 `네트워크`를 지정해준다. (보안 강화 목적)
 - 데이터 보존을 위해 `postgresql db에 볼륨`을 지정해준다.
 
+<details>
+
+  <summary>
+    code
+  </summary>
+
 ```yaml
 services:
   vote:
@@ -231,6 +237,8 @@ volumes:
   db-data:
 ```
 
+</details>
+
 ### docker-compose.yml 개선하기 (2)
 
 # 👀 CHECK
@@ -242,7 +250,7 @@ _<span style = "font-size:15px">(어렵거나 새롭게 알게 된 것 등 다�
 <details>
   <summary>
 
-    **Lorem ipsum**
+**Lorem ipsum**
 
   </summary>
 
