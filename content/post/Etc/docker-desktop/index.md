@@ -177,6 +177,7 @@ vi /usr/share/xsessions/ubuntu.desktop
 
 # Exec= 뒤의 모든 부분을 복사
 # Exec=env GNOME_SHELL_SESSION_MODE=ubuntu /usr/bin/gnome-session --session=ubuntu
+
 # 홈 디렉토리로 이동
 cd ~
 
