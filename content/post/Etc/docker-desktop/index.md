@@ -171,34 +171,34 @@ sudo apt install ubuntu-desktop
 
 -   크롬 원격 데스크탑 실행 시, 우분투 데스크탑이 실행되도록 파일 설정
 
-    ```bash
-    # 다른 desktop을 사용할경우 .desktop 파일의 이름을 확인할 것
-    vi /usr/share/xsessions/ubuntu.desktop
+```bash
+# 다른 desktop을 사용할경우 .desktop 파일의 이름을 확인할 것
+vi /usr/share/xsessions/ubuntu.desktop
 
-    # Exec= 뒤의 모든 부분을 복사
-    # Exec=env GNOME_SHELL_SESSION_MODE=ubuntu /usr/bin/gnome-session --session=ubuntu
-    # 홈 디렉토리로 이동
-    cd ~
+# Exec= 뒤의 모든 부분을 복사
+# Exec=env GNOME_SHELL_SESSION_MODE=ubuntu /usr/bin/gnome-session --session=ubuntu
+# 홈 디렉토리로 이동
+cd ~
 
-    # 원격 데스크탑 세션 파일 생성 및 설정
-    vi .chrome-remote-desktop-session
+# 원격 데스크탑 세션 파일 생성 및 설정
+vi .chrome-remote-desktop-session
 
-    # 파일에 exec /etc/X11/Xsession '<EXEC_COMMAND>'를 적은 뒤 저장
-    # exec /etc/X11/Xsession 'env GNOME_SHELL_SESSION_MODE=ubuntu /usr/bin/gnome-session --session=ubuntu'
+# 파일에 exec /etc/X11/Xsession '<EXEC_COMMAND>'를 적은 뒤 저장
+# exec /etc/X11/Xsession 'env GNOME_SHELL_SESSION_MODE=ubuntu /usr/bin/gnome-session --session=ubuntu'
 
-    # ubuntu VM instance를 reboot
-    sudo reboot
-    ```
+# ubuntu VM instance를 reboot
+sudo reboot
+```
 
-    ![](image-8.png)
+![](image-8.png)
 
 -   이후 VM에 재 접속해서 진행
 
 -   `ubuntu` user password 변경 (본인이 자주 사용하는걸로 설정)
 
-    ```bash
-    sudo passwd ubuntu
-    ```
+```bash
+sudo passwd ubuntu
+```
 
 **<o1>크롬 원격 데스크탑 연결</o1>**
 
