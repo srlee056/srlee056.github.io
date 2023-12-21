@@ -140,7 +140,7 @@ docker-compose -f docker-compose.dev.yml up
 
 ## docker compose 실습
 
-### docker-compose.mac.yml (1)
+### docker-compose.mac.yml
 
 - 읽어올 수 있는 이미지는 dockerhub에서 읽어오며, 이미지가 없는 경우엔 dockerfile의 위치를 제공하여 빌드를 진행
 - 네트워크를 지정하지 않고 내부 네트워크 사용
@@ -175,20 +175,77 @@ services:
       POSTGRES_PASSWORD: "postgres"
 ```
 
-![created docker images](image-3.png)
-
-![Running docker containers](image-4.png)
-
-![left: one vote for dog, righr: result of votes - 100% dogs](image-5.png)
-
 - 클린업 후 새로 만든 docker compose 파일을 활용하여 컨테이너들을 실행해보기
 
 ```bash
 docker-compose -f docker-compose.mac.yml up
 ```
 
+![created docker images](image-3.png)
+
+![Running docker containers](image-4.png)
+
+![left: one vote for dog, righr: result of votes - 100% dogs](image-5.png)
+
+### docker-compose.yml 개선하기 (1)
+
+- 각 service에 적절하게 `네트워크`를 지정해준다. (보안 강화 목적)
+- 데이터 보존을 위해 `postgresql db에 볼륨`을 지정해준다.
+
+```yaml
+services:
+  vote:
+    ...
+    networks:
+      - back-tier
+      - front-tier
+
+  result:
+    ...
+    networks:
+      - back-tier
+      - front-tier
+
+  worker:
+    ...
+    networks:
+      - back-tier
+
+  redis:
+    ...
+    networks:
+      - back-tier
+
+  db:
+    ...
+    networks:
+      - back-tier
+    volumes:
+      - db-data:/var/lib/postgresql/data
+
+networks:
+  back-tier:
+  front-tier:
+
+volumes:
+  db-data:
+```
+
+### docker-compose.yml 개선하기 (2)
+
 # 👀 CHECK
 
 _<span style = "font-size:15px">(어렵거나 새롭게 알게 된 것 등 다시 확인할 것들)</span>_
 
 # ❗ 느낀 점
+
+<details>
+  <summary>
+
+    **Lorem ipsum**
+
+  </summary>
+
+Lorem ipsum _dolor sit amet_, consectetur [adipiscing elit](https://example.org/)
+
+</details>
