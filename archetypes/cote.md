@@ -1,6 +1,6 @@
 +++
 author = "Seorim"
-title =  "{{ replace .File.ContentBaseName "-" " " | title }}"
+title =  "백준 : "
 slug = "{{ .File.ContentBaseName }}"
 date = {{ .Date }}
 
@@ -13,6 +13,8 @@ tags = [
 +++
 
 [GitHub Link]()
+
+[문제 Link]()
 
 # 문제 설명
 
