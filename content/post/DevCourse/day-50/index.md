@@ -1,6 +1,6 @@
 +++
 author = "Seorim"
-title =  "Day 50"
+title =  "Day 50 Docker(5)"
 slug = "day-50"
 date = 2023-12-22T13:33:18+09:00
 
