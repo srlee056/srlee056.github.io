@@ -148,7 +148,7 @@ GROUP BY 1
 - 앱 생성 및 Webhook으로 메세지 전송
 
 ```bash
-curl -X POST -H 'Content-type: application/json' --data '{"text":"Hello, Slack!"}' https://hooks.slack.com/services/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
+curl -X POST -H 'Content-type: application/json' --data '{"text":"Hello, Slack!"}' https://hooks.slack.com/services/{slack_webhook_url}
 ```
 
 ![](image-1.png)
