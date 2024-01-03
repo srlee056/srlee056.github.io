@@ -91,6 +91,19 @@ curl -X GET --user "{name}:{password}" http://{localhost or address ip}:8081/hea
 - 활성화 된 DAG 찾기
 
 ```python
+import requests
+from requests.auth import HTTPBasicAuth
+import json
+
+url = "http://localhost:8080/api/v1/dags"
+
+dags = requests.get(url, auth=HTTPBasicAuth("airflow", "airflow"))
+
+json_dags = json.loads(dags.text) #dags.json()
+
+for dag in json_dags["dags"]:
+    if not dag["is_paused"]:
+        print(dag)
 
 ```
 
