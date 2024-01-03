@@ -8,7 +8,7 @@ categories = [
     "DevCourse",
 ]
 tags = [
-    "TIL", "Airflow", "dbt", 
+    "TIL", "Airflow", "Slack API", 
 ]
 +++
 
