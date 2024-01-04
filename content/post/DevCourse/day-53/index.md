@@ -23,7 +23,7 @@ w1 { color: #FAF8ED }
 
 # 📋 공부 내용
 
-##
+## Dag Dependencies
 
 ###
 
