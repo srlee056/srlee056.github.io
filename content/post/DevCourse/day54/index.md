@@ -23,7 +23,13 @@ w1 { color: #FAF8ED }
 
 # 📋 공부 내용
 
-##
+## Airflow 설정
+
+### setting for production
+
+### log files
+
+### backup metadata
 
 ###
 
