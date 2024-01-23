@@ -44,7 +44,6 @@ The result format is in the following example.
 - before refactoring
 
 ```sql
-# Write your MySQL query statement below
 select round(count(distinct r.player_id) / count(distinct a.player_id),2) as fraction
 from Activity a
 left join(
@@ -69,7 +68,7 @@ LEFT JOIN (
     SELECT player_id, MIN(event_date) + INTERVAL 1 DAY AS next_day
     FROM Activity
     GROUP BY player_id
-) r ON a.player_id = r.player_id AND a.event_date = r.next_day
+) r ON a.player_id = r.player_id AND a.event_date = r.next_day;
 ```
 
 ![](image-2.png)
