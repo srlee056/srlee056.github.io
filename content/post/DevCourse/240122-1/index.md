@@ -8,7 +8,7 @@ categories = [
     "DevCourse",
 ]
 tags = [
-    "TIL", "Kafka", "Spark Streaming"
+    "TIL","Data Processing", "Kafka", "Spark Streaming"
 ]
 +++
 
