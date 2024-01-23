@@ -8,7 +8,7 @@ categories = [
     "CodingTest",
 ]
 tags = [
-    "SQL","LeetCode", 
+    "SQL","LeetCode",
 ]
 +++
 
@@ -20,20 +20,18 @@ tags = [
 
 ## 문제 설명
 
->Table: Activity
+> Table: Activity
 
-
-| Column Name  | Type    |
-|---|---|
-| player_id    | int     |
-| device_id    | int     |
-| event_date   | date    |
-| games_played | int     |
+| Column Name  | Type |
+| ------------ | ---- |
+| player_id    | int  |
+| device_id    | int  |
+| event_date   | date |
+| games_played | int  |
 
 - (player_id, event_date) is the primary key (combination of columns with unique values) of this table.
 - This table shows the activity of players of some games.
 - Each row is a record of a player who logged in and played a number of games (possibly 0) before logging out on someday using some device.
- 
 
 Write a solution to report the fraction of players that logged in again on the day after the day they first logged in, rounded to 2 decimal places. In other words, you need to count the number of players that logged in for at least two consecutive days starting from their first login date, then divide that number by the total number of players.
 
@@ -43,178 +41,78 @@ The result format is in the following example.
 
 ## 풀이 코드
 
-```sql
-select I.name
-from(
-select managerId, count(managerId) as counts
-    from Employee
-    where managerId is not null
-    group by managerId
-) as M
-    join Employee as I on M.managerId = I.id
-    where M.counts>=5;
-```
-
-## CHECK!
-
-- `self join`을 사용하여 managerId에 해당하는 이름을 가져왔다.
-
-# Confirmation Rate
-
-[문제 Link](https://leetcode.com/problems/confirmation-rate/description/)
-
-## 문제 설명
-
-> Table: Signups
-
-| Column Name | Type     |
-| ----------- | -------- |
-| user_id     | int      |
-| time_stamp  | datetime |
-
-user_id is the column of unique values for this table.
-Each row contains information about the signup time for the user with ID user_id.
-
-> Table: Confirmations
-
-| Column Name | Type     |
-| ----------- | -------- |
-| user_id     | int      |
-| time_stamp  | datetime |
-| action      | ENUM     |
-
-- (user_id, time_stamp) is the primary key (combination of columns with unique values) for this table.
-- user_id is a foreign key (reference column) to the Signups table.
-- action is an ENUM (category) of the type ('confirmed', 'timeout')
-- Each row of this table indicates that the user with ID user_id requested a confirmation message at time_stamp and that confirmation message was either confirmed ('confirmed') or expired without confirming ('timeout').
-
-The confirmation rate of a user is the number of 'confirmed' messages divided by the total number of requested confirmation messages. The confirmation rate of a user that did not request any confirmation messages is 0. Round the confirmation rate to two decimal places.
-
-Write a solution to find the confirmation rate of each user.
-
-Return the result table in any order.
-
-The result format is in the following example.
-
-![](image-1.png)
-
-## 풀이 코드
+- before refactoring
 
 ```sql
 # Write your MySQL query statement below
-select S.user_id, IFNull(C.confirmation_rate, 0) as confirmation_rate
-from(
-select user_id,
-    round(count(if(action='confirmed', action, null)) / count(*), 2) as confirmation_rate
-    from Confirmations
-    group by user_id
-) as C
-right join Signups as S on C.user_id = S.user_id
-```
-
-## CHECK!
-
-- `right join`을 하면서 빈 컬럼이 생기고, 문제 의도에 따라 이 값을 0으로 지정해줘야 하므로 `IFNULL()`을 사용했다.
-- IFNULL(column 이름, null일 경우 값)
-
-# Monthly Transactions I
-
-[문제 Link](https://leetcode.com/problems/monthly-transactions-i/description/)
-
-## 문제 설명
-
-> Table: Transactions
-
-| Column Name | Type    |
-| ----------- | ------- |
-| id          | int     |
-| country     | varchar |
-| state       | enum    |
-| amount      | int     |
-| trans_date  | date    |
-
-- id is the primary key of this table.
-  The table has information about incoming transactions.
-- The state column is an enum of type ["approved", "declined"].
-
-Write an SQL query to find for each month and country, the number of transactions and their total amount, the number of approved transactions and their total amount.
-
-Return the result table in any order.
-
-The query result format is in the following example.
-
-![](image.png)
-
-## 풀이 코드
-
-```sql
-select
-    date_format(trans_date, '%Y-%m') as month,
-    country,
-    count(*) as trans_count,
-    count(if(state = 'approved', 1, null)) as approved_count,
-    sum(amount) as trans_total_amount,
-    sum(if(state = 'approved', amount, 0)) as approved_total_amount
-from Transactions
-group by country, month
-```
-
-## CHECK!
-
-- `COUNT(IF()), SUM(IF())` 의 사용법에 대해 확인하고 실행해볼 수 있었다.
-- COUNT(IF(조건문, true인 경우의 값, false인 경우의 값))
-  - false일 때 null 외에 0 등을 넣게 되면 count하게 되므로 주의
-- SUM(IF())도 parameter는 같다.
-
-# Immediate Food Delivery II
-
-[문제 Link](https://leetcode.com/problems/immediate-food-delivery-ii/description/)
-
-## 문제 설명
-
-> Table: Delivery
-
-| Column Name                 | Type |
-| --------------------------- | ---- |
-| delivery_id                 | int  |
-| customer_id                 | int  |
-| order_date                  | date |
-| customer_pref_delivery_date | date |
-
-- delivery_id is the column of unique values of this table.
-- The table holds information about food delivery to customers that make orders at some date and specify a preferred delivery date (on the same order date or after it).
-
-If the customer's preferred delivery date is the same as the order date, then the order is called immediate; otherwise, it is called scheduled.
-
-The first order of a customer is the order with the earliest order date that the customer made. It is guaranteed that a customer has precisely one first order.
-
-Write a solution to find the percentage of immediate orders in the first orders of all customers, rounded to 2 decimal places.
-
-The result format is in the following example.
-
-![](image-3.png)
-
-## 풀이 코드
-
-```sql
-select
-    round(100 * count(if(order_date=customer_pref_delivery_date, 1, null)) / count(*), 2) as immediate_percentage
-from Delivery
-where (customer_id, order_date) in (
-    select customer_id, min(order_date)
-    from Delivery
-    group by customer_id
+select round(count(distinct r.player_id) / count(distinct a.player_id),2) as fraction
+from Activity a
+left join(
+select *
+from Activity a1
+where (player_id, event_date) in (
+    select player_id, (min(event_date) + interval 1 day) as event_date
+    from Activity
+    group by player_id
 )
+) r on a.player_id = r.player_id;
 ```
+
+![](image-1.png)
+
+- after refactoring
+
+```sql
+SELECT ROUND(COUNT(DISTINCT r.player_id) / COUNT(DISTINCT a.player_id), 2) AS fraction
+FROM Activity a
+LEFT JOIN (
+    SELECT player_id, MIN(event_date) + INTERVAL 1 DAY AS next_day
+    FROM Activity
+    GROUP BY player_id
+) r ON a.player_id = r.player_id AND a.event_date = r.next_day
+```
+
+![](image-2.png)
 
 ## CHECK!
 
-```sql
-where (a, b) in (
-    select a, b
-...
-)
-```
+- 처음 플레이 날짜와 그 다음날에 플레이 한 날 모두 존재함을 확인하기 위해, `min()+1`값을 가진 evnet_date가 존재하는지를 확인하였다.
+- where in() 구문이 join보다 더 나을거라고 생각했지만 실제로는 경우에 따라 다른 결과가 나온다고 한다.
 
-- 단순하게 MIN(order_date)만 조건을 걸어줄 경우, 여러 customer가 같은 날짜에 주문을 시킨 경우에 첫 주문이 아닌데도 고려하게 된다. 따라서 `customer_id, order_date pair`를 체크해야 한다.
-- `IN()`을 사용할 때, multiple value를 묶어서 한번에 `여러 column에 조건을 적용`할 수 있다.
+## JOIN, WHERE IN, WHERE EXISTS (Chatgpt 답변)
+
+SQL에서 서브쿼리를 사용하는 방식인 `JOIN`, `WHERE IN`, `WHERE EXISTS` 각각은 특정 상황에서 사용되며, 각각의 성능과 사용상의 차이점이 있습니다.
+
+1. **JOIN (특히 INNER JOIN)**
+
+   - `JOIN`은 두 테이블에서 관련된 행을 결합하여 결과를 반환합니다.
+   - `JOIN`은 두 데이터 세트 간의 관계를 명확히 하고, 결과 테이블에서 모든 관련 열을 선택할 수 있게 해줍니다.
+   - 대규모 데이터셋에서는 메모리 사용량이 높을 수 있으며, 성능에 영향을 줄 수 있습니다.
+   - `JOIN`은 관계형 데이터베이스의 정규화된 스키마에 적합합니다.
+
+2. **WHERE IN**
+
+   - `WHERE IN` 서브쿼리는 주 쿼리의 열 값이 서브쿼리 결과 집합에 속하는 행만을 반환합니다.
+   - 작은 데이터셋에 적합하며, 가독성이 좋습니다.
+   - 대규모 데이터셋에서는 성능이 저하될 수 있습니다. 서브쿼리가 큰 데이터셋을 반환할 때, 주 쿼리는 서브쿼리의 결과와 매번 비교해야 하기 때문입니다.
+   - 서브쿼리가 한 번 실행되고, 그 결과가 주 쿼리에 대한 비교를 위해 사용됩니다.
+
+3. **WHERE EXISTS**
+   - `WHERE EXISTS` 서브쿼리는 서브쿼리가 최소 하나의 행을 반환하는 경우에만 주 쿼리의 행을 반환합니다.
+   - `EXISTS`는 주로 상관 서브쿼리(correlated subquery)와 함께 사용됩니다. 상관 서브쿼리는 주 쿼리의 각 행에 대해 실행됩니다.
+   - 대규모 데이터셋에서 `IN`보다 성능이 좋을 수 있습니다. `EXISTS`는 조건을 만족하는 첫 번째 행을 찾으면 즉시 중단합니다.
+   - `EXISTS`는 주로 존재 여부를 확인하는 데 사용되며, 특정 값을 반환하는 데는 사용되지 않습니다.
+
+### 성능 관점
+
+- **데이터셋의 크기**: 대규모 데이터셋에서는 `JOIN`이나 `EXISTS`가 `IN`보다 성능이 좋을 수 있습니다.
+- **인덱싱**: 적절한 인덱싱은 `JOIN`, `IN`, `EXISTS` 쿼리의 성능에 큰 영향을 미칩니다.
+- **데이터베이스 엔진 최적화**: 현대의 데이터베이스 관리 시스템은 쿼리 최적화를 자동으로 수행하기 때문에, 실제 성능 차이는 예상보다 작을 수 있습니다.
+
+### 사용 사례
+
+- `JOIN`: 관계형 데이터의 분석이나 복잡한 데이터 추출에 적합합니다.
+- `IN`: 작은 데이터셋을 대상으로 간단한 목록 조회에 적합합니다.
+- `EXISTS`: 존재 여부 확인이 필요하거나 상관 서브쿼리를 사용할 때 적합합니다.
+
+각 방식의 선택은 사용 사례, 데이터셋의 크기 및 구조, 그리고 데이터베이스의 성능에 따라 달라질 수 있습니다.
