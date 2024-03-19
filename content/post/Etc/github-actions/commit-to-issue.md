@@ -35,6 +35,7 @@ w1 { color: #FAF8ED }
 ## 과정
 
 어제 고군분투 한 과정을 자세하게 적기엔 너무 번거로워서 일단 간단하게만 적으려고 한다.
+[참고링크 1 - GitHub Actions를 사용하여 프로젝트를 자동화](https://docs.github.com/ko/issues/planning-and-tracking-with-projects/automating-your-project/automating-projects-using-actions)
 
 1. commit to project
 
