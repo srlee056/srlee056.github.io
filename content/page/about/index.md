@@ -14,10 +14,11 @@ menu:
         params:
             icon: user
 ---
+### Links
 
-[Seorim's GitHub](https://github.com/srlee056)
+- [Seorim's GitHub](https://github.com/srlee056)
 
-[이력서](https://bit.ly/seorim-resume-notion)
+- [이력서](https://bit.ly/seorim-resume-notion)
 
-[포트폴리오](https://bit.ly/seorim-portfolio-notion)
+- [포트폴리오](https://bit.ly/seorim-portfolio-notion)
 
