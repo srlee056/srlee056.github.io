@@ -71,7 +71,7 @@ tags = [
             
 - 주기적으로 데이터 가져오는것을 확인
             
-	![](Pasted image 20240427161012.png)
+	![](Pasted%20image%2020240427161012.png)
             
 #### GCS Sink Connector 테스트
         
@@ -105,22 +105,22 @@ tags = [
 	}
 	```
 	
-	![](Pasted image 20240427161048.png)
+	![](Pasted%20image%2020240427161048.png)
             
 - 여러개의 토픽을 연결할 수 있음
-	![](Pasted image 20240427161059.png)
+	![](Pasted%20image%2020240427161059.png)
                 
 	- 이 때, partition의 수와 task의 수와 관련이 있음
 		- partition이 하나씩 있을 경우, consumer 하나에 파티션 하나가 할당됨
 		- partition이 두개 각각 있을 경우, consumer 2개가 일하게 됨
                 
-			![](Pasted image 20240427161111.png)
+			![](Pasted%20image%2020240427161111.png)
                 
-			![](Pasted image 20240427161125.png)
+			![](Pasted%20image%2020240427161125.png)
                 
 ### 실제 데이터 흐름
 	    
-![](Pasted image 20240427162324.png)
+![](Pasted%20image%2020240427162324.png)
     
 ### 추가 고려 사항
     
