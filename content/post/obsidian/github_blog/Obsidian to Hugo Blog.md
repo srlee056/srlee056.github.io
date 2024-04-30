@@ -2,13 +2,12 @@
 tags:
   - obsidian_blog
 author: Seorim
-slug: test-blog
+slug: obsidian-blog
 categories:
-  - Test
-  - Obsidian
-title: test_blog
+  - Blog
+title: Obsidian to Hugo Blog
 date: 2024-04-30T02:46:00.633Z
-lastmod: 2024-04-30T03:08:41.473Z
+lastmod: 2024-04-30T03:09:26.728Z
 ---
 옵시디언으로 글 작성 후 Hugo Template로 바꿔서 post생성하는 방법!
 
