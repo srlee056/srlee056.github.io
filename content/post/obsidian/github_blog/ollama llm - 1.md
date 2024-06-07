@@ -6,7 +6,7 @@ categories:
   - Ollama
   - LLM
 slug: ollama
-title: ollama llm 체험기 - 1
+title: ollama llm - 1
 date: 2024-05-31T00:39:19.462Z
 lastmod: 2024-06-07T23:00:37.327Z
 ---
