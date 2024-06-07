@@ -5,7 +5,7 @@ author: Seorim
 slug: github-actions
 categories:
   - GitHub Actions
-title: GitHub Actions 발표
+title: GitHub Actions
 date: 2024-05-10T06:15:05.330Z
 lastmod: 2024-05-10T06:18:34.212Z
 ---
